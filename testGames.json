@@ -1,0 +1,21 @@
+{
+  "applist": {
+    "apps": [
+      {"appid": 730, "name": "Counter-Strike: Global Offensive"},
+      {"appid": 570, "name": "Dota 2"},
+      {"appid": 1599340, "name": "Lost Ark"},
+      {"appid": 401938090, "name": "Call of Duty®: Modern Warfare® II | Warzone™ 2.0"},
+      {"appid": 578080, "name": "PUBG: BATTLEGROUNDS"},
+      {"appid": 1085660, "name": "Destiny 2"},
+      {"appid": 252490, "name": "Rust"},
+      {"appid": 440, "name": "Team Fortress 2"},
+      {"appid": 271590, "name": "Grand Theft Auto V"},
+      {"appid": 1172470, "name": "Apex Legends"},
+      {"appid": 892970, "name": "Valheim"},
+      {"appid": 1811260, "name": "EA SPORTS™ FIFA 23"},
+      {"appid": 238960, "name": "Path of Exile"},
+      {"appid": 236390, "name": "War Thunder"},
+      {"appid": 1904540, "name": "Football Manager 2023"}
+    ]
+  }
+}
