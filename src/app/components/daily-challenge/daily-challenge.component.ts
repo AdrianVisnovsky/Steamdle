@@ -9,14 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DailyChallengeComponent implements OnInit {
 
-	steamGames: SteamApp[] = [];
+	steamGames!: SteamApp[];
+
+	gameToGuess!: SteamApp;
 
 	constructor(private steamService: SteamService) {}
 
 	ngOnInit()
 	{
 		this.steamService.getAllGames().subscribe(data => {
+
+			// store all available games
 			this.steamGames = data.applist.apps;
+
+			// pick one random game
+			let randomIndex: number = Math.floor(Math.random() * this.steamGames.length);
+
+			this.gameToGuess = this.steamGames[randomIndex];
+
 		});
 	}
 
