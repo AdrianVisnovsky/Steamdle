@@ -1,3 +1,4 @@
+import { SteamApp } from './../../interfaces/steam-app';
 import { SteamService } from './../../services/steam.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -6,16 +7,16 @@ import { Component, OnInit } from '@angular/core';
 	templateUrl: './daily-challenge.component.html',
 	styleUrls: ['./daily-challenge.component.css']
 })
-export class DailyChallengeComponent {
+export class DailyChallengeComponent implements OnInit {
 
-	steamGames: any;
+	steamGames: SteamApp[] = [];
 
 	constructor(private steamService: SteamService) {}
 
 	ngOnInit()
 	{
-		this.steamService.getAllGames().subscribe(response => {
-			this.steamGames = response;
+		this.steamService.getAllGames().subscribe(data => {
+			this.steamGames = data.applist.apps;
 		});
 	}
 

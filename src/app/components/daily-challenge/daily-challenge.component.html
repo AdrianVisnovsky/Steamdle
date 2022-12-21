@@ -1,8 +1,7 @@
 <div class="bg-gray-400">
     <p>daily-challenge works!</p>
     <h1>All steam games</h1>
-    {{ steamGames | json }}
     <ul>
-        <!--<li *ngFor="let game in steamGames">AppId: {{game.}}</li>-->
+        <li *ngFor="let game of steamGames">AppId: {{game.appid}} Name:{{game.name}}</li>
     </ul>
 </div>
