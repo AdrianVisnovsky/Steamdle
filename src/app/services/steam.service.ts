@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SteamApps } from '../interfaces/steam-apps';
 
@@ -18,6 +18,17 @@ export class SteamService {
 		var url: string = 'https://api.npoint.io/43079c9505a598a229e9';
 
 		return this.httpClient.get<SteamApps>(url);
+	}
+
+	getGameDetail(appId: number) {
+
+		var url: string = 'https://store.steampowered.com/api/appdetails?appids=' + appId;
+
+		var headers = new HttpHeaders();
+		headers = headers.append('Access-Control-Allow-Origin', '*');
+		headers = headers.append('Access-Control-Allow-Methods', 'GET');
+
+		return this.httpClient.get(url, {headers});
 	}
 
 }

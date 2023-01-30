@@ -1,9 +1,14 @@
 <div class="bg-gray-400">
 
 	<div class="grid grid-flow-col auto-cols-3">
+
         <div class="bg-gray-300 p-4 m-4 rounded-md">
-            <h1>All steam games</h1>
+            <h1>All available games</h1>
+            <ul>
+                <li *ngFor="let game of steamGames">AppId: {{game.appid}} Name: {{game.name}}</li>
+            </ul>
         </div>
+
         <div class="bg-gray-300 p-4 m-4 rounded-md">
             <h1>Guess the game</h1>
 
@@ -17,15 +22,16 @@
 			</mat-form-field>
               
         </div>
+
         <div class="bg-gray-300 p-4 m-4 rounded-md">
             <h1>Game to guess</h1>
             <p>AppId: {{gameToGuess.appid}} Name: {{gameToGuess.name}}</p>
-            <br>
-            <h1>All available games</h1>
-            <ul>
-                <li *ngFor="let game of steamGames">AppId: {{game.appid}} Name: {{game.name}}</li>
-            </ul>
+            <h1>Game details</h1>
+            <p>
+                {{gameToGuessDetails | json}}
+            </p>
         </div>
+
     </div>
 
 </div>

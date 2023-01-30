@@ -1,6 +1,7 @@
 import { SteamApp } from './../../interfaces/steam-app';
 import { SteamService } from './../../services/steam.service';
 import { Component, OnInit } from '@angular/core';
+import { GameDetails } from 'src/app/interfaces/game-details';
 
 @Component({
 	selector: 'app-daily-challenge',
@@ -12,6 +13,8 @@ export class DailyChallengeComponent implements OnInit {
 	steamGames!: SteamApp[];
 
 	gameToGuess!: SteamApp;
+
+	gameToGuessDetails!: GameDetails;
 
 	constructor(private steamService: SteamService) {}
 
@@ -26,6 +29,11 @@ export class DailyChallengeComponent implements OnInit {
 			let randomIndex: number = Math.floor(Math.random() * this.steamGames.length);
 
 			this.gameToGuess = this.steamGames[randomIndex];
+
+			// get game details
+			this.steamService.getGameDetail(this.gameToGuess.appid).subscribe(data => {
+				
+			});
 
 		});
 	}
