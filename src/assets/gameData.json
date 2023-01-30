@@ -2822,7 +2822,7 @@
     ],
     "achievements": 0,
     "owners": 7500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 44350,
@@ -3746,7 +3746,7 @@
     ],
     "achievements": 160,
     "owners": 7500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 255710,
@@ -4147,7 +4147,7 @@
     ],
     "achievements": 60,
     "owners": 7500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 333930,
@@ -4824,7 +4824,7 @@
     ],
     "achievements": 43,
     "owners": 7500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 438100,
@@ -4930,7 +4930,7 @@
     ],
     "achievements": 0,
     "owners": 7500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 444200,
@@ -6283,7 +6283,7 @@
     ],
     "achievements": 0,
     "owners": 3500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 8850,
@@ -8547,7 +8547,7 @@
     ],
     "achievements": 77,
     "owners": 3500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 57300,
@@ -8838,7 +8838,7 @@
     ],
     "achievements": 251,
     "owners": 3500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 105450,
@@ -9812,7 +9812,7 @@
     ],
     "achievements": 412,
     "owners": 3500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 206420,
@@ -13280,7 +13280,7 @@
     ],
     "achievements": 0,
     "owners": 3500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 287390,
@@ -13895,7 +13895,7 @@
     ],
     "achievements": 49,
     "owners": 3500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 317360,
@@ -14288,7 +14288,7 @@
     ],
     "achievements": 0,
     "owners": 3500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 343710,
@@ -14629,7 +14629,7 @@
     ],
     "achievements": 0,
     "owners": 3500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 374320,
@@ -14856,7 +14856,7 @@
     ],
     "achievements": 0,
     "owners": 3500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 391220,
@@ -15188,7 +15188,7 @@
     ],
     "achievements": 19,
     "owners": 3500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 424280,
@@ -15546,7 +15546,7 @@
     ],
     "achievements": 408,
     "owners": 3500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 466240,
@@ -15943,7 +15943,7 @@
     ],
     "achievements": 0,
     "owners": 3500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 530700,
@@ -16651,7 +16651,7 @@
     "tags": [],
     "achievements": 93,
     "owners": 3500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 838350,
@@ -16684,7 +16684,7 @@
     "tags": [],
     "achievements": 0,
     "owners": 3500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 845070,
@@ -18112,7 +18112,7 @@
     ],
     "achievements": 0,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 7940,
@@ -18355,7 +18355,7 @@
     ],
     "achievements": 0,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 9900,
@@ -20396,7 +20396,7 @@
     ],
     "achievements": 25,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 34870,
@@ -22654,7 +22654,7 @@
     ],
     "achievements": 0,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 206500,
@@ -22890,7 +22890,7 @@
     ],
     "achievements": 57,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 209160,
@@ -24040,7 +24040,7 @@
     ],
     "achievements": 0,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 232890,
@@ -25282,7 +25282,7 @@
     ],
     "achievements": 0,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 242700,
@@ -25928,7 +25928,7 @@
     ],
     "achievements": 0,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 248820,
@@ -26362,7 +26362,7 @@
     ],
     "achievements": 20,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 261030,
@@ -27237,7 +27237,7 @@
     ],
     "achievements": 4,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 285900,
@@ -27586,7 +27586,7 @@
     ],
     "achievements": 0,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 291650,
@@ -28336,7 +28336,7 @@
     ],
     "achievements": 40,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 310560,
@@ -28721,7 +28721,7 @@
     ],
     "achievements": 22,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 322170,
@@ -29128,7 +29128,7 @@
     ],
     "achievements": 35,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 331470,
@@ -29633,7 +29633,7 @@
     ],
     "achievements": 36,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 346010,
@@ -31686,7 +31686,7 @@
     ],
     "achievements": 7,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 433340,
@@ -32279,7 +32279,7 @@
     ],
     "achievements": 12,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 450390,
@@ -32757,7 +32757,7 @@
     ],
     "achievements": 0,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 470220,
@@ -33323,7 +33323,7 @@
     ],
     "achievements": 9,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 530620,
@@ -33772,7 +33772,7 @@
     ],
     "achievements": 84,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 582160,
@@ -34729,7 +34729,7 @@
     ],
     "achievements": 0,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 696370,
@@ -35037,7 +35037,7 @@
     ],
     "achievements": 150,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 809960,
@@ -35317,7 +35317,7 @@
     "tags": [],
     "achievements": 0,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 736190,
@@ -35392,7 +35392,7 @@
     "tags": [],
     "achievements": 0,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 871720,
@@ -35568,7 +35568,7 @@
     "tags": [],
     "achievements": 77,
     "owners": 1500000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 905370,
@@ -37391,7 +37391,7 @@
     ],
     "achievements": 0,
     "owners": 750000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 8600,
@@ -37564,7 +37564,7 @@
     ],
     "achievements": 0,
     "owners": 750000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 9350,
@@ -38861,7 +38861,7 @@
     ],
     "achievements": 1240,
     "owners": 750000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 24790,
@@ -38997,7 +38997,7 @@
     ],
     "achievements": 0,
     "owners": 750000,
-    "difficulty": null
+    "difficulty": ""
   },
   {
     "id": 25890,

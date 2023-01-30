@@ -5,7 +5,7 @@
         <div class="bg-gray-300 p-4 m-4 rounded-md">
             <h1>All available games</h1>
             <ul>
-                <li *ngFor="let game of steamGames">AppId: {{game.appid}} Name: {{game.name}}</li>
+                <li *ngFor="let game of steamGames">AppId: {{game.id}} Name: {{game.name}}</li>
             </ul>
         </div>
 
@@ -25,10 +25,8 @@
 
         <div class="bg-gray-300 p-4 m-4 rounded-md">
             <h1>Game to guess</h1>
-            <p>AppId: {{gameToGuess.appid}} Name: {{gameToGuess.name}}</p>
             <h1>Game details</h1>
             <p>
-                {{gameToGuessDetails | json}}
             </p>
         </div>
 
