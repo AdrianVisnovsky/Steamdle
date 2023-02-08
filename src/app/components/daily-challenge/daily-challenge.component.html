@@ -2,32 +2,31 @@
 
 	<div class="grid grid-flow-col auto-cols-3">
 
-        <div class="bg-gray-300 p-4 m-4 rounded-md">
+        <div class="p-4 m-4 rounded-md" style="background-color: #171c30; overflow: scroll; max-height: 93vh;">
             <h1>All available games</h1>
-            <ul>
-                <li *ngFor="let game of steamGames">AppId: {{game.id}} Name: {{game.name}}</li>
-            </ul>
+            <pre [innerHTML]="steamGames | jsonpretty: [true, 3]"></pre>
         </div>
 
-        <div class="bg-gray-300 p-4 m-4 rounded-md">
+        <div class="p-4 m-4 rounded-md" style="background-color: #171c30; min-width: 20vw;">
             <h1>Guess the game</h1>
 
-			<mat-form-field>
+			<mat-form-field style="width: 100%;">
 
-				<input matInput type="text" [matAutocomplete]="auto" />
-				<mat-autocomplete #auto="matAutocomplete">
+				<input matInput type="text" [matAutocomplete]="auto" (selectionchange)="gameSelected($event)" />
+				<mat-autocomplete #auto="matAutocomplete" >
 					<mat-option *ngFor="let game of steamGames" [value]="game.name">{{ game.name }}</mat-option>
 				</mat-autocomplete>
 		
 			</mat-form-field>
               
+            <h1>Guessed games</h1>
+            <pre [innerHTML]="guessedGames | jsonpretty: [true, 3]"></pre>
+
         </div>
 
-        <div class="bg-gray-300 p-4 m-4 rounded-md">
+        <div class="p-4 m-4 rounded-md" style="background-color: #171c30; overflow: scroll;">
             <h1>Game to guess</h1>
-            <h1>Game details</h1>
-            <p>
-            </p>
+            <pre [innerHTML]="gameToGuess | jsonpretty: [true, 3]"></pre>
         </div>
 
     </div>

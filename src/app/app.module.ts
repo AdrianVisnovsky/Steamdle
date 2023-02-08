@@ -13,6 +13,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
+import { JsonprettyPipe } from './jsonpretty.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MatInputModule } from '@angular/material/input';
     DailyChallengeComponent,
     FooterComponent,
     HowToPlayComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    JsonprettyPipe
   ],
   imports: [
     BrowserModule,

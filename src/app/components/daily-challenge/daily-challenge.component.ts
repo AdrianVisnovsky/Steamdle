@@ -10,11 +10,18 @@ import { Game } from 'src/app/interfaces/game';
 })
 export class DailyChallengeComponent implements OnInit {
 
-	steamGames: Game[]
+	steamGames: Game[];
+	gameToGuess: Game;
+	guessedGames: Game[] = [];
 
 	constructor() {
 
 		this.steamGames = GamesDataJson;
+		
+		// pick one random game
+		let randomIndex: number = Math.floor(Math.random() * this.steamGames.length);
+
+		this.gameToGuess = this.steamGames[randomIndex];
 
 	}
 
@@ -23,6 +30,11 @@ export class DailyChallengeComponent implements OnInit {
 
 		console.log(this.steamGames);
 
+	}
+
+	gameSelected(event: unknown)
+	{
+		console.log(event);
 	}
 
 }
