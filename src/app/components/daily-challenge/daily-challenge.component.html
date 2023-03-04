@@ -12,9 +12,17 @@
 
 			<mat-form-field style="width: 100%;">
 
-				<input matInput type="text" [matAutocomplete]="auto" (selectionchange)="gameSelected($event)" />
+				<input type="text"
+                        placeholder="Enter game"
+                        [formControl]="gameFormControl"
+                        matInput
+                        [matAutocomplete]="auto" />
 				<mat-autocomplete #auto="matAutocomplete" >
-					<mat-option *ngFor="let game of steamGames" [value]="game.name">{{ game.name }}</mat-option>
+					<mat-option *ngFor="let game of filteredOptions | async"
+                        [value]="printGameName(game)"
+                        (onSelectionChange)="gameSelected(game)">
+                        {{ game.name }}
+                    </mat-option>
 				</mat-autocomplete>
 		
 			</mat-form-field>
