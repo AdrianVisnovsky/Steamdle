@@ -27,7 +27,7 @@
 		
 			</mat-form-field>
               
-            <h1>Guessed games</h1>
+            <h1>Guessed games ({{ currentNumberOfGuesses }} / {{ maxNumberOfGuesses }})</h1>
 
             <app-guessed-game *ngFor="let guessedGame of guessedGames" [game]="guessedGame"></app-guessed-game>
 

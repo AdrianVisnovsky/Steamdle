@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import GamesDataJson from '../assets/gameData.json';
+import { Game } from 'src/app/interfaces/game';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'steamdle';
+
+  public steamGames: Game[] = GamesDataJson;
+
 }
