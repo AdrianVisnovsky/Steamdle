@@ -1,13 +1,13 @@
 <div class="bg-gray-400">
 
-	<div class="grid grid-flow-col auto-cols-3">
+	<div class="grid grid-flow-col auto-cols-2">
 
-        <div class="p-4 m-4 rounded-md" style="background-color: #171c30; overflow: scroll; max-height: 93vh;">
+        <!-- <div class="p-4 m-4 rounded-md" style="background-color: #171c30; overflow: scroll; max-height: 93vh;">
             <h1>All available games</h1>
             <pre [innerHTML]="steamGames | jsonpretty: [true, 3]"></pre>
-        </div>
+        </div> -->
 
-        <div class="p-4 m-4 rounded-md" style="background-color: #171c30; min-width: 20vw;">
+        <div class="p-4 m-4 rounded-md" style="background-color: #171c30; min-width: 45vw;">
             <h1>Guess the game</h1>
 
 			<mat-form-field style="width: 100%;">
@@ -28,7 +28,8 @@
 			</mat-form-field>
               
             <h1>Guessed games</h1>
-            <pre [innerHTML]="guessedGames | jsonpretty: [true, 3]"></pre>
+
+            <app-guessed-game *ngFor="let guessedGame of guessedGames" [game]="guessedGame"></app-guessed-game>
 
         </div>
 
