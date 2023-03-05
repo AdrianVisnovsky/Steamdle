@@ -32,16 +32,20 @@ export class DailyChallengeComponent implements OnInit {
 		this.filteredOptions = this.gameFormControl.valueChanges
 			.pipe(
 				startWith(''),
-				map((value) => this._filter(value))
+				map((value) => this.filgerGames(value))
 			);
 
 	}
 
-	ngOnInit()
-	{
+	ngOnInit() {}
 
-	}
-
+	/**
+	 * compares 2 games by their name
+	 * we're able to sort them by name
+	 * @param g1
+	 * @param g2 
+	 * @returns 
+	 */
 	private compareGames(g1: Game, g2: Game) {
 
 		if(g1.name < g2.name) {
@@ -55,16 +59,23 @@ export class DailyChallengeComponent implements OnInit {
 		return 0;
 	}
 
-	private _filter(value: string): Game[] {
+	/**
+	 * filters games based on user input and only shows 10 games
+	 * @param value
+	 * @returns 
+	 */
+	private filgerGames(value: string): Game[] {
 
 		const filterValue: string = value.toLowerCase();
 		return this.steamGames.filter(options => options.name.toLowerCase().includes(filterValue)).sort(this.compareGames).slice(0, 10);
 	}
 
-	printGameName(g: Game): string {
-		return g.name;
-	}
-
+	/**
+	 * handles user selecting game
+	 * adds game to guessedGames array if the game isn't already guessed
+	 * @param selectedGame 
+	 * @returns 
+	 */
 	gameSelected(selectedGame: Game)
 	{
 		
