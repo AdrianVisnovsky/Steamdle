@@ -18,7 +18,7 @@ export class DailyChallengeComponent implements OnInit {
 	guessedGames: Game[] = [];
 	gameFormControl: FormControl = new FormControl();
 
-	filteredOptions: Observable<Game[]>;
+	filteredOptions: Observable<Game[]> = new Observable<Game[]>;
 
 	constructor() {
 
@@ -29,11 +29,7 @@ export class DailyChallengeComponent implements OnInit {
 
 		this.gameToGuess = this.steamGames[randomIndex];
 
-		this.filteredOptions = this.gameFormControl.valueChanges
-			.pipe(
-				startWith(''),
-				map((value) => this.filgerGames(value))
-			);
+		this.setFilteredGames();
 
 	}
 
@@ -57,6 +53,16 @@ export class DailyChallengeComponent implements OnInit {
 		}
 
 		return 0;
+	}
+
+	private setFilteredGames(): void {
+
+		this.filteredOptions = this.gameFormControl.valueChanges
+			.pipe(
+				startWith(''),
+				map((value) => this.filgerGames(value))
+			);
+
 	}
 
 	/**
@@ -85,7 +91,9 @@ export class DailyChallengeComponent implements OnInit {
 		this.guessedGames.push(selectedGame);
 		this.guessedGames = [...this.guessedGames];
 
-		this.gameFormControl.reset();
+		this.gameFormControl.setValue("");
+		this.setFilteredGames();
+
 	}
 
 }
