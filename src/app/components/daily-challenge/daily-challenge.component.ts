@@ -88,7 +88,7 @@ export class DailyChallengeComponent implements OnInit {
 		if(this.guessedGames.indexOf(selectedGame) >= 0)
 			return;
 
-		this.guessedGames.push(selectedGame);
+		this.guessedGames.unshift(selectedGame);
 		this.guessedGames = [...this.guessedGames];
 
 		this.gameFormControl.setValue("");
