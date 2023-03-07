@@ -15,7 +15,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { JsonprettyPipe } from './jsonpretty.pipe';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { GuessedGameComponent } from './components/guessed-game/guessed-game.component';
+import { GameCardComponent } from './components/game-card/game-card.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { GuessedGameComponent } from './components/guessed-game/guessed-game.com
     HowToPlayComponent,
     NotFoundComponent,
     JsonprettyPipe,
-    GuessedGameComponent
+    GameCardComponent
   ],
   imports: [
     BrowserModule,

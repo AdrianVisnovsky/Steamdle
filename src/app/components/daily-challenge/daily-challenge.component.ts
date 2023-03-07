@@ -19,6 +19,7 @@ export class DailyChallengeComponent implements OnInit {
 
 	currentNumberOfGuesses:number = 0;
 	maxNumberOfGuesses: number = 10;
+	gameInProgess: boolean = true;
 
 	filteredOptions: Observable<Game[]> = new Observable<Game[]>;
 
@@ -34,26 +35,6 @@ export class DailyChallengeComponent implements OnInit {
 	}
 
 	ngOnInit() {}
-
-	/**
-	 * compares 2 games by their name
-	 * we're able to sort them by name
-	 * @param g1
-	 * @param g2 
-	 * @returns 
-	 */
-	private compareGames(g1: Game, g2: Game) {
-
-		if(g1.name < g2.name) {
-			return -1;
-		}
-
-		if (g1.name > g2.name) {
-			return 1;
-		}
-
-		return 0;
-	}
 
 	private setFilteredGames(): void {
 
@@ -73,7 +54,7 @@ export class DailyChallengeComponent implements OnInit {
 	private filgerGames(value: string): Game[] {
 
 		const filterValue: string = value.toLowerCase();
-		return this.myapp.steamGames.filter(options => options.name.toLowerCase().includes(filterValue)).sort(this.compareGames).slice(0, 10);
+		return this.myapp.steamGames.filter(options => options.name.toLowerCase().includes(filterValue)).sort(this.myapp.compareGames).slice(0, 10);
 	}
 
 	/**
@@ -102,11 +83,17 @@ export class DailyChallengeComponent implements OnInit {
 
 		// check guessed game
 		if(selectedGame.id == this.gameToGuess.id) {
+
+			this.gameInProgess = false;
 			alert("gg wp");
 			return;
+
 		} else if(this.currentNumberOfGuesses >= this.maxNumberOfGuesses) {
+
+			this.gameInProgess = false;
 			alert("looser");
 			return;
+			
 		}
 
 	}
