@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { JsonprettyPipe } from './jsonpretty.pipe';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { GameCardComponent } from './components/game-card/game-card.component';
+import { GameResultComponent } from './components/game-result/game-result.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { GameCardComponent } from './components/game-card/game-card.component';
     HowToPlayComponent,
     NotFoundComponent,
     JsonprettyPipe,
-    GameCardComponent
+    GameCardComponent,
+    GameResultComponent
   ],
   imports: [
     BrowserModule,

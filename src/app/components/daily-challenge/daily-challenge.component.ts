@@ -1,10 +1,10 @@
 import { AppComponent } from './../../app.component';
-import { SteamApp } from './../../interfaces/steam-app';
 import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/app/interfaces/game';
 import { Observable, startWith } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { map } from 'rxjs/operators';
+import { GameState } from 'src/app/enums/game-state';
 
 @Component({
 	selector: 'app-daily-challenge',
@@ -19,7 +19,7 @@ export class DailyChallengeComponent implements OnInit {
 
 	currentNumberOfGuesses:number = 0;
 	maxNumberOfGuesses: number = 10;
-	gameInProgess: boolean = true;
+	gState: GameState = GameState.InProgress;
 
 	filteredOptions: Observable<Game[]> = new Observable<Game[]>;
 
@@ -54,7 +54,10 @@ export class DailyChallengeComponent implements OnInit {
 	private filgerGames(value: string): Game[] {
 
 		const filterValue: string = value.toLowerCase();
-		return this.myapp.steamGames.filter(options => options.name.toLowerCase().includes(filterValue)).sort(this.myapp.compareGames).slice(0, 10);
+		return this.myapp.steamGames.filter(
+				options => !this.guessedGames.map((val) => val.id).includes(options.id) &&
+							options.name.toLowerCase().includes(filterValue)
+			).sort(this.myapp.compareGames).slice(0, 10);
 	}
 
 	/**
@@ -84,18 +87,20 @@ export class DailyChallengeComponent implements OnInit {
 		// check guessed game
 		if(selectedGame.id == this.gameToGuess.id) {
 
-			this.gameInProgess = false;
-			alert("gg wp");
+			this.gState = GameState.Won;
 			return;
 
 		} else if(this.currentNumberOfGuesses >= this.maxNumberOfGuesses) {
 
-			this.gameInProgess = false;
-			alert("looser");
+			this.gState = GameState.Lost;
 			return;
 			
 		}
 
+	}
+
+	public isGameInProgress(): boolean {
+		return this.gState == GameState.InProgress ? true : false;
 	}
 
 }

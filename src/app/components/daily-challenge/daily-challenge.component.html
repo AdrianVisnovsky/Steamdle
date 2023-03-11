@@ -9,7 +9,7 @@
 
         <div class="p-4 m-4 rounded-md" style="background-color: #171c30; min-width: 45vw;">
 
-            <div *ngIf="gameInProgess">
+            <div *ngIf="isGameInProgress()">
 
                 <h1>Guess the game</h1>
 
@@ -30,6 +30,10 @@
             
                 </mat-form-field>
 
+            </div>
+
+            <div *ngIf="!isGameInProgress()">
+                <app-game-result [gameState]="gState" [gameToGuess]="gameToGuess"></app-game-result>
             </div>
             
             <h1>Guessed games ({{ currentNumberOfGuesses }} / {{ maxNumberOfGuesses }})</h1>
