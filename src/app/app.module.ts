@@ -14,9 +14,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { JsonprettyPipe } from './jsonpretty.pipe';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GameCardComponent } from './components/game-card/game-card.component';
 import { GameResultComponent } from './components/game-result/game-result.component';
+import { MatSliderModule } from '@angular/material/slider'; 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +41,8 @@ import { GameResultComponent } from './components/game-result/game-result.compon
     MatFormFieldModule,
     MatAutocompleteModule,
     MatInputModule,
+    MatSliderModule,
+    MatDatepickerModule,
     FormsModule,
     ReactiveFormsModule
   ],

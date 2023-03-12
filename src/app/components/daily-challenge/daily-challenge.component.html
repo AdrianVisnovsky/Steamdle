@@ -4,6 +4,35 @@
 
         <div class="p-4 m-4 rounded-md" style="background-color: #171c30; overflow: scroll; max-height: 93vh;">
             <h1>Available games ({{ myapp.steamGames.length }})</h1>
+            <div>
+                <ul>
+                    <li>Release between: {{ myapp.minReleasedDate | date }} - {{ myapp.maxReleasedDate | date }}</li>
+                    <li>Score between: {{ myapp.minScore }} - {{ myapp.maxScore }}</li>
+                    <li>Owners between: {{ myapp.minOwners }} - {{ myapp.maxOwners }}</li>
+                </ul>
+            </div>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [min]="myapp.minReleasedDate" [max]="myapp.maxReleasedDate" > <!-- [matDatepicker]="picker" -->
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <br>
+            <mat-slider min="{{ myapp.minScore }}" max="{{ myapp.maxScore }}">
+                <mat-label>Game score</mat-label>
+                <input matSliderStartThumb>
+                <input matSliderEndThumb>
+            </mat-slider>
+            <br>
+            <mat-slider min="{{ myapp.minOwners }}" max="{{ myapp.maxOwners }}" step="1000">
+                <mat-label>Game owners</mat-label>
+                <input matSliderStartThumb>
+                <input matSliderEndThumb>
+            </mat-slider>
+
             <app-game-card *ngFor="let availableGame of myapp.steamGames" [game]="availableGame"></app-game-card>
         </div>
 

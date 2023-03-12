@@ -13,6 +13,34 @@ export class AppComponent {
 
   public steamGames: Game[] = GamesDataJson.sort(this.compareGames);
 
+  public minReleasedDate: string;
+  public maxReleasedDate: string;
+
+  public minScore: number;
+  public maxScore: number;
+
+  public minOwners: number;
+  public maxOwners: number;
+
+  constructor()
+  {
+
+    this.minReleasedDate = this.steamGames.reduce(function(prev, curr) {
+      return prev.released < curr.released ? prev : curr;
+    }).released;
+
+    this.maxReleasedDate = this.steamGames.reduce(function(prev, curr) {
+      return prev.released > curr.released ? prev : curr;
+    }).released;
+
+    this.minScore = Math.min(...this.steamGames.map(item => item.score));
+    this.maxScore = Math.max(...this.steamGames.map(item => item.score));
+
+    this.minOwners = Math.min(...this.steamGames.map(item => item.owners));
+    this.maxOwners = Math.max(...this.steamGames.map(item => item.owners));
+
+  }
+
   /**
      * compares 2 games by their name
      * we're able to sort them by name
