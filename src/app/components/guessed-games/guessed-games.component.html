@@ -2,50 +2,39 @@
 
     <h1>Guessed games ({{ myDailyChallengeComponent.currentNumberOfGuesses }} / {{ myDailyChallengeComponent.maxNumberOfGuesses }})</h1>
 
-    <div class="flex flex-wrap text-center">
+    <div class="flex flex-wrap text-center text-lg">
 
         <div class="square">
-            Game icon
+            <strong>Game icon</strong>
         </div>
 
         <div class="square">
-            Released
+            <strong>Released</strong>
         </div>
 
         <div class="square">
-            Score
+            <strong>Score</strong>
         </div>
 
         <div class="square">
-            Owners
+            <strong>Owners</strong>
         </div>
 
         <div class="square">
-            Achievements
+            <strong>Achievements</strong>
         </div>
 
         <div class="square">
-            Platforms
+            <strong>Genres</strong>
+        </div>
+
+        <div class="square">
+            <strong>Platforms</strong>
         </div>
 
     </div>
 
     <app-guessed-game-row *ngFor="let guessedGame of myDailyChallengeComponent.guessedGames" [game]="guessedGame"></app-guessed-game-row>
-
-    <!--<table style="border:solid;">
-
-        <tr>
-            <th style="max-height: 100px;">Game icon</th>
-            <th>Released</th>
-            <th>Score</th>
-            <th>Owners</th>
-            <th>Achievements</th>
-            <th>Platforms</th>
-        </tr>
-
-        <app-guessed-game-row *ngFor="let guessedGame of myDailyChallengeComponent.guessedGames" [game]="guessedGame"></app-guessed-game-row>
-
-    </table>-->
 
 </div>
 

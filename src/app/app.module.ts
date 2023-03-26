@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { JsonprettyPipe } from './jsonpretty.pipe';
+import { MultilineArrayPipe } from './multilinearray.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GameCardComponent } from './components/game-card/game-card.component';
 import { GameResultComponent } from './components/game-result/game-result.component';
@@ -32,6 +33,7 @@ import { GuessedGamesComponent } from './components/guessed-games/guessed-games.
     HowToPlayComponent,
     NotFoundComponent,
     JsonprettyPipe,
+    MultilineArrayPipe,
     GameCardComponent,
     GameResultComponent,
     GuessedGameRowComponent,

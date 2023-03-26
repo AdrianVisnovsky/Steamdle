@@ -1,5 +1,5 @@
 .square {
-    flex-basis: calc(16.66% - 4px);
+    flex-basis: calc(14.25% - 4px);
     position: relative;
     margin: 2px;
     border: 1px solid hsla(0,0%,100%,.59);

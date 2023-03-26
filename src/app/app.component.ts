@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import GamesDataJson from '../assets/gameData.json';
+import GamesDataJson from '../assets/gameDataMinified.json';
 import { Game } from 'src/app/interfaces/game';
 
 @Component({
@@ -13,8 +13,8 @@ export class AppComponent {
 
   public steamGames: Game[] = GamesDataJson.sort(this.compareGames);
 
-  public minReleasedDate: string;
-  public maxReleasedDate: string;
+  public minReleasedYear: number;
+  public maxReleasedYear: number;
 
   public minScore: number;
   public maxScore: number;
@@ -25,11 +25,11 @@ export class AppComponent {
   constructor()
   {
 
-    this.minReleasedDate = this.steamGames.reduce(function(prev, curr) {
+    this.minReleasedYear = this.steamGames.reduce(function(prev, curr) {
       return prev.released < curr.released ? prev : curr;
     }).released;
 
-    this.maxReleasedDate = this.steamGames.reduce(function(prev, curr) {
+    this.maxReleasedYear = this.steamGames.reduce(function(prev, curr) {
       return prev.released > curr.released ? prev : curr;
     }).released;
 

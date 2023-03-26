@@ -1,4 +1,4 @@
-<div class="flex flex-wrap text-center">
+<div class="flex flex-wrap text-center text-base p-1">
 
     <div class="square">
         <img src="{{ game.img }}" class="rounded" loading="lazy"/>
@@ -20,29 +20,10 @@
         {{ game.achievements }}
     </div>
 
-    <div class="square">
-        {{ game.platforms }}
+    <div class="square" [innerHTML]="game.genres | multilnearray">
+    </div>
+
+    <div class="square" [innerHTML]="game.platforms | multilnearray">
     </div>
 
 </div>
-
-<!--<tr>
-    <td>
-        <img src="{{ game.img }}" class="rounded" loading="lazy"/>
-    </td>
-    <td>
-        <p>{{ game.released }}</p>
-    </td>
-    <td>
-        <p>{{ game.score }}</p>
-    </td>
-    <td>
-        <p>{{ game.owners }}</p>
-    </td>
-    <td>
-        <p>{{ game.achievements }}</p>
-    </td>
-    <td>
-        <p>{{ game.platforms }}</p>
-    </td>
-</tr>-->

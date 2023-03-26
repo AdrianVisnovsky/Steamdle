@@ -7,7 +7,7 @@
             <h1>Available games ({{ myapp.steamGames.length }})</h1>
             <div>
                 <ul>
-                    <li>Release between: {{ myapp.minReleasedDate | date }} - {{ myapp.maxReleasedDate | date }}</li>
+                    <li>Release between: {{ myapp.minReleasedYear }} - {{ myapp.maxReleasedYear }}</li>
                     <li>Score between: {{ myapp.minScore }} - {{ myapp.maxScore }}</li>
                     <li>Owners between: {{ myapp.minOwners }} - {{ myapp.maxOwners }}</li>
                 </ul>
