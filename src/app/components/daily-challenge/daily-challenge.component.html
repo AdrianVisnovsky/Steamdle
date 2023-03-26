@@ -114,9 +114,7 @@
                 <app-game-result [gameState]="gState" [gameToGuess]="gameToGuess"></app-game-result>
             </div>
             
-            <h1>Guessed games ({{ currentNumberOfGuesses }} / {{ maxNumberOfGuesses }})</h1>
-
-            <app-game-card *ngFor="let guessedGame of guessedGames" [game]="guessedGame"></app-game-card>
+            <app-guessed-games></app-guessed-games>
 
         </div>
         

@@ -19,6 +19,8 @@ import { GameCardComponent } from './components/game-card/game-card.component';
 import { GameResultComponent } from './components/game-result/game-result.component';
 import { MatSliderModule } from '@angular/material/slider'; 
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { GuessedGameRowComponent } from './components/guessed-game-row/guessed-game-row.component';
+import { GuessedGamesComponent } from './components/guessed-games/guessed-games.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     NotFoundComponent,
     JsonprettyPipe,
     GameCardComponent,
-    GameResultComponent
+    GameResultComponent,
+    GuessedGameRowComponent,
+    GuessedGamesComponent
   ],
   imports: [
     BrowserModule,
