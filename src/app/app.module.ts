@@ -18,10 +18,12 @@ import { MultilineArrayPipe } from './multilinearray.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GameCardComponent } from './components/game-card/game-card.component';
 import { GameResultComponent } from './components/game-result/game-result.component';
-import { MatSliderModule } from '@angular/material/slider'; 
+import { MatSliderModule } from '@angular/material/slider';
+import { MatCheckboxModule }  from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { GuessedGameRowComponent } from './components/guessed-game-row/guessed-game-row.component';
 import { GuessedGamesComponent } from './components/guessed-games/guessed-games.component';
+import { GamesFilterComponent } from './components/games-filter/games-filter.component';
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import { GuessedGamesComponent } from './components/guessed-games/guessed-games.
     GameCardComponent,
     GameResultComponent,
     GuessedGameRowComponent,
-    GuessedGamesComponent
+    GuessedGamesComponent,
+    GamesFilterComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import { GuessedGamesComponent } from './components/guessed-games/guessed-games.
     MatInputModule,
     MatSliderModule,
     MatDatepickerModule,
+    MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule
   ],

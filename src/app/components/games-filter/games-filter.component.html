@@ -1,0 +1,134 @@
+<!-- Player help -->
+<div class="p-4 m-4 rounded-md" style="background-color: #171c30; overflow: scroll; max-height: 93vh;">
+    <h1>Available games ({{ myapp.steamGames.length }})</h1>
+    <div>
+        <ul>
+            <li>Release between: {{ myapp.minReleasedYear }} - {{ myapp.maxReleasedYear }}</li>
+            <li>Score between: {{ myapp.minScore }} - {{ myapp.maxScore }}</li>
+            <li>Owners between: {{ myapp.minOwners }} - {{ myapp.maxOwners }}</li>
+        </ul>
+    </div>
+
+    <!--<mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [min]="myapp.minReleasedDate" [max]="myapp.maxReleasedDate" [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field> -->
+
+    <mat-form-field>
+        <mat-label>Game name</mat-label>
+        <input matInput placeholder="Name of the game"  [formControl]="gameNameFormControl">
+    </mat-form-field>
+
+    <br>
+
+    <!-- Game score -->
+    <div>
+
+        <h3>Game score</h3>
+
+        <!--<mat-slider min="{{ myapp.minScore }}" max="{{ myapp.maxScore }}" style="width: 90%;" discrete>
+            <mat-label>Game score</mat-label>
+            <input matSliderStartThumb>
+            <input matSliderEndThumb>
+        </mat-slider>-->
+
+        <mat-form-field>
+            <mat-label>From</mat-label>
+            <input type="number" matInput [formControl]="scoreMinFormControl" [min]="filterScoreMin" value="{{ filterScoreMin }}">
+        </mat-form-field>   
+
+        <span> - </span>
+
+        <mat-form-field>
+            <mat-label>To</mat-label>
+            <input type="number" matInput [formControl]="scoreMaxFormControl" value="{{ filterScoreMax }}">
+        </mat-form-field>
+
+    </div>
+
+    
+    <div>
+
+        <h3>Game owners</h3>
+
+        <!--<mat-slider min="{{ myapp.minOwners }}" max="{{ myapp.maxOwners }}" step="10000" style="width: 90%;" discrete>
+            <mat-label>Game owners</mat-label>
+            <input matSliderStartThumb>
+            <input matSliderEndThumb>
+        </mat-slider>-->
+
+        <mat-form-field>
+            <mat-label>From</mat-label>
+            <input type="number" matInput [formControl]="ownersMinFormControl" value="{{ filterGameOwnersMin }}">
+        </mat-form-field>   
+
+        <span> - </span>
+
+        <mat-form-field>
+            <mat-label>To</mat-label>
+            <input type="number" matInput [formControl]="ownersMaxFormControl" value="{{ filterGameOwnersMax }}">
+        </mat-form-field>
+
+    </div>
+
+    <div>
+
+        <h3>Release year</h3>
+
+        <!--<mat-slider min="{{ myapp.minReleasedYear }}" max="{{ myapp.maxReleasedYear }}" step="1" style="width: 90%;" discrete>
+            <mat-label>Game owners</mat-label>
+            <input matSliderStartThumb>
+            <input matSliderEndThumb>
+        </mat-slider>-->
+
+        <mat-form-field>
+            <mat-label>From</mat-label>
+            <input type="number" matInput [formControl]="releasedYearMinFormControl" value="{{ filterReleasedYearMin }}" >
+        </mat-form-field>   
+
+        <span> - </span>
+
+        <mat-form-field>
+            <mat-label>To</mat-label>
+            <input type="number" matInput [formControl]="releasedYearMaxFormControl" value="{{ filterReleasedYearMax }}">
+        </mat-form-field>
+
+    </div>
+
+    <div>
+
+        <h3>Platforms</h3>
+
+        <mat-checkbox checked="true">Windows (WIN)</mat-checkbox>
+        <mat-checkbox checked="true">Mac OS (MAC)</mat-checkbox>
+        <mat-checkbox checked="true">Linux (LNX)</mat-checkbox>
+
+    </div>
+
+    <div>
+
+        <!-- Make it dynamic -->
+        <h3>Genres</h3>
+
+        <mat-checkbox checked="true">Action</mat-checkbox>
+        <mat-checkbox checked="true">Free to Play</mat-checkbox>
+        <mat-checkbox checked="true">Strategy</mat-checkbox>
+        <mat-checkbox checked="true">Adventure</mat-checkbox>
+        <mat-checkbox checked="true">Massively Multiplayer</mat-checkbox>
+        <mat-checkbox checked="true">Indie</mat-checkbox>
+        <mat-checkbox checked="true">Casual</mat-checkbox>
+        <mat-checkbox checked="true">Simulation</mat-checkbox>
+        <mat-checkbox checked="true">RPG</mat-checkbox>
+        <mat-checkbox checked="true">Racing</mat-checkbox>
+        <mat-checkbox checked="true">Sports</mat-checkbox>
+        <mat-checkbox checked="true">Violent</mat-checkbox>
+        <mat-checkbox checked="true">Early Access</mat-checkbox>
+
+    </div>
+
+    <app-game-card *ngFor="let availableGame of filteredGames" [game]="availableGame"></app-game-card>
+
+</div>

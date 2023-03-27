@@ -18,7 +18,7 @@ export class DailyChallengeComponent implements OnInit {
 	gameFormControl: FormControl = new FormControl();
 
 	currentNumberOfGuesses:number = 0;
-	maxNumberOfGuesses: number = 10;
+	maxNumberOfGuesses: number = 8;
 	gState: GameState = GameState.InProgress;
 
 	filteredOptions: Observable<Game[]> = new Observable<Game[]>;
