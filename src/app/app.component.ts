@@ -19,9 +19,6 @@ export class AppComponent {
   public minScore: number;
   public maxScore: number;
 
-  public minOwners: number;
-  public maxOwners: number;
-
   constructor()
   {
 
@@ -35,9 +32,6 @@ export class AppComponent {
 
     this.minScore = Math.min(...this.steamGames.map(item => item.score));
     this.maxScore = Math.max(...this.steamGames.map(item => item.score));
-
-    this.minOwners = Math.min(...this.steamGames.map(item => item.owners));
-    this.maxOwners = Math.max(...this.steamGames.map(item => item.owners));
 
   }
 

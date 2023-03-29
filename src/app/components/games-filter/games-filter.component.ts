@@ -20,12 +20,6 @@ export class GamesFilterComponent {
 	public scoreMaxFormControl: FormControl = new FormControl(this.myapp.maxScore);
 	public filterScoreMax: number;
 
-	public ownersMinFormControl: FormControl = new FormControl(this.myapp.minOwners);
-	public filterGameOwnersMin: number;
-
-	public ownersMaxFormControl: FormControl = new FormControl(this.myapp.maxOwners);
-	public filterGameOwnersMax: number;
-
 	public releasedYearMinFormControl: FormControl = new FormControl(this.myapp.minReleasedYear);
 	public filterReleasedYearMin: number;
 
@@ -42,9 +36,6 @@ export class GamesFilterComponent {
 
 		this.filterScoreMin = myapp.minScore;
 		this.filterScoreMax = myapp.maxScore;
-
-		this.filterGameOwnersMin = myapp.minOwners;
-		this.filterGameOwnersMax = myapp.maxOwners;
 
 		this.gameNameFormControl.valueChanges.subscribe((value: string) => {
 			this.filterGameName = value.toLowerCase();
@@ -71,16 +62,6 @@ export class GamesFilterComponent {
 			this.FilterGames();
 		});
 
-		this.ownersMinFormControl.valueChanges.subscribe((value: number) => {
-			this.filterGameOwnersMin = value;
-			this.FilterGames();
-		});
-
-		this.ownersMaxFormControl.valueChanges.subscribe((value: number) => {
-			this.filterGameOwnersMax = value;
-			this.FilterGames();
-		});
-
 	}
 
 	public FilterGames()
@@ -93,8 +74,6 @@ export class GamesFilterComponent {
 					&& options.released <= this.filterReleasedYearMax
 					&& options.score >= this.filterScoreMin
 					&& options.score <= this.filterScoreMax
-					&& options.owners >= this.filterGameOwnersMin
-					&& options.owners <= this.filterGameOwnersMax
 			).sort(this.myapp.compareGames);
 
 	}
