@@ -67,14 +67,22 @@ export class GamesFilterComponent {
 	public FilterGames()
 	{
 
+		const start = new Date().getTime();
+
 		this.filteredGames = 
 			this.myapp.steamGames.filter(
-				options => options.name.toLowerCase().includes(this.filterGameName)
+				options =>
+					(this.filterGameName == '' || options.name.toLowerCase().includes(this.filterGameName))
 					&& options.released >= this.filterReleasedYearMin
 					&& options.released <= this.filterReleasedYearMax
 					&& options.score >= this.filterScoreMin
 					&& options.score <= this.filterScoreMax
 			).sort(this.myapp.compareGames);
+
+		const end = new Date().getTime();
+		let elapsed = end - start;
+
+		console.log(elapsed);
 
 	}
 
