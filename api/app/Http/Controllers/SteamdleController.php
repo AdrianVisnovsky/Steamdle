@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
+use DateTimeZone;
 use DateTime;
 use DB;
+
 
 class SteamdleController extends Controller
 {
@@ -13,21 +16,27 @@ class SteamdleController extends Controller
     public function getDailyChallengeGame()
     {
 
-        $day = date("Y-m-d");
+        $day = new DateTime("now", new DateTimeZone('Europe/Bratislava'));
 
-        $result = DB::select("CALL getDailyChallengeGame('" . $day . "');");
+        $result = DB::select("CALL getDailyChallengeGame('" . $day->format('Y-m-d') . "');");
         return $result;
 
     }
 
     public function getServerDate()
     {
-        return date("Y-m-d");
+
+        $day = new DateTime("now", new DateTimeZone('Europe/Bratislava'));
+
+        return $day->format('Y-m-d');
     }
 
     public function getServerDateTime()
     {
-        return date("Y-m-d H:i:s");
+
+        $day = new DateTime("now", new DateTimeZone('Europe/Bratislava'));
+
+        return $day->format("Y-m-d H:i:s");
     }
 
     public function addSuccessfulGuess($day)
