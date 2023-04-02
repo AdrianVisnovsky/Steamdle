@@ -5,6 +5,8 @@ import { Observable, startWith } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { GameState } from 'src/app/enums/game-state';
+import { SteamdleService} from 'src/app/services/steamdle-service.service';
+import { DailyChallengeInterface } from 'src/app/interfaces/daily-challenge-interface';
 
 @Component({
 	selector: 'app-daily-challenge',
@@ -13,7 +15,9 @@ import { GameState } from 'src/app/enums/game-state';
 })
 export class DailyChallengeComponent implements OnInit {
 
-	gameToGuess: Game;
+	todaysGame: DailyChallengeInterface | undefined;
+
+	gameToGuess: Game = <Game>{};
 	guessedGames: Game[] = [];
 	gameFormControl: FormControl = new FormControl();
 
@@ -23,14 +27,17 @@ export class DailyChallengeComponent implements OnInit {
 
 	filteredOptions: Observable<Game[]> = new Observable<Game[]>;
 
-	constructor(public myapp: AppComponent) {
+	constructor(public myapp: AppComponent, private steamdleService: SteamdleService) {
 
-		// pick one random game
-		let randomIndex: number = Math.floor(Math.random() * myapp.steamGames.length);
+		this.steamdleService.getDailyChallenge().subscribe((data: DailyChallengeInterface[]) => {
 
-		this.gameToGuess = myapp.steamGames[randomIndex];
+			this.todaysGame = data!.at(0); 
 
-		this.setFilteredGames();
+			this.gameToGuess = myapp.steamGames.filter((game) => game.id == data!.at(0)!.AppId).at(0)!;
+
+			this.setFilteredGames();
+
+		});
 
 	}
 
@@ -85,7 +92,7 @@ export class DailyChallengeComponent implements OnInit {
 		this.setFilteredGames();
 
 		// check guessed game
-		if(selectedGame.id == this.gameToGuess.id) {
+		if(selectedGame.id == this.gameToGuess!.id) {
 
 			this.gState = GameState.Won;
 			return;
