@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SteamdleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::middleware(['throttle:ip_address'])->group(function () {
+Route::get('/getDailyChallengeGame', [SteamdleController::class, 'getDailyChallengeGame']);
+Route::get('/getServerDate', [SteamdleController::class, 'getServerDate']);
+Route::get('/getServerDateTime', [SteamdleController::class, 'getServerDateTime']);
+Route::get('/addSuccessfulGuess/{day}', [SteamdleController::class, 'addSuccessfulGuess']);
+//});
