@@ -10,9 +10,9 @@
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field> -->
 
-    <mat-form-field>
+    <mat-form-field style="width: 90%;">
         <mat-label>Game name</mat-label>
-        <input matInput placeholder="Name of the game"  [formControl]="gameNameFormControl">
+        <input matInput placeholder="Name of the game" [formControl]="gameNameFormControl">
     </mat-form-field>
 
     <br>
@@ -22,23 +22,10 @@
 
         <h3>Game score</h3>
 
-        <!--<mat-slider min="{{ myapp.minScore }}" max="{{ myapp.maxScore }}" style="width: 90%;" discrete>
-            <mat-label>Game score</mat-label>
-            <input matSliderStartThumb>
-            <input matSliderEndThumb>
-        </mat-slider>-->
-
-        <mat-form-field>
-            <mat-label>From</mat-label>
-            <input type="number" matInput [formControl]="scoreMinFormControl" [min]="filterScoreMin" value="{{ filterScoreMin }}">
-        </mat-form-field>   
-
-        <span> - </span>
-
-        <mat-form-field>
-            <mat-label>To</mat-label>
-            <input type="number" matInput [formControl]="scoreMaxFormControl" value="{{ filterScoreMax }}">
-        </mat-form-field>
+        <mat-slider style="width: 90%;" [min]="myapp.minScore" [max]="myapp.maxScore" discrete>
+            <input matSliderStartThumb (valueChange)="scoreMinChanged($event)">
+            <input matSliderEndThumb (valueChange)="scoreMaxChanged($event)">
+        </mat-slider>
 
     </div>
 
@@ -46,23 +33,10 @@
 
         <h3>Release year</h3>
 
-        <!--<mat-slider min="{{ myapp.minReleasedYear }}" max="{{ myapp.maxReleasedYear }}" step="1" style="width: 90%;" discrete>
-            <mat-label>Game owners</mat-label>
-            <input matSliderStartThumb>
-            <input matSliderEndThumb>
-        </mat-slider>-->
-
-        <mat-form-field>
-            <mat-label>From</mat-label>
-            <input type="number" matInput [formControl]="releasedYearMinFormControl" value="{{ filterReleasedYearMin }}" >
-        </mat-form-field>   
-
-        <span> - </span>
-
-        <mat-form-field>
-            <mat-label>To</mat-label>
-            <input type="number" matInput [formControl]="releasedYearMaxFormControl" value="{{ filterReleasedYearMax }}">
-        </mat-form-field>
+        <mat-slider style="width: 90%;" [min]="myapp.minReleasedYear" [max]="myapp.maxReleasedYear" discrete>
+            <input matSliderStartThumb (valueChange)="releasedYearMinChanged($event)">
+            <input matSliderEndThumb (valueChange)="releasedYearMaxChanged($event)">
+        </mat-slider>
 
     </div>
 
@@ -70,9 +44,10 @@
 
         <h3>Platforms</h3>
 
-        <mat-checkbox checked="true">Windows (WIN)</mat-checkbox>
-        <mat-checkbox checked="true">Mac OS (MAC)</mat-checkbox>
-        <mat-checkbox checked="true">Linux (LNX)</mat-checkbox>
+        <mat-checkbox checked="true" (change)="platformAnyChanged($event.checked)">Any</mat-checkbox>
+        <mat-checkbox (change)="platformWindowsChanged($event.checked)">Windows (WIN)</mat-checkbox>
+        <mat-checkbox (change)="platformMacOsChanged($event.checked)">Mac OS (MAC)</mat-checkbox>
+        <mat-checkbox (change)="platformLinuxChanged($event.checked)">Linux (LNX)</mat-checkbox>
 
     </div>
 

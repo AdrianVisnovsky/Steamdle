@@ -14,17 +14,15 @@ export class GamesFilterComponent {
 	public gameNameFormControl: FormControl = new FormControl();
 	public filterGameName: string = "";
 
-	public scoreMinFormControl: FormControl = new FormControl(this.myapp.minScore);
 	public filterScoreMin: number;
-
-	public scoreMaxFormControl: FormControl = new FormControl(this.myapp.maxScore);
 	public filterScoreMax: number;
-
-	public releasedYearMinFormControl: FormControl = new FormControl(this.myapp.minReleasedYear);
 	public filterReleasedYearMin: number;
-
-	public releasedYearMaxFormControl: FormControl = new FormControl(this.myapp.maxReleasedYear);
 	public filterReleasedYearMax: number;
+
+	public platformAny: boolean = true;
+	public platformWindows: boolean = false;
+	public platformMacOs: boolean = false;
+	public platformLinux: boolean = false;
 
 	public filteredGames: Game[] = this.myapp.steamGames;
 
@@ -39,26 +37,6 @@ export class GamesFilterComponent {
 
 		this.gameNameFormControl.valueChanges.subscribe((value: string) => {
 			this.filterGameName = value.toLowerCase();
-			this.FilterGames();
-		});
-
-		this.releasedYearMinFormControl.valueChanges.subscribe((value: number) => {
-			this.filterReleasedYearMin = value;
-			this.FilterGames();
-		});
-
-		this.releasedYearMaxFormControl.valueChanges.subscribe((value: number) => {
-			this.filterReleasedYearMax = value;
-			this.FilterGames();
-		});
-
-		this.scoreMinFormControl.valueChanges.subscribe((value: number) => {
-			this.filterScoreMin = value;
-			this.FilterGames();
-		});
-
-		this.scoreMaxFormControl.valueChanges.subscribe((value: number) => {
-			this.filterScoreMax = value;
 			this.FilterGames();
 		});
 
@@ -77,13 +55,78 @@ export class GamesFilterComponent {
 					&& options.released <= this.filterReleasedYearMax
 					&& options.score >= this.filterScoreMin
 					&& options.score <= this.filterScoreMax
+					&& (this.platformAny || this.isGameSuitable(options))
 			).sort(this.myapp.compareGames);
 
 		const end = new Date().getTime();
 		let elapsed = end - start;
 
-		console.log(elapsed);
+	}
 
+	public isGameSuitable(game: Game): boolean
+	{
+
+		if(this.platformWindows == false && this.platformMacOs == false && this.platformLinux == false)
+			return false;
+
+		if((this.platformWindows && game.platforms.indexOf('WIN') == -1) || (!this.platformWindows && game.platforms.indexOf('WIN') > -1))
+			return false;
+
+		if((this.platformMacOs && game.platforms.indexOf('MAC') == -1) || (!this.platformMacOs && game.platforms.indexOf('MAC') > -1))
+			return false;
+
+		if((this.platformLinux && game.platforms.indexOf('LNX') == -1) || (!this.platformLinux && game.platforms.indexOf('LNX') > -1))
+			return false;
+
+		return true;
+	}
+
+	public scoreMinChanged(minScore: number)
+	{
+		this.filterScoreMin = minScore;
+		this.FilterGames();
+	}
+
+	public scoreMaxChanged(maxScore: number)
+	{
+		this.filterScoreMax = maxScore;
+		this.FilterGames();
+	}
+
+	public releasedYearMinChanged(minReleasedYear: number)
+	{
+		this.filterReleasedYearMin = minReleasedYear;
+		this.FilterGames();
+	}
+
+	public releasedYearMaxChanged(maxReleasedYear: number)
+	{
+		this.filterReleasedYearMax = maxReleasedYear;
+		this.FilterGames();
+	}
+
+	public platformAnyChanged(anyPlatform: boolean)
+	{
+		this.platformAny = anyPlatform;
+		this.FilterGames();
+	}
+
+	public platformWindowsChanged(windowsPlatform: boolean)
+	{
+		this.platformWindows = windowsPlatform;
+		this.FilterGames();
+	}
+
+	public platformMacOsChanged(macOsPlatform: boolean)
+	{
+		this.platformMacOs = macOsPlatform;
+		this.FilterGames();
+	}
+
+	public platformLinuxChanged(linuxPlatform: boolean)
+	{
+		this.platformLinux = linuxPlatform;
+		this.FilterGames();
 	}
 
 }
