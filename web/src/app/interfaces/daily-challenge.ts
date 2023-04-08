@@ -1,4 +1,4 @@
-export interface DailyChallengeInterface {
+export interface DailyChallenge {
     Day:          Date;
     AppId:        number;
     PlayerCount:  number;

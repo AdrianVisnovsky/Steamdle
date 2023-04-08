@@ -1,64 +1,68 @@
-<div class="flex flex-wrap text-center text-base p-1">
+<div *ngIf="game !== undefined">
 
-    <div class="square">
-        <img src="{{ game.img }}" class="rounded" loading="lazy"/>
-    </div>
+    <div class="flex flex-wrap text-center text-base p-1">
 
-    <div class="square">
-        <div>
-            {{ game.released }}
+        <div class="square">
+            <img src="{{ game.img }}" class="rounded" loading="lazy"/>
         </div>
-        <div [ngSwitch]="releasedHint" class="m-2">
-            <img *ngSwitchCase="2" src="../assets/images/green_dot.png" style="height: 16px;">
-            <img *ngSwitchCase="3" src="../assets/images/down_32px.png" style="height: 16px;">
-            <img *ngSwitchCase="4" src="../assets/images/up_32px.png" style="height: 16px;">
-        </div>        
-    </div>
-
-    <div class="square">
-        <div>
-            {{ game.score }}
+    
+        <div class="square">
+            <div>
+                {{ game.released }}
+            </div>
+            <div [ngSwitch]="releasedHint" class="m-2">
+                <img *ngSwitchCase="2" src="../assets/images/green_dot.png" style="height: 16px;">
+                <img *ngSwitchCase="3" src="../assets/images/down_32px.png" style="height: 16px;">
+                <img *ngSwitchCase="4" src="../assets/images/up_32px.png" style="height: 16px;">
+            </div>        
         </div>
-        <div [ngSwitch]="scoreHint" class="m-2">
-            <img *ngSwitchCase="2" src="../assets/images/green_dot.png" style="height: 16px;">
-            <img *ngSwitchCase="3" src="../assets/images/down_32px.png" style="height: 16px;">
-            <img *ngSwitchCase="4" src="../assets/images/up_32px.png" style="height: 16px;">
-        </div>   
-    </div>
-
-    <div class="square">
-        <div>
-            {{ game.owners | number}}
+    
+        <div class="square">
+            <div>
+                {{ game.score }}
+            </div>
+            <div [ngSwitch]="scoreHint" class="m-2">
+                <img *ngSwitchCase="2" src="../assets/images/green_dot.png" style="height: 16px;">
+                <img *ngSwitchCase="3" src="../assets/images/down_32px.png" style="height: 16px;">
+                <img *ngSwitchCase="4" src="../assets/images/up_32px.png" style="height: 16px;">
+            </div>   
         </div>
-        <div [ngSwitch]="ownersHint" class="m-2">
-            <img *ngSwitchCase="2" src="../assets/images/green_dot.png" style="height: 16px;">
-            <img *ngSwitchCase="3" src="../assets/images/down_32px.png" style="height: 16px;">
-            <img *ngSwitchCase="4" src="../assets/images/up_32px.png" style="height: 16px;">
-        </div>   
-    </div>
-
-    <!--<div class="square">
-        {{ game.achievements }}
-    </div>-->
-
-    <div class="square">
-        <div [innerHTML]="game.genres | multilnearray">
+    
+        <div class="square">
+            <div>
+                {{ game.owners | number}}
+            </div>
+            <div [ngSwitch]="ownersHint" class="m-2">
+                <img *ngSwitchCase="2" src="../assets/images/green_dot.png" style="height: 16px;">
+                <img *ngSwitchCase="3" src="../assets/images/down_32px.png" style="height: 16px;">
+                <img *ngSwitchCase="4" src="../assets/images/up_32px.png" style="height: 16px;">
+            </div>   
         </div>
-        <div [ngSwitch]="genresHint" class="m-2">
-            <img *ngSwitchCase="2" src="../assets/images/green_dot.png" style="height: 16px;">
-            <img *ngSwitchCase="1" src="../assets/images/yellow_dot.png" style="height: 16px;">
-            <img *ngSwitchCase="0" src="../assets/images/red_dot.png" style="height: 16px;">
-        </div>  
-    </div>
-
-    <div class="square">
-        <div [innerHTML]="game.platforms | multilnearray">
+    
+        <!--<div class="square">
+            {{ game.achievements }}
+        </div>-->
+    
+        <div class="square">
+            <div [innerHTML]="game.genres | multilnearray">
+            </div>
+            <div [ngSwitch]="genresHint" class="m-2">
+                <img *ngSwitchCase="2" src="../assets/images/green_dot.png" style="height: 16px;">
+                <img *ngSwitchCase="1" src="../assets/images/yellow_dot.png" style="height: 16px;">
+                <img *ngSwitchCase="0" src="../assets/images/red_dot.png" style="height: 16px;">
+            </div>  
         </div>
-        <div [ngSwitch]="platformsHint" class="m-2">
-            <img *ngSwitchCase="2" src="../assets/images/green_dot.png" style="height: 16px;">
-            <img *ngSwitchCase="1" src="../assets/images/yellow_dot.png" style="height: 16px;">
-            <img *ngSwitchCase="0" src="../assets/images/red_dot.png" style="height: 16px;">
-        </div>  
+    
+        <div class="square">
+            <div [innerHTML]="game.platforms | multilnearray">
+            </div>
+            <div [ngSwitch]="platformsHint" class="m-2">
+                <img *ngSwitchCase="2" src="../assets/images/green_dot.png" style="height: 16px;">
+                <img *ngSwitchCase="1" src="../assets/images/yellow_dot.png" style="height: 16px;">
+                <img *ngSwitchCase="0" src="../assets/images/red_dot.png" style="height: 16px;">
+            </div>  
+        </div>
+    
     </div>
 
 </div>

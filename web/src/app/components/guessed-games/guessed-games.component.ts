@@ -8,9 +8,6 @@ import { Component } from '@angular/core';
 })
 export class GuessedGamesComponent {
 
-  constructor(public myDailyChallengeComponent: DailyChallengeComponent)
-  {
-
-  }
+	constructor(public myDailyChallengeComponent: DailyChallengeComponent) {}
 
 }

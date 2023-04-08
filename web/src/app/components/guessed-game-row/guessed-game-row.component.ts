@@ -18,7 +18,9 @@ export enum EHintType {
 export class GuessedGameRowComponent {
 
 
-	@Input() game!: Game;
+	@Input() gameId!: number;
+
+	game!: Game;
 
 	releasedHint: EHintType = EHintType.None;
 	scoreHint: EHintType = EHintType.None;
@@ -28,7 +30,11 @@ export class GuessedGameRowComponent {
 
 	constructor(public mydailychallenge: DailyChallengeComponent) {}
 
-	ngOnInit() {
+	async ngOnInit() {
+
+		await this.mydailychallenge.myapp.gameService.dataLoaded;
+
+		this.game = this.mydailychallenge.myapp.steamGames.filter((g) => g.id === this.gameId).at(0)!;
 
 		// released
 		if(this.game.released < this.mydailychallenge.gameToGuess.released)

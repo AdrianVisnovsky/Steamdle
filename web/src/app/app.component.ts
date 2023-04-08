@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import GamesDataJson from '../assets/gameDataMinified.json';
 import { Game } from 'src/app/interfaces/game';
+import { GameServiceService } from './services/game-service.service';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,7 @@ export class AppComponent {
   public minScore: number;
   public maxScore: number;
 
-  constructor()
+  constructor(public gameService: GameServiceService)
   {
 
     this.minReleasedYear = this.steamGames.reduce(function(prev, curr) {

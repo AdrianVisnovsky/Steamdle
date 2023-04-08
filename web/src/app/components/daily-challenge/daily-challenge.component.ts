@@ -5,8 +5,8 @@ import { Observable, startWith } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { GameState } from 'src/app/enums/game-state';
-import { SteamdleService} from 'src/app/services/steamdle-service.service';
-import { DailyChallengeInterface } from 'src/app/interfaces/daily-challenge-interface';
+import { DailyChallenge } from 'src/app/interfaces/daily-challenge';
+import { GameDailyChallenge } from 'src/app/interfaces/game-data';
 
 @Component({
 	selector: 'app-daily-challenge',
@@ -15,40 +15,36 @@ import { DailyChallengeInterface } from 'src/app/interfaces/daily-challenge-inte
 })
 export class DailyChallengeComponent implements OnInit {
 
-	todaysGame: DailyChallengeInterface | undefined;
+	todaysGame: DailyChallenge | undefined;
 
 	gameToGuess: Game = <Game>{};
-	guessedGames: Game[] = [];
 	gameFormControl: FormControl = new FormControl();
 
-	currentNumberOfGuesses:number = 0;
-	maxNumberOfGuesses: number = 8;
+	public playerTodaysGameStats: GameDailyChallenge | undefined;
+
 	gState: GameState = GameState.InProgress;
 
 	filteredOptions: Observable<Game[]> = new Observable<Game[]>;
 
-	constructor(public myapp: AppComponent, private steamdleService: SteamdleService) {
+	constructor(public myapp: AppComponent) {}
 
-		this.steamdleService.getDailyChallenge().subscribe((data: DailyChallengeInterface[]) => {
+	async ngOnInit() {
 
-			this.todaysGame = data!.at(0); 
+		await this.myapp.gameService.dataLoaded;
 
-			this.gameToGuess = myapp.steamGames.filter((game) => game.id == data!.at(0)!.AppId).at(0)!;
+		this.playerTodaysGameStats = this.myapp.gameService.GetCurrentGame();
+		this.gameToGuess = this.myapp.steamGames.filter((game) => game.id === this.myapp.gameService.dailyChallenge.AppId).at(0)!;
 
-			this.setFilteredGames();
-
-		});
+		this.setFilteredGames();
 
 	}
-
-	ngOnInit() {}
 
 	private setFilteredGames(): void {
 
 		this.filteredOptions = this.gameFormControl.valueChanges
 			.pipe(
 				startWith(''),
-				map((value) => this.filgerGames(value))
+				map((value) => this.filterGames(value))
 			);
 
 	}
@@ -58,11 +54,13 @@ export class DailyChallengeComponent implements OnInit {
 	 * @param value
 	 * @returns 
 	 */
-	private filgerGames(value: string): Game[] {
+	private filterGames(value: string): Game[] {
 
 		const filterValue: string = value.toLowerCase();
+		const guessedGames: number[] = this.myapp.gameService.GetCurrentGame().GuessedGameIds;
+
 		return this.myapp.steamGames.filter(
-				options => !this.guessedGames.map((val) => val.id).includes(options.id) &&
+				options => !guessedGames.map((val) => val).includes(options.id) &&
 							options.name.toLowerCase().includes(filterValue)
 			).sort(this.myapp.compareGames).slice(0, 10);
 	}
@@ -76,17 +74,15 @@ export class DailyChallengeComponent implements OnInit {
 	gameSelected(selectedGame: Game)
 	{
 		
-		if(this.guessedGames.indexOf(selectedGame) >= 0)
+		if(this.playerTodaysGameStats!.GuessedGameIds.indexOf(selectedGame.id) >= 0)
 		{
 			this.gameFormControl.setValue("");
 			this.setFilteredGames();
 			return;
 		}
 
-		this.guessedGames.unshift(selectedGame);
-		this.guessedGames = [...this.guessedGames];
-
-		this.currentNumberOfGuesses += 1;
+		this.playerTodaysGameStats!.GuessedGameIds.unshift(selectedGame.id);
+		this.playerTodaysGameStats!.GuessedGameIds = [...this.playerTodaysGameStats!.GuessedGameIds];
 
 		this.gameFormControl.setValue("");
 		this.setFilteredGames();
@@ -97,12 +93,14 @@ export class DailyChallengeComponent implements OnInit {
 			this.gState = GameState.Won;
 			return;
 
-		} else if(this.currentNumberOfGuesses >= this.maxNumberOfGuesses) {
+		} else if(this.playerTodaysGameStats!.GuessedGameIds.length >= this.myapp.gameService.maxNumberOfGuesses) {
 
 			this.gState = GameState.Lost;
 			return;
 			
 		}
+
+		this.myapp.gameService.printDebugLog();
 
 	}
 
