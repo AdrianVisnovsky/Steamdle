@@ -1,4 +1,4 @@
-import { Game } from "./game";
+import { GameState } from "../enums/game-state";
 
 export interface GameData {
 
@@ -11,7 +11,7 @@ export interface GameDailyChallenge {
 
     AppId:              number;
     Day:                Date;
-    Guessed:            boolean;
+    GameState:          GameState;
     GuessedGameIds:     number[];
     Order:              number;
 

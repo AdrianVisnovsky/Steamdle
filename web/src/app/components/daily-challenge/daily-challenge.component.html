@@ -1,4 +1,4 @@
-<div class="bg-gray-400">
+<div *ngIf="myapp.gameService.dataLoaded | async" class="bg-gray-400">
 
     <div class="grid grid-flow-col auto-cols-3">
         
@@ -21,7 +21,7 @@
                     <mat-autocomplete #auto="matAutocomplete" >
                         <mat-option *ngFor="let game of filteredOptions | async"
                             [value]="game.name"
-                            (onSelectionChange)="gameSelected(game)">
+                            (onSelectionChange)="gameSelected(game.id)">
                             {{ game.name }}
                         </mat-option>
                     </mat-autocomplete>
@@ -31,7 +31,7 @@
             </div>
 
             <div *ngIf="!isGameInProgress()">
-                <app-game-result [gameState]="gState" [gameToGuess]="gameToGuess"></app-game-result>
+                <app-game-result [gameState]="myapp.gameService.GetCurrentGame().GameState" [gameToGuess]="gameToGuess"></app-game-result>
             </div>
             
             <app-guessed-games></app-guessed-games>

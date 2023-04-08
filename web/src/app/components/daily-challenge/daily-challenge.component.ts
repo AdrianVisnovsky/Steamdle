@@ -20,10 +20,6 @@ export class DailyChallengeComponent implements OnInit {
 	gameToGuess: Game = <Game>{};
 	gameFormControl: FormControl = new FormControl();
 
-	public playerTodaysGameStats: GameDailyChallenge | undefined;
-
-	gState: GameState = GameState.InProgress;
-
 	filteredOptions: Observable<Game[]> = new Observable<Game[]>;
 
 	constructor(public myapp: AppComponent) {}
@@ -31,8 +27,6 @@ export class DailyChallengeComponent implements OnInit {
 	async ngOnInit() {
 
 		await this.myapp.gameService.dataLoaded;
-
-		this.playerTodaysGameStats = this.myapp.gameService.GetCurrentGame();
 		this.gameToGuess = this.myapp.steamGames.filter((game) => game.id === this.myapp.gameService.dailyChallenge.AppId).at(0)!;
 
 		this.setFilteredGames();
@@ -71,41 +65,18 @@ export class DailyChallengeComponent implements OnInit {
 	 * @param selectedGame 
 	 * @returns 
 	 */
-	gameSelected(selectedGame: Game)
+	gameSelected(selectedGameId: number)
 	{
-		
-		if(this.playerTodaysGameStats!.GuessedGameIds.indexOf(selectedGame.id) >= 0)
-		{
-			this.gameFormControl.setValue("");
-			this.setFilteredGames();
-			return;
-		}
 
-		this.playerTodaysGameStats!.GuessedGameIds.unshift(selectedGame.id);
-		this.playerTodaysGameStats!.GuessedGameIds = [...this.playerTodaysGameStats!.GuessedGameIds];
+		this.myapp.gameService.addGuessedGame(selectedGameId);
 
 		this.gameFormControl.setValue("");
 		this.setFilteredGames();
 
-		// check guessed game
-		if(selectedGame.id == this.gameToGuess!.id) {
-
-			this.gState = GameState.Won;
-			return;
-
-		} else if(this.playerTodaysGameStats!.GuessedGameIds.length >= this.myapp.gameService.maxNumberOfGuesses) {
-
-			this.gState = GameState.Lost;
-			return;
-			
-		}
-
-		this.myapp.gameService.printDebugLog();
-
 	}
 
 	public isGameInProgress(): boolean {
-		return this.gState == GameState.InProgress ? true : false;
+		return this.myapp.gameService.GetCurrentGame().GameState == GameState.InProgress ? true : false;
 	}
 
 }

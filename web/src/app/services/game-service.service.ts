@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { SteamdleService } from './steamdle-service.service';
 import { GameData } from '../interfaces/game-data';
 import { Game } from '../interfaces/game';
+import { GameState } from '../enums/game-state';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,11 @@ export class GameServiceService {
 
 	constructor(public steamdleService: SteamdleService) {
 		this.dataLoaded = this.LoadData();
+	}
+
+	public resetStorage()
+	{
+		localStorage.removeItem(this.localStorageData_v1);
 	}
 
 	/**
@@ -53,7 +59,7 @@ export class GameServiceService {
 			todaysGame.AppId = this.dailyChallenge.AppId;
 			todaysGame.Day = this.day;
 			todaysGame.GuessedGameIds = [];
-			todaysGame.Guessed = false;
+			todaysGame.GameState = GameState.InProgress;
 			todaysGame.Order = 0;
 
 			if(this.gameData.GameDailyChallenge === undefined)
@@ -79,11 +85,10 @@ export class GameServiceService {
 
 		let gameDataStr: string | null = localStorage.getItem(this.localStorageData_v1);
     
-    	if(gameDataStr === null) {
+    	if(gameDataStr === null)
     		return;
-    	}
 
-		console.log(gameDataStr);
+		this.gameData = JSON.parse(gameDataStr);
 
   	}	
 
@@ -95,6 +100,28 @@ export class GameServiceService {
 
 		let gameDataStr: string = JSON.stringify(this.gameData);
 		localStorage.setItem(this.localStorageData_v1, gameDataStr);
+
+	}
+
+	public addGuessedGame(gameToAddId: number) {
+
+		let currGame: GameDailyChallenge = this.GetCurrentGame();
+
+		if(currGame.GuessedGameIds.indexOf(gameToAddId) >= 0)
+			return;
+
+		currGame.GuessedGameIds.unshift(gameToAddId);
+		currGame.GuessedGameIds = [...currGame.GuessedGameIds];
+
+		// check guessed game
+		if(gameToAddId == this.dailyChallenge.AppId) {
+			currGame.GameState = GameState.Won;
+		} else if(currGame.GuessedGameIds.length >= this.maxNumberOfGuesses) {
+			currGame.GameState = GameState.Lost;
+		}
+
+		this.printDebugLog();
+		this.saveGameDataToLocalStorage()
 
 	}
 

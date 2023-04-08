@@ -1,6 +1,6 @@
 <div>
 
-    <h1 *ngIf="myDailyChallengeComponent.playerTodaysGameStats !== undefined">Guessed games ({{ myDailyChallengeComponent.playerTodaysGameStats.GuessedGameIds.length }} / {{ myDailyChallengeComponent.myapp.gameService.maxNumberOfGuesses }})</h1>
+    <h1 *ngIf="myDailyChallengeComponent.myapp.gameService.dailyChallenge !== undefined">Guessed games ({{ myDailyChallengeComponent.myapp.gameService.GetCurrentGame().GuessedGameIds.length }} / {{ myDailyChallengeComponent.myapp.gameService.maxNumberOfGuesses }})</h1>
 
     <div class="flex flex-wrap text-center text-lg">
 
@@ -34,8 +34,8 @@
 
     </div>
 
-    <div *ngIf="myDailyChallengeComponent.playerTodaysGameStats !== undefined">
-        <app-guessed-game-row  *ngFor="let guessedGameId of myDailyChallengeComponent.playerTodaysGameStats!.GuessedGameIds" [gameId]="guessedGameId"></app-guessed-game-row>
+    <div *ngIf="myDailyChallengeComponent.myapp.gameService.dailyChallenge !== undefined">
+        <app-guessed-game-row  *ngFor="let guessedGameId of myDailyChallengeComponent.myapp.gameService.GetCurrentGame().GuessedGameIds" [gameId]="guessedGameId"></app-guessed-game-row>
     </div>
 
 </div>
