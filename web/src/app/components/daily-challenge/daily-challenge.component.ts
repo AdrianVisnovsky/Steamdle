@@ -6,7 +6,6 @@ import { FormControl } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { GameState } from 'src/app/enums/game-state';
 import { DailyChallenge } from 'src/app/interfaces/daily-challenge';
-import { GameDailyChallenge } from 'src/app/interfaces/game-data';
 
 @Component({
 	selector: 'app-daily-challenge',
@@ -27,7 +26,7 @@ export class DailyChallengeComponent implements OnInit {
 	async ngOnInit() {
 
 		await this.myapp.gameService.dataLoaded;
-		this.gameToGuess = this.myapp.steamGames.filter((game) => game.id === this.myapp.gameService.dailyChallenge.AppId).at(0)!;
+		this.gameToGuess = this.myapp.steamGames.filter((game) => game.id === this.myapp.gameService.GetCurrentGame().AppId).at(0)!;
 
 		this.setFilteredGames();
 
@@ -65,10 +64,10 @@ export class DailyChallengeComponent implements OnInit {
 	 * @param selectedGame 
 	 * @returns 
 	 */
-	gameSelected(selectedGameId: number)
+	public async gameSelected(selectedGameId: number)
 	{
 
-		this.myapp.gameService.addGuessedGame(selectedGameId);
+		await this.myapp.gameService.addGuessedGame(selectedGameId);
 
 		this.gameFormControl.setValue("");
 		this.setFilteredGames();

@@ -1,10 +1,9 @@
 import { GameDailyChallenge } from './../interfaces/game-data';
-import { DailyChallenge } from './../interfaces/daily-challenge';
 import { Injectable } from '@angular/core';
 import { SteamdleService } from './steamdle-service.service';
 import { GameData } from '../interfaces/game-data';
-import { Game } from '../interfaces/game';
 import { GameState } from '../enums/game-state';
+import { AddSuccessfulGuessResult } from '../interfaces/add-successful-guess-result';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,6 @@ import { GameState } from '../enums/game-state';
 export class GameServiceService {
 
 	public day: Date = <Date>{};
-	public dailyChallenge: DailyChallenge = <DailyChallenge>{};
 	public gameData: GameData = <GameData>{};
 
 	public readonly maxNumberOfGuesses: number = 8;
@@ -42,21 +40,20 @@ export class GameServiceService {
 		// get saved data from local storage
 		this.getGameDataFromLocalStorage();
 
+		console.log(this.gameData);
+
 		// check if todays game is already loaded
 		let gameAlreadyLoaded: boolean =
-		this.gameData.GameDailyChallenge !== undefined &&
-		this.gameData.GameDailyChallenge.filter((value) => {
-			value.Day = this.day
-		}).length > 0;
+			this.gameData.GameDailyChallenge !== undefined &&
+			this.gameData.GameDailyChallenge.filter((value) => value.Day === this.day).length > 0;
 
 		// load game from API
-		if(!gameAlreadyLoaded)
-		{
+		if(!gameAlreadyLoaded) {
 
-			this.dailyChallenge = (await this.steamdleService.getDailyChallenge()).at(0)!;
+			let dailyChall = await this.steamdleService.getDailyChallenge();
 
 			let todaysGame: GameDailyChallenge = <GameDailyChallenge>{};
-			todaysGame.AppId = this.dailyChallenge.AppId;
+			todaysGame.AppId = dailyChall.at(0)!.AppId;
 			todaysGame.Day = this.day;
 			todaysGame.GuessedGameIds = [];
 			todaysGame.GameState = GameState.InProgress;
@@ -66,6 +63,7 @@ export class GameServiceService {
 				this.gameData.GameDailyChallenge = [];
 
 			this.gameData.GameDailyChallenge.push(todaysGame);
+			this.saveGameDataToLocalStorage();
 
 		}
 
@@ -103,7 +101,7 @@ export class GameServiceService {
 
 	}
 
-	public addGuessedGame(gameToAddId: number) {
+	public async addGuessedGame(gameToAddId: number) {
 
 		let currGame: GameDailyChallenge = this.GetCurrentGame();
 
@@ -114,8 +112,15 @@ export class GameServiceService {
 		currGame.GuessedGameIds = [...currGame.GuessedGameIds];
 
 		// check guessed game
-		if(gameToAddId == this.dailyChallenge.AppId) {
+		if(gameToAddId === currGame.AppId) {
+
+			console.log("game guessed");
+
 			currGame.GameState = GameState.Won;
+			let playerOrder: AddSuccessfulGuessResult = (await this.steamdleService.addSuccessfulGuess(this.day)).at(0)!;
+			console.log(playerOrder);
+			currGame.Order = playerOrder.Guessed;			
+
 		} else if(currGame.GuessedGameIds.length >= this.maxNumberOfGuesses) {
 			currGame.GameState = GameState.Lost;
 		}

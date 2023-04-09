@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DailyChallenge } from '../interfaces/daily-challenge';
 import { Observable, lastValueFrom } from 'rxjs';
+import { AddSuccessfulGuessResult } from '../interfaces/add-successful-guess-result';
 
 @Injectable({
   providedIn: 'root'
@@ -34,11 +35,10 @@ export class SteamdleService {
 
 	}
 
-	public addSuccessfulGuess(day: Date): Promise<number> {
+	public addSuccessfulGuess(day: Date): Promise<AddSuccessfulGuessResult[]> {
 
 		let url: string = this.defaultUrl + '/addSuccessfulGuess/' + day;
-		console.log(url);
-		return lastValueFrom(this.http.get<number>(url));
+		return lastValueFrom(this.http.get<AddSuccessfulGuessResult[]>(url));
 
 	}
 
