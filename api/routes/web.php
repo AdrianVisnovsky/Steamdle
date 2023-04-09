@@ -18,5 +18,5 @@ use App\Http\Controllers\SteamdleController;
 Route::get('/getDailyChallengeGame', [SteamdleController::class, 'getDailyChallengeGame']);
 Route::get('/getServerDate', [SteamdleController::class, 'getServerDate']);
 Route::get('/getServerDateTime', [SteamdleController::class, 'getServerDateTime']);
-Route::put('/addSuccessfulGuess/{day}', [SteamdleController::class, 'addSuccessfulGuess']);
+Route::get('/addSuccessfulGuess/{day}', [SteamdleController::class, 'addSuccessfulGuess']);
 //});

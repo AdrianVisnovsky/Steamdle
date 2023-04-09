@@ -13,7 +13,10 @@ export class SteamdleService {
 	constructor(private http: HttpClient) { }
 
 	public getDailyChallenge(): Promise<DailyChallenge[]> {
-		return lastValueFrom(this.http.get<DailyChallenge[]>(this.defaultUrl + '/getDailyChallengeGame'));
+
+		let url: string = this.defaultUrl + '/getDailyChallengeGame';
+		return lastValueFrom(this.http.get<DailyChallenge[]>(url));
+
 	}
 
 	public getServerDate(): Promise<any> {
@@ -25,11 +28,18 @@ export class SteamdleService {
 	}
 
 	public getServerDateTime(): Promise<Date> {
-		return lastValueFrom(this.http.get<Date>(this.defaultUrl + '/getServerDateTime'));
+
+		let url: string = this.defaultUrl + '/getServerDateTime';
+		return lastValueFrom(this.http.get<Date>(url));
+
 	}
 
-	//public addSuccessfulGuess(day: Date): Observable<number> {
-		//return this.http.put<number>(this.defaultUrl + '/addSuccessfulGuess/' + day);
-	//}
+	public addSuccessfulGuess(day: Date): Promise<number> {
+
+		let url: string = this.defaultUrl + '/addSuccessfulGuess/' + day;
+		console.log(url);
+		return lastValueFrom(this.http.get<number>(url));
+
+	}
 
 }
