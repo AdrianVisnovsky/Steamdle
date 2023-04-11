@@ -24,6 +24,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { GuessedGameRowComponent } from './components/guessed-game-row/guessed-game-row.component';
 import { GuessedGamesComponent } from './components/guessed-games/guessed-games.component';
 import { GamesFilterComponent } from './components/games-filter/games-filter.component';
+import { AboutComponent } from './components/about/about.component';
+import { HomeComponent } from './components/home/home.component';
+import { SinglelinearrayPipe } from './singlelinearray.pipe';
 
 
 @NgModule({
@@ -40,7 +43,10 @@ import { GamesFilterComponent } from './components/games-filter/games-filter.com
     GameResultComponent,
     GuessedGameRowComponent,
     GuessedGamesComponent,
-    GamesFilterComponent
+    GamesFilterComponent,
+    AboutComponent,
+    HomeComponent,
+    SinglelinearrayPipe
   ],
   imports: [
     BrowserModule,

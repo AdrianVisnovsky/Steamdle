@@ -1,22 +1,39 @@
-<div class="bg-gray-800 p-2 m-1 rounded">
-    <img src="{{ game.img }}" class="rounded" loading="lazy"/>
-    <strong class="text-xl">{{ game.name }}</strong>
-    <div>
-        Released: {{ game.released }}
-    </div>
-    <div>
-        Score: {{ game.score }}
-    </div>
-    <!--<div>
-        Achievements: {{ game.achievements }}
-    </div>-->
-    <div>
-        Owners: {{ game.owners | number }}
-    </div>
-    <div>
-        Platforms: {{ game.platforms }}
-    </div>
-    <div>
-        Genres: {{ game.genres }}
+<div class="flex flex-col justify-center items-center m-4">
+    <div class="!z-5 relative rounded-[15px] bg-clip-border shadow-3xl max-w-[450px] shadow-shadow-500 flex flex-col w-full bg-gray-800 !p-4 3xl:p-![18px] undefined">
+        <div class="h-full w-full">
+            <div class="relative w-full">
+                <img src="{{ game.img }}" alt="{{ game.name }}" loading="lazy" class="rounded-[15px]">
+            </div>
+            <div class="mt-2 flex items-center justify-between px-1 md:items-start">
+                <div>
+                    <p class="text-base font-bold text-navy-700 mb-0">{{ game.name }}<span class="align-middle text-sm leading-4 font-medium text-gray-600"> ({{ game.released }})</span></p>
+                </div>
+                <div class="flex flex-row-reverse -mt-6">
+                    <span *ngIf="IsGameOnLinux()" class="z-10 -mr-3 h-8 w-8 rounded-full border-2 border-white">
+                        <img class="h-full w-full rounded-full object-cover" src="../assets/images/linux.png" alt="Linux logo">
+                    </span>
+                    <span *ngIf="IsGameOnMacOs()" class="z-10 -mr-3 h-8 w-8 rounded-full border-2 bg-white border-white">
+                        <img class="h-full w-full rounded-full object-cover" src="../assets/images/mac-os.png" alt="Mac Os logo">
+                    </span>
+                    <span *ngIf="IsGameOnWindows()" class="z-10 -mr-3 h-8 w-8 rounded-full border-2 border-white">
+                        <img class="h-full w-full rounded-full object-cover" src="../assets/images/windows.png" alt="Windows logo">
+                    </span>
+                </div>
+            </div>
+            <div class="mb-4">
+                <p class="!mb-0 text-sm font-bold text-brand-500">
+                    Genres:<br>
+                    <span class="align-middle text-sm leading-4 font-medium text-gray-300">{{ game.genres | singlelinearray}}</span>
+                </p>
+            </div>
+            <div class="flex items-center justify-between md:items-center lg:justify-between">
+                <div class="flex">
+                    <p class="!mb-0 text-sm font-bold text-brand-500">Owners: {{ game.owners | number }}</p>
+                </div>
+                <div class="flex">
+                    <p class="!mb-0 text-sm font-bold text-brand-500">Score: {{ game.score | number }}%</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
