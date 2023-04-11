@@ -1,7 +1,7 @@
 <div>
     <div [ngSwitch]="gameState">
-        <h1 *ngSwitchCase="gState.Won" style="color: lightgreen;">Congratulations, you guessed the game!</h1>
-        <h1 *ngSwitchCase="gState.Lost" style="color: red;">Sorry, the correct game was {{ gameToGuess.name }}</h1>
+        <h1 *ngSwitchCase="gState.Won" class="text-center text-green-600 uppercase">Congratulations, you guessed the game!</h1>
+        <h1 *ngSwitchCase="gState.Lost" class="text-center text-red-500">Sorry, the correct game was</h1>
       </div>
     <app-game-card [game]="gameToGuess"></app-game-card>
 </div>

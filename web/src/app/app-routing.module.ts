@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: DailyChallengeComponent},
   {path: 'DailyChallenge/Normal', component: DailyChallengeComponent},
   {path: 'HowToPlay', component: HowToPlayComponent},
   {path: '**', component: NotFoundComponent}
