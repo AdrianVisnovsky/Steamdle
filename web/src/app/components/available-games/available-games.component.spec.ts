@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GamesFilterComponent } from './games-filter.component';
+import { AvailableGamesComponent } from './available-games.component';
 
-describe('GamesFilterComponent', () => {
-  let component: GamesFilterComponent;
-  let fixture: ComponentFixture<GamesFilterComponent>;
+describe('AvailableGamesComponent', () => {
+  let component: AvailableGamesComponent;
+  let fixture: ComponentFixture<AvailableGamesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GamesFilterComponent ]
+      declarations: [ AvailableGamesComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GamesFilterComponent);
+    fixture = TestBed.createComponent(AvailableGamesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

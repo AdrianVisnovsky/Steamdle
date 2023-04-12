@@ -1,0 +1,62 @@
+<div>
+
+    <div class="p-4 m-4 rounded-md" style="background-color: #171c30;">
+
+        <h1>Available games ({{ filteredGames.length }})</h1>
+
+        <!--<mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [min]="myapp.minReleasedDate" [max]="myapp.maxReleasedDate" [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field> -->
+
+        <mat-form-field style="width: 90%;">
+            <mat-label>Game name</mat-label>
+            <input matInput placeholder="Name of the game" [formControl]="gameNameFormControl">
+        </mat-form-field>
+
+        <br>
+
+        <!-- Game score -->
+        <div>
+
+            <h3>Game score</h3>
+
+            <mat-slider style="width: 90%;" [min]="myapp.minScore" [max]="myapp.maxScore" discrete>
+                <input matSliderStartThumb (valueChange)="scoreMinChanged($event)">
+                <input matSliderEndThumb (valueChange)="scoreMaxChanged($event)">
+            </mat-slider>
+
+        </div>
+
+        <div>
+
+            <h3>Release year</h3>
+
+            <mat-slider style="width: 90%;" [min]="myapp.minReleasedYear" [max]="myapp.maxReleasedYear" discrete>
+                <input matSliderStartThumb (valueChange)="releasedYearMinChanged($event)">
+                <input matSliderEndThumb (valueChange)="releasedYearMaxChanged($event)">
+            </mat-slider>
+
+        </div>
+
+        <div>
+
+            <h3>Platforms</h3>
+
+            <mat-checkbox checked="true" (change)="platformAnyChanged($event.checked)">Any</mat-checkbox>
+            <mat-checkbox (change)="platformWindowsChanged($event.checked)">Windows (WIN)</mat-checkbox>
+            <mat-checkbox (change)="platformMacOsChanged($event.checked)">Mac Os (MAC)</mat-checkbox>
+            <mat-checkbox (change)="platformLinuxChanged($event.checked)">Linux (LNX)</mat-checkbox>
+
+        </div>
+
+    </div>
+    
+    <div class="flex flex-wrap items-stretch justify-center gap-4">
+        <app-game-card *ngFor="let availableGame of filteredGames" [game]="availableGame"></app-game-card>
+    </div>
+
+</div>

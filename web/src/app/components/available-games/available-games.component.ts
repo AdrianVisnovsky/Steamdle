@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { AppComponent } from 'src/app/app.component';
 import { Game } from 'src/app/interfaces/game';
 
 @Component({
-  selector: 'app-games-filter',
-  templateUrl: './games-filter.component.html',
-  styleUrls: ['./games-filter.component.css']
+	selector: 'app-available-games',
+	templateUrl: './available-games.component.html',
+	styleUrls: ['./available-games.component.css']
 })
-export class GamesFilterComponent {
+export class AvailableGamesComponent {
 
 	public gameNameFormControl: FormControl = new FormControl();
 	public filterGameName: string = "";

@@ -23,10 +23,10 @@ import { MatCheckboxModule }  from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { GuessedGameRowComponent } from './components/guessed-game-row/guessed-game-row.component';
 import { GuessedGamesComponent } from './components/guessed-games/guessed-games.component';
-import { GamesFilterComponent } from './components/games-filter/games-filter.component';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { SinglelinearrayPipe } from './singlelinearray.pipe';
+import { AvailableGamesComponent } from './components/available-games/available-games.component';
 
 
 @NgModule({
@@ -43,10 +43,10 @@ import { SinglelinearrayPipe } from './singlelinearray.pipe';
     GameResultComponent,
     GuessedGameRowComponent,
     GuessedGamesComponent,
-    GamesFilterComponent,
     AboutComponent,
     HomeComponent,
-    SinglelinearrayPipe
+    SinglelinearrayPipe,
+    AvailableGamesComponent
   ],
   imports: [
     BrowserModule,
