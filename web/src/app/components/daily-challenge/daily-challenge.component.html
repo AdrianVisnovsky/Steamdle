@@ -1,49 +1,43 @@
-<div *ngIf="myapp.gameService.dataLoaded | async">
+<div *ngIf="myapp.gameService.dataLoaded | async" class="flex">
 
-    <div class="grid grid-flow-col auto-cols-3">
+    <!-- Gameplay -->
+    <div class="p-4 m-4 rounded-md max-w-screen-xl justify-center" style="background-color: #171c30; min-width: 45vw;">
+
+        <div *ngIf="isGameInProgress()">
+
+            <h1>Guess the game</h1>
+
+            <mat-form-field style="width: 100%;">
+
+                <input type="text"
+                        placeholder="Enter game"
+                        [formControl]="gameFormControl"
+                        matInput
+                        [matAutocomplete]="auto" />
+                <mat-autocomplete #auto="matAutocomplete" >
+                    <mat-option *ngFor="let game of filteredOptions | async"
+                        [value]="game.name"
+                        (onSelectionChange)="gameSelected(game.id)">
+                        {{ game.name }}
+                    </mat-option>
+                </mat-autocomplete>
         
-        <!--<app-games-filter></app-games-filter> -->
-
-        <!-- Gameplay -->
-        <div class="p-4 m-4 rounded-md" style="background-color: #171c30; min-width: 45vw;">
-
-            <div *ngIf="isGameInProgress()">
-
-                <h1>Guess the game</h1>
-
-                <mat-form-field style="width: 100%;">
-
-                    <input type="text"
-                            placeholder="Enter game"
-                            [formControl]="gameFormControl"
-                            matInput
-                            [matAutocomplete]="auto" />
-                    <mat-autocomplete #auto="matAutocomplete" >
-                        <mat-option *ngFor="let game of filteredOptions | async"
-                            [value]="game.name"
-                            (onSelectionChange)="gameSelected(game.id)">
-                            {{ game.name }}
-                        </mat-option>
-                    </mat-autocomplete>
-            
-                </mat-form-field>
-
-            </div>
-
-            <div *ngIf="!isGameInProgress()">
-                <app-game-result [gameState]="myapp.gameService.GetCurrentGame().GameState" [gameToGuess]="gameToGuess"></app-game-result>
-            </div>
-            
-            <app-guessed-games></app-guessed-games>
+            </mat-form-field>
 
         </div>
+
+        <div *ngIf="!isGameInProgress()">
+            <app-game-result [gameState]="myapp.gameService.GetCurrentGame().GameState" [gameToGuess]="gameToGuess"></app-game-result>
+        </div>
         
-        <!-- Debug -->
-        <!--<div class="p-4 m-4 rounded-md" style="background-color: #171c30; overflow: scroll;">
-            <h1>Game to guess</h1>
-            <pre [innerHTML]="gameToGuess | jsonpretty: [true, 3]"></pre>
-        </div>-->
+        <app-guessed-games></app-guessed-games>
 
     </div>
+    
+    <!-- Debug -->
+    <!--<div class="p-4 m-4 rounded-md" style="background-color: #171c30; overflow: scroll;">
+        <h1>Game to guess</h1>
+        <pre [innerHTML]="gameToGuess | jsonpretty: [true, 3]"></pre>
+    </div>-->
 
 </div>
