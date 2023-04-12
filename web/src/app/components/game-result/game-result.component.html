@@ -1,4 +1,4 @@
-<div>
+<div class="rounded-[15px] border-green-600 border-2 w-auto bg-yellow-200">
     <div [ngSwitch]="gameState">
         <h1 *ngSwitchCase="gState.Won" class="text-center text-green-600 uppercase">Congratulations, you guessed the game!</h1>
         <h1 *ngSwitchCase="gState.Lost" class="text-center text-red-500">Sorry, the correct game was</h1>
