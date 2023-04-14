@@ -9,51 +9,50 @@
             <div class="p-4 m-4 bg-gray-700 rounded-[15px]">
                 <mat-form-field style="width: 375px;">
                     <mat-label>Game name</mat-label>
-                    <input matInput placeholder="Name of the game" [formControl]="gameNameFormControl">
+                    <input matInput placeholder="Name of the game" [formControl]="avalService.gameNameFormControl">
                 </mat-form-field>
             </div>
     
-            <!-- Game score -->
             <div class="p-4 m-4 bg-gray-700 rounded-[15px]">
     
-                <h3 class="font-bold">Game score ({{ GetGameScoreRange() }})</h3>
+                <h3 class="font-bold">Game score ({{ avalService.GetGameScoreRange() }})</h3>
     
-                <mat-slider style="width: 96%;" [min]="myapp.minScore" [max]="myapp.maxScore" discrete>
-                    <input matSliderStartThumb (valueChange)="scoreMinChanged($event)">
-                    <input matSliderEndThumb (valueChange)="scoreMaxChanged($event)">
+                <mat-slider style="width: 96%;" [min]="avalService.myapp.minScore" [max]="avalService.myapp.maxScore" discrete>
+                    <input matSliderStartThumb [value]="avalService.filterScoreMin" (valueChange)="avalService.scoreMinChanged($event)">
+                    <input matSliderEndThumb [value]="avalService.filterScoreMax" (valueChange)="avalService.scoreMaxChanged($event)">
                 </mat-slider>
     
             </div>
     
             <div class="p-4 m-4 bg-gray-700 rounded-[15px]">
     
-                <h3>Released year ({{ GetReleaseYear() }})</h3>
+                <h3>Released year ({{ avalService.GetReleaseYear() }})</h3>
     
-                <mat-slider style="width: 96%" [min]="myapp.minReleasedYear" [max]="myapp.maxReleasedYear" discrete>
-                    <input matSliderStartThumb (valueChange)="releasedYearMinChanged($event)">
-                    <input matSliderEndThumb (valueChange)="releasedYearMaxChanged($event)">
+                <mat-slider style="width: 96%" [min]="avalService.myapp.minReleasedYear" [max]="avalService.myapp.maxReleasedYear" discrete>
+                    <input matSliderStartThumb [value]="avalService.filterReleasedYearMin" (valueChange)="avalService.releasedYearMinChanged($event)">
+                    <input matSliderEndThumb [value]="avalService.filterReleasedYearMax" (valueChange)="avalService.releasedYearMaxChanged($event)">
                 </mat-slider>
     
             </div>
     
             <div class="p-4 m-4 bg-gray-700 rounded-[15px]">
     
-                <h3>Platforms ({{ GetPlatforms() }})</h3>
+                <h3>Platforms ({{ avalService.GetPlatforms() }})</h3>
     
                 <div class="p-1 m-1 bg-gray-600 rounded-[15px]">
-                    <mat-checkbox checked="true" (change)="platformAnyChanged($event.checked)">Any</mat-checkbox>
+                    <mat-checkbox [checked]="avalService.platformAny" (change)="avalService.platformAnyChanged($event.checked)">Any</mat-checkbox>
                 </div>
 
                 <div class="p-1 m-1 bg-gray-600 rounded-[15px]">
-                    <mat-checkbox (change)="platformWindowsChanged($event.checked)">Windows</mat-checkbox>
+                    <mat-checkbox [checked]="avalService.platformWindows" (change)="avalService.platformWindowsChanged($event.checked)">Windows</mat-checkbox>
                 </div>
 
                 <div class="p-1 m-1 bg-gray-600 rounded-[15px]">
-                    <mat-checkbox (change)="platformMacOsChanged($event.checked)">Mac Os</mat-checkbox>
+                    <mat-checkbox [checked]="avalService.platformMacOs" (change)="avalService.platformMacOsChanged($event.checked)">Mac Os</mat-checkbox>
                 </div>
 
                 <div class="p-1 m-1 bg-gray-600 rounded-[15px]">
-                    <mat-checkbox (change)="platformLinuxChanged($event.checked)">Linux</mat-checkbox>
+                    <mat-checkbox [checked]="avalService.platformLinux" (change)="avalService.platformLinuxChanged($event.checked)">Linux</mat-checkbox>
                 </div>
 
             </div>
@@ -64,12 +63,12 @@
     
     <div class="flex flex-col">
 
-        <div class="p-4 m-4 rounded-[15px] bg-gray-800 sticky items-start top-0 z-50">
-            <h1>Available games ({{ filteredGames.length }})</h1>
+        <div class="p-4 m-4 rounded-[15px] bg-gray-800 sticky items-start top-4 z-50">
+            <h1>Available games ({{ avalService.filteredGames.length }})</h1>
         </div>
 
-        <div class="flex flex-wrap items-stretch gap-8 ">
-            <app-game-card class="flex-grow self-stretch" *ngFor="let availableGame of filteredGames" [game]="availableGame"></app-game-card>
+        <div class="flex flex-wrap items-stretch gap-8">
+            <app-game-card class="flex-grow self-stretch" *ngFor="let availableGame of avalService.filteredGames" [game]="availableGame"></app-game-card>
         </div>
 
     </div>
