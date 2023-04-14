@@ -1,68 +1,75 @@
-<div class="grid grid-cols-[425px_auto]">
+<div class="flex items-start">
 
-    <div class="p-4 m-4 rounded-md" style="background-color: #171c30;">
+    <div class="sticky items-start top-0">
 
-        <h1>Filters</h1>
+        <div class="p-4 m-4 rounded-[15px] bg-gray-800">
 
-        <!--<mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Choose a date</mat-label>
-            <input matInput [min]="myapp.minReleasedDate" [max]="myapp.maxReleasedDate" [matDatepicker]="picker">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field> -->
+            <h1 class="p-4 m-4">Filters</h1>
 
-        <mat-form-field style="width: 90%;">
-            <mat-label>Game name</mat-label>
-            <input matInput placeholder="Name of the game" [formControl]="gameNameFormControl">
-        </mat-form-field>
+            <div class="p-4 m-4 bg-gray-700 rounded-[15px]">
+                <mat-form-field style="width: 375px;">
+                    <mat-label>Game name</mat-label>
+                    <input matInput placeholder="Name of the game" [formControl]="gameNameFormControl">
+                </mat-form-field>
+            </div>
+    
+            <!-- Game score -->
+            <div class="p-4 m-4 bg-gray-700 rounded-[15px]">
+    
+                <h3 class="font-bold">Game score ({{ GetGameScoreRange() }})</h3>
+    
+                <mat-slider style="width: 96%;" [min]="myapp.minScore" [max]="myapp.maxScore" discrete>
+                    <input matSliderStartThumb (valueChange)="scoreMinChanged($event)">
+                    <input matSliderEndThumb (valueChange)="scoreMaxChanged($event)">
+                </mat-slider>
+    
+            </div>
+    
+            <div class="p-4 m-4 bg-gray-700 rounded-[15px]">
+    
+                <h3>Released year ({{ GetReleaseYear() }})</h3>
+    
+                <mat-slider style="width: 96%" [min]="myapp.minReleasedYear" [max]="myapp.maxReleasedYear" discrete>
+                    <input matSliderStartThumb (valueChange)="releasedYearMinChanged($event)">
+                    <input matSliderEndThumb (valueChange)="releasedYearMaxChanged($event)">
+                </mat-slider>
+    
+            </div>
+    
+            <div class="p-4 m-4 bg-gray-700 rounded-[15px]">
+    
+                <h3>Platforms ({{ GetPlatforms() }})</h3>
+    
+                <div class="p-1 m-1 bg-gray-600 rounded-[15px]">
+                    <mat-checkbox checked="true" (change)="platformAnyChanged($event.checked)">Any</mat-checkbox>
+                </div>
 
-        <br>
+                <div class="p-1 m-1 bg-gray-600 rounded-[15px]">
+                    <mat-checkbox (change)="platformWindowsChanged($event.checked)">Windows</mat-checkbox>
+                </div>
 
-        <!-- Game score -->
-        <div>
+                <div class="p-1 m-1 bg-gray-600 rounded-[15px]">
+                    <mat-checkbox (change)="platformMacOsChanged($event.checked)">Mac Os</mat-checkbox>
+                </div>
 
-            <h3>Game score</h3>
+                <div class="p-1 m-1 bg-gray-600 rounded-[15px]">
+                    <mat-checkbox (change)="platformLinuxChanged($event.checked)">Linux</mat-checkbox>
+                </div>
 
-            <mat-slider style="width: 90%;" [min]="myapp.minScore" [max]="myapp.maxScore" discrete>
-                <input matSliderStartThumb (valueChange)="scoreMinChanged($event)">
-                <input matSliderEndThumb (valueChange)="scoreMaxChanged($event)">
-            </mat-slider>
-
-        </div>
-
-        <div>
-
-            <h3>Release year</h3>
-
-            <mat-slider style="width: 90%;" [min]="myapp.minReleasedYear" [max]="myapp.maxReleasedYear" discrete>
-                <input matSliderStartThumb (valueChange)="releasedYearMinChanged($event)">
-                <input matSliderEndThumb (valueChange)="releasedYearMaxChanged($event)">
-            </mat-slider>
-
-        </div>
-
-        <div>
-
-            <h3>Platforms</h3>
-
-            <mat-checkbox checked="true" (change)="platformAnyChanged($event.checked)">Any</mat-checkbox><br>
-            <mat-checkbox (change)="platformWindowsChanged($event.checked)">Windows (WIN)</mat-checkbox><br>
-            <mat-checkbox (change)="platformMacOsChanged($event.checked)">Mac Os (MAC)</mat-checkbox><br>
-            <mat-checkbox (change)="platformLinuxChanged($event.checked)">Linux (LNX)</mat-checkbox><br>
-
+            </div>
+    
         </div>
 
     </div>
     
     <div class="flex flex-col">
 
-        <div class="p-4 m-4 pb-0 mb-0">
+        <div class="p-4 m-4 rounded-[15px] bg-gray-800 sticky items-start top-0 z-50">
             <h1>Available games ({{ filteredGames.length }})</h1>
         </div>
 
-        <div class="flex flex-wrap items-stretch justify-center gap-4">
-            <app-game-card *ngFor="let availableGame of filteredGames" [game]="availableGame"></app-game-card>
+        <div class="flex flex-wrap items-stretch gap-8 ">
+            <app-game-card class="flex-grow self-stretch" *ngFor="let availableGame of filteredGames" [game]="availableGame"></app-game-card>
         </div>
 
     </div>

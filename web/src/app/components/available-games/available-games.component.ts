@@ -128,4 +128,47 @@ export class AvailableGamesComponent {
 		this.FilterGames();
 	}
 
+	public GetGameScoreRange(): string
+	{
+
+		if(this.filterScoreMin === this.filterScoreMax)
+			return this.filterScoreMin.toString();
+
+
+		return this.filterScoreMin.toString() + ' - ' + this.filterScoreMax.toString();
+	}
+
+	public GetReleaseYear(): string
+	{
+		
+		if(this.filterReleasedYearMin === this.filterReleasedYearMax)
+			return this.filterReleasedYearMin.toString();
+
+
+		return this.filterReleasedYearMin.toString() + ' - ' + this.filterReleasedYearMax.toString();
+	}
+
+	public GetPlatforms(): string
+	{
+		
+		if(!this.platformAny && !this.platformWindows && !this.platformMacOs && !this.platformLinux)
+			return "none";
+
+		if(this.platformAny)
+			return "any";
+
+		let platforms: string[] = [];
+
+		if(this.platformWindows)
+			platforms.push("Windows");
+
+		if(this.platformMacOs)
+			platforms.push("Mac Os");
+
+		if(this.platformLinux)
+			platforms.push("Linux");
+
+		return platforms.join(", ");
+	}
+
 }

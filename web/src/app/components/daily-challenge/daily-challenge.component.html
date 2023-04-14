@@ -1,7 +1,7 @@
-<div *ngIf="myapp.gameService.dataLoaded | async" class="flex">
+<div *ngIf="myapp.gameService.dataLoaded | async" class="flex justify-center">
 
     <!-- Gameplay -->
-    <div class="p-4 m-4 rounded-md max-w-screen-xl justify-center" style="background-color: #171c30; min-width: 45vw;">
+    <div class="p-8 m-4 rounded-[15px] max-w-screen-xl" style="background-color: #171c30; min-width: 45vw;">
 
         <div *ngIf="isGameInProgress()">
 
