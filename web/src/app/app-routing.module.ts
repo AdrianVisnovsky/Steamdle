@@ -5,11 +5,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { AvailableGamesComponent } from './components/available-games/available-games.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 const routes: Routes = [
   {path: '', component: DailyChallengeComponent},
   {path: 'DailyChallenge/Normal', component: DailyChallengeComponent},
   {path: 'HowToPlay', component: HowToPlayComponent},
+  {path: 'PrivacyPolicy', component: PrivacyPolicyComponent},
   {path: 'AvailableGames', component: AvailableGamesComponent},
   {path: '**', component: NotFoundComponent}
 ];
