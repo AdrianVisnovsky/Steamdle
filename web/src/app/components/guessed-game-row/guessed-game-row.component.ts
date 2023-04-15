@@ -95,7 +95,33 @@ export class GuessedGameRowComponent {
 			}
 		}
 
+		
 		return false;
+	}
+
+	public PrintGameGenres(genres: string[]): string {
+
+		if(genres.length <= 3)
+			return genres.join(', <br>');
+
+		
+		return genres.slice(0, 2).join(', <br>') + ' <br> + ' + (genres.length - 2).toString() + ' more';
+	}
+
+	public GetGenresTooltip(genres: string[]): string {
+		return genres.join(', ');
+	}
+
+	public IsGameOnWindows(): boolean {
+		return this.game.platforms.indexOf("WIN") > -1;
+	}
+
+	public IsGameOnMacOs(): boolean {
+		return this.game.platforms.indexOf("MAC") > -1;
+	}
+
+	public IsGameOnLinux(): boolean {
+		return this.game.platforms.indexOf("LNX") > -1;
 	}
 
 }

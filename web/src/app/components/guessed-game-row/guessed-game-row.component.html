@@ -44,23 +44,48 @@
         </div>-->
     
         <div class="square">
-            <div [innerHTML]="game.genres | multilnearray">
+            <div class="mt-20">
+                <a href="#" class="group relative inline-block text-blue-500 underline hover:text-red-500 duration-300">
+                    Link with top tooltip
+                    <!-- Tooltip text here -->
+                    <span
+                        class="absolute hidden group-hover:flex -left-5 -top-2 -translate-y-full w-48 px-2 py-1 bg-gray-700 rounded-lg text-center text-white text-sm after:content-[''] after:absolute after:left-1/2 after:top-[100%] after:-translate-x-1/2 after:border-8 after:border-x-transparent after:border-b-transparent after:border-t-gray-700">This
+                        {{ GetGenresTooltip(game.genres) }}</span>
+                </a>
             </div>
+            <!--<div [innerHTML]="PrintGameGenres(game.genres)">
+            </div>
+
+            <span
+              class="absolute hidden group-hover:flex -left-5 -top-2 -translate-y-full w-48 px-2 py-1 bg-gray-700 rounded-lg text-center
+                    text-white text-sm after:content-[''] after:absolute after:left-1/2 after:top-[100%] after:-translate-x-1/2 after:border-8
+                    qafter:border-x-transparent after:border-b-transparent after:border-t-gray-700">
+                    tttttttttttttttttttttttttttttttttttttttt
+            </span>
             <div [ngSwitch]="genresHint" class="m-2">
                 <img *ngSwitchCase="2" src="../assets/images/green_dot.png" style="height: 16px;">
                 <img *ngSwitchCase="1" src="../assets/images/yellow_dot.png" style="height: 16px;">
                 <img *ngSwitchCase="0" src="../assets/images/red_dot.png" style="height: 16px;">
-            </div>  
+            </div>  -->
         </div>
     
         <div class="square">
-            <div [innerHTML]="game.platforms | multilnearray">
+            <div class="flex flex-row-reverse -mt-6">
+                <span *ngIf="IsGameOnLinux()" class="z-10 -mr-3 h-8 w-8 rounded-full border-2 border-white">
+                    <img class="h-full w-full rounded-full object-cover" src="../assets/images/linux.png" alt="Linux logo">
+                </span>
+                <span *ngIf="IsGameOnMacOs()" class="z-10 -mr-3 h-8 w-8 rounded-full border-2 bg-white border-white">
+                    <img class="h-full w-full rounded-full object-cover" src="../assets/images/mac-os.png" alt="Mac Os logo">
+                </span>
+                <span *ngIf="IsGameOnWindows()" class="z-10 -mr-3 h-8 w-8 rounded-full border-2 border-white">
+                    <img class="h-full w-full rounded-full object-cover" src="../assets/images/windows.png" alt="Windows logo">
+                </span>
             </div>
-            <div [ngSwitch]="platformsHint" class="m-2">
+            <!--<div [ngSwitch]="platformsHint" class="m-2">
                 <img *ngSwitchCase="2" src="../assets/images/green_dot.png" style="height: 16px;">
                 <img *ngSwitchCase="1" src="../assets/images/yellow_dot.png" style="height: 16px;">
                 <img *ngSwitchCase="0" src="../assets/images/red_dot.png" style="height: 16px;">
-            </div>  
+            </div>-->
         </div>
     
     </div>
