@@ -1,13 +1,13 @@
-<div class="flex items-start">
+<div class="flex flex-col lg:flex-row items-start justify-center ">
 
-    <div class="sticky items-start top-0">
+    <div class="lg:sticky lg:items-start lg:top-0 lg:flex-grow-0 lg:self-auto flex-grow self-stretch">
 
         <div class="p-4 m-4 rounded-[15px] bg-gray-800">
 
             <h1 class="p-4 m-4" style="margin: 0 !important;">Filters</h1>
 
             <div class="p-4 m-4 bg-gray-700 rounded-[15px]">
-                <mat-form-field style="width: 375px;">
+                <mat-form-field class="w-full lg:w-[375px]">
                     <mat-label>Game name</mat-label>
                     <input matInput placeholder="Name of the game" [formControl]="avalService.gameNameFormControl">
                 </mat-form-field>
