@@ -4,6 +4,7 @@ import { SteamdleService } from './steamdle-service.service';
 import { GameData } from '../interfaces/game-data';
 import { GameState } from '../enums/game-state';
 import { AddSuccessfulGuessResult } from '../interfaces/add-successful-guess-result';
+import { GameDailyStats } from '../interfaces/game-daily-stats';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class GameServiceService {
 
 	public day: Date = <Date>{};
 	public gameData: GameData = <GameData>{};
+	public gameDailyStats: GameDailyStats = <GameDailyStats>{};
 
 	public readonly maxNumberOfGuesses: number = 8;
 
@@ -40,8 +42,6 @@ export class GameServiceService {
 		// get saved data from local storage
 		this.getGameDataFromLocalStorage();
 
-		console.log(this.gameData);
-
 		// check if todays game is already loaded
 		let gameAlreadyLoaded: boolean =
 			this.gameData.GameDailyChallenge !== undefined &&
@@ -66,6 +66,8 @@ export class GameServiceService {
 			this.saveGameDataToLocalStorage();
 
 		}
+
+		this.gameDailyStats = (await this.steamdleService.getNumberOfSuccesfullGuesses(this.day)).at(0)!;
 
 		return Promise.resolve(true);
 	}

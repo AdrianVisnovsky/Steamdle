@@ -48,4 +48,13 @@ class SteamdleController extends Controller
         return $result;
     }
 
+    public function getNumberOfSuccesfullGuesses($day)
+    {
+
+        throw_if(DateTime::createFromFormat('Y-m-d', $day) === false, \Exception::class, 'Value is not a date in correct format');
+
+        $result = DB::select("SELECT PlayerCount, Guessed FROM `daily_challenge` WHERE `Day` = '" . $day . "';");
+        return $result;
+    }
+
 }

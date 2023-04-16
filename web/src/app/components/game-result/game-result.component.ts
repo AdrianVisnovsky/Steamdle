@@ -1,6 +1,7 @@
 import { GameState } from './../../enums/game-state';
 import { Component, Input } from '@angular/core';
 import { Game } from 'src/app/interfaces/game';
+import { DailyChallengeComponent } from '../daily-challenge/daily-challenge.component';
 
 @Component({
   selector: 'app-game-result',
@@ -13,5 +14,7 @@ export class GameResultComponent {
 
   @Input() gameState!: GameState;
   @Input() gameToGuess!: Game;
+
+  constructor(public dailyChall: DailyChallengeComponent) {}
 
 }
