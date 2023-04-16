@@ -2,6 +2,10 @@
     <div [ngSwitch]="gameState">
         <h1 *ngSwitchCase="gState.Won" class="text-center text-green-600 uppercase">Congratulations, you guessed the game!</h1>
         <h1 *ngSwitchCase="gState.Lost" class="text-center text-red-500">Sorry, the correct game was</h1>
-      </div>
+    </div>
+    <p>
+      Number of tries: {{ dailyChall.myapp.gameService.GetCurrentGame().GuessedGameIds.length }}<br>
+      You're the {{ dailyChall.myapp.gameService.GetCurrentGame().Order }} to find the game today
+    </p>
     <app-game-card [game]="gameToGuess"></app-game-card>
 </div>

@@ -120,11 +120,13 @@ export class GameServiceService {
 
 			currGame.GameState = GameState.Won;
 			let playerOrder: AddSuccessfulGuessResult = (await this.steamdleService.addSuccessfulGuess(this.day)).at(0)!;
-			console.log(playerOrder);
-			currGame.Order = playerOrder.Guessed;			
+			currGame.Order = playerOrder.Guessed;
+
+			this.gameDailyStats = (await this.steamdleService.getNumberOfSuccesfullGuesses(this.day)).at(0)!;
 
 		} else if(currGame.GuessedGameIds.length >= this.maxNumberOfGuesses) {
 			currGame.GameState = GameState.Lost;
+			this.gameDailyStats = (await this.steamdleService.getNumberOfSuccesfullGuesses(this.day)).at(0)!;
 		}
 
 		this.printDebugLog();
