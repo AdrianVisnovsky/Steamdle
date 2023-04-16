@@ -5,6 +5,7 @@ import { GameData } from '../interfaces/game-data';
 import { GameState } from '../enums/game-state';
 import { AddSuccessfulGuessResult } from '../interfaces/add-successful-guess-result';
 import { GameDailyStats } from '../interfaces/game-daily-stats';
+import { YesterdaysGameId } from '../interfaces/yesterdays-game-id';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class GameServiceService {
 	public day: Date = <Date>{};
 	public gameData: GameData = <GameData>{};
 	public gameDailyStats: GameDailyStats = <GameDailyStats>{};
+	public lastDayGameId: number = 0;
 
 	public readonly maxNumberOfGuesses: number = 8;
 
@@ -68,6 +70,12 @@ export class GameServiceService {
 		}
 
 		this.gameDailyStats = (await this.steamdleService.getNumberOfSuccesfullGuesses(this.day)).at(0)!;
+
+		let yesterdaysGame: YesterdaysGameId[] = await this.steamdleService.getLastDaysGameId();
+		if(yesterdaysGame !== undefined && yesterdaysGame.length > 0)
+		{
+			this.lastDayGameId = yesterdaysGame.at(0)!.AppId;
+		}
 
 		return Promise.resolve(true);
 	}

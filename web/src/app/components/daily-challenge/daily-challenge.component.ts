@@ -78,4 +78,8 @@ export class DailyChallengeComponent implements OnInit {
 		return this.myapp.gameService.GetCurrentGame().GameState == GameState.InProgress ? true : false;
 	}
 
+	public getYesterdaysGameName(): string {
+		return this.myapp.steamGames.filter(options => options.id === this.myapp.gameService.lastDayGameId).at(0)!.name;
+	}
+
 }

@@ -33,6 +33,10 @@
         <div class="text-center border-t border-gray-400">
             <br>
             <label class="text-sm font-medium text-gray-400">{{ myapp.gameService.gameDailyStats.Guessed }} of {{ myapp.gameService.gameDailyStats.PlayerCount }} people already found out!</label>
+            <br>
+            <div>
+                <label class="text-sm font-medium text-gray-400">Yesterday's game was {{ getYesterdaysGameName() }}.</label>
+            </div>
         </div>
 
     </div>

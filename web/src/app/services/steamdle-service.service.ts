@@ -4,6 +4,7 @@ import { DailyChallenge } from '../interfaces/daily-challenge';
 import { lastValueFrom } from 'rxjs';
 import { AddSuccessfulGuessResult } from '../interfaces/add-successful-guess-result';
 import { GameDailyStats } from '../interfaces/game-daily-stats';
+import { YesterdaysGameId } from '../interfaces/yesterdays-game-id';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +48,13 @@ export class SteamdleService {
 
 		let url: string = this.defaultUrl + '/getNumberOfSuccesfullGuesses/' + day;
 		return lastValueFrom(this.http.get<GameDailyStats[]>(url));
+
+	}
+
+	public getLastDaysGameId(): Promise<YesterdaysGameId[]> {
+
+		let url: string = this.defaultUrl + '/getLastDaysGameId';
+		return lastValueFrom(this.http.get<YesterdaysGameId[]>(url));
 
 	}
 
