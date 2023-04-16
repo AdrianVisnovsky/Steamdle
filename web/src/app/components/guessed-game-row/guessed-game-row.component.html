@@ -1,6 +1,6 @@
 <div *ngIf="game !== undefined">
 
-    <div class="flex flex-wrap text-center text-base p-1">
+    <div class="flex flex-wrap text-center text-base mt-5 mb-5">
 
         <div class="square">
             <img src="{{ game.img }}" class="rounded" loading="lazy"/>
@@ -44,29 +44,13 @@
         </div>-->
     
         <div class="square">
-            <div class="mt-20">
-                <a href="#" class="group relative inline-block text-blue-500 underline hover:text-red-500 duration-300">
-                    Link with top tooltip
-                    <!-- Tooltip text here -->
-                    <span
-                        class="absolute hidden group-hover:flex -left-5 -top-2 -translate-y-full w-48 px-2 py-1 bg-gray-700 rounded-lg text-center text-white text-sm after:content-[''] after:absolute after:left-1/2 after:top-[100%] after:-translate-x-1/2 after:border-8 after:border-x-transparent after:border-b-transparent after:border-t-gray-700">This
-                        {{ GetGenresTooltip(game.genres) }}</span>
-                </a>
+            <div class="group relative inline-block" [innerHTML]="PrintGameGenres(game.genres)">
             </div>
-            <!--<div [innerHTML]="PrintGameGenres(game.genres)">
-            </div>
-
-            <span
-              class="absolute hidden group-hover:flex -left-5 -top-2 -translate-y-full w-48 px-2 py-1 bg-gray-700 rounded-lg text-center
-                    text-white text-sm after:content-[''] after:absolute after:left-1/2 after:top-[100%] after:-translate-x-1/2 after:border-8
-                    qafter:border-x-transparent after:border-b-transparent after:border-t-gray-700">
-                    tttttttttttttttttttttttttttttttttttttttt
-            </span>
             <div [ngSwitch]="genresHint" class="m-2">
                 <img *ngSwitchCase="2" src="../assets/images/green_dot.png" style="height: 16px;">
                 <img *ngSwitchCase="1" src="../assets/images/yellow_dot.png" style="height: 16px;">
                 <img *ngSwitchCase="0" src="../assets/images/red_dot.png" style="height: 16px;">
-            </div>  -->
+            </div>
         </div>
     
         <div class="square">
@@ -81,11 +65,11 @@
                     <img class="h-full w-full rounded-full object-cover" src="../assets/images/windows.png" alt="Windows logo">
                 </span>
             </div>
-            <!--<div [ngSwitch]="platformsHint" class="m-2">
+            <div [ngSwitch]="platformsHint" class="m-2">
                 <img *ngSwitchCase="2" src="../assets/images/green_dot.png" style="height: 16px;">
                 <img *ngSwitchCase="1" src="../assets/images/yellow_dot.png" style="height: 16px;">
                 <img *ngSwitchCase="0" src="../assets/images/red_dot.png" style="height: 16px;">
-            </div>-->
+            </div>
         </div>
     
     </div>
