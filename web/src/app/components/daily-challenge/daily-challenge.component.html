@@ -32,7 +32,12 @@
 
         <div class="text-center border-t border-gray-400">
             <br>
-            <label class="text-sm font-medium text-gray-400">{{ myapp.gameService.gameDailyStats.Guessed }} of {{ myapp.gameService.gameDailyStats.PlayerCount }} people already found out!</label>
+            <div *ngIf="myapp.gameService.gameDailyStats.Guessed > 0">
+                <label class="text-sm font-medium text-gray-400">{{ myapp.gameService.gameDailyStats.Guessed }} of {{ myapp.gameService.gameDailyStats.PlayerCount }} people already found out!</label>
+            </div>
+            <div *ngIf="myapp.gameService.gameDailyStats.Guessed <= 0">
+                <label class="text-sm font-medium text-gray-400">Be the first one to find the daily game!</label>
+            </div>
             <br>
             <div>
                 <label class="text-sm font-medium text-gray-400">Yesterday's game was {{ getYesterdaysGameName() }}.</label>

@@ -1,6 +1,6 @@
 <div *ngIf="myDailyChallengeComponent.myapp.gameService.gameData !== undefined">
 
-    <div *ngif="myDailyChallengeComponent.isGameInProgress()">
+    <div *ngIf="myDailyChallengeComponent.isGameInProgress() && myDailyChallengeComponent.myapp.gameService.GetCurrentGame().GuessedGameIds.length > 0 ">
         <h1>Guessed games ({{ myDailyChallengeComponent.myapp.gameService.GetCurrentGame().GuessedGameIds.length }} / {{ myDailyChallengeComponent.myapp.gameService.maxNumberOfGuesses }})</h1>
     </div>
 

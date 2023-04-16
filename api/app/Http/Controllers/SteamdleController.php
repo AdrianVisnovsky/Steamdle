@@ -19,7 +19,7 @@ class SteamdleController extends Controller
 
         $day = new DateTime("now", new DateTimeZone('Europe/Bratislava'));
 
-        $result = DB::select("CALL getDailyChallengeGame('" . $day . "');");
+        $result = DB::select("CALL getDailyChallengeGame('" . $day->format('Y-m-d') . "');");
         return $result;
 
     }
@@ -50,7 +50,9 @@ class SteamdleController extends Controller
 
         throw_if(DateTime::createFromFormat('Y-m-d', $day) === false, \Exception::class, 'Value is not a date in correct format');
 
-        $result = DB::select("CALL addSuccessfulGuess('" . $day . "');");
+        $dayDatetime = date_create_from_format('Y-m-d', $day);
+
+        $result = DB::select("CALL addSuccessfulGuess('" . $dayDatetime->format('Y-m-d') . "');");
         return $result;
     }
 
@@ -59,7 +61,9 @@ class SteamdleController extends Controller
 
         throw_if(DateTime::createFromFormat('Y-m-d', $day) === false, \Exception::class, 'Value is not a date in correct format');
 
-        $result = DB::select("SELECT PlayerCount, Guessed FROM `daily_challenge` WHERE `Day` = '" . $day . "';");
+        $dayDatetime = date_create_from_format('Y-m-d', $day);
+
+        $result = DB::select("SELECT PlayerCount, Guessed FROM `daily_challenge` WHERE `Day` = '" . $dayDatetime->format('Y-m-d') . "';");
         return $result;
     }
 
