@@ -29,6 +29,7 @@ import { SinglelinearrayPipe } from './singlelinearray.pipe';
 import { AvailableGamesComponent } from './components/available-games/available-games.component';
 import { PatchNotesComponent } from './components/patch-notes/patch-notes.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { FormatTimePipe } from './format-time.pipe';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
     SinglelinearrayPipe,
     AvailableGamesComponent,
     PatchNotesComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    FormatTimePipe
   ],
   imports: [
     BrowserModule,

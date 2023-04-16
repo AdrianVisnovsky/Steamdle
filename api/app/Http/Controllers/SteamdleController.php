@@ -13,7 +13,7 @@ use DB;
 
 class SteamdleController extends Controller
 {
-    
+
     public function getDailyChallengeGame()
     {
 
@@ -32,12 +32,17 @@ class SteamdleController extends Controller
         return $day->format('Y-m-d');
     }
 
-    public function getServerDateTime()
+    public function getSecondsToNewGame()
     {
 
         $day = new DateTime("now", new DateTimeZone('Europe/Bratislava'));
+        //$timeLeft = 86400 - (time() - strtotime($day->getTimestamp()));
 
-        return $day->format("Y-m-d H:i:s");
+        $nextDate = new Datetime("tomorrow", new DateTimeZone('Europe/Bratislava'));
+        $diffInSeconds = $nextDate->getTimestamp() - $day->getTimestamp();
+        return $diffInSeconds;
+
+        return date("H:i:s", $timeLeft);
     }
 
     public function addSuccessfulGuess($day)

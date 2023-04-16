@@ -17,7 +17,7 @@ use App\Http\Controllers\SteamdleController;
 //Route::middleware(['throttle:ip_address'])->group(function () {
 Route::get('/getDailyChallengeGame', [SteamdleController::class, 'getDailyChallengeGame']);
 Route::get('/getServerDate', [SteamdleController::class, 'getServerDate']);
-Route::get('/getServerDateTime', [SteamdleController::class, 'getServerDateTime']);
+Route::get('/getSecondsToNewGame', [SteamdleController::class, 'getSecondsToNewGame']);
 Route::get('/addSuccessfulGuess/{day}', [SteamdleController::class, 'addSuccessfulGuess']);
 Route::get('/getNumberOfSuccesfullGuesses/{day}', [SteamdleController::class, 'getNumberOfSuccesfullGuesses']);
 Route::get('/getLastDaysGameId', [SteamdleController::class, 'getLastDaysGameId']);
