@@ -4,7 +4,7 @@
         <h1>Guessed games ({{ myDailyChallengeComponent.myapp.gameService.GetCurrentGame().GuessedGameIds.length }} / {{ myDailyChallengeComponent.myapp.gameService.maxNumberOfGuesses }})</h1>
     </div>
 
-    <div class="flex flex-wrap text-center text-lg">
+    <div *ngIf="myDailyChallengeComponent.myapp.gameService.GetCurrentGame().GuessedGameIds.length > 0" class="flex flex-wrap text-center text-lg">
 
         <div class="square">
             <strong class="uppercase">Game icon</strong>
@@ -21,10 +21,6 @@
         <div class="square">
             <strong class="uppercase">Owners</strong>
         </div>
-
-        <!--<div class="square">
-            <strong>Achievements</strong>
-        </div>-->
 
         <div class="square">
             <strong class="uppercase">Genres</strong>
