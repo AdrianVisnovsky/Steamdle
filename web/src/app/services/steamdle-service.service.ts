@@ -1,10 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, LOCALE_ID } from '@angular/core';
 import { DailyChallenge } from '../interfaces/daily-challenge';
 import { lastValueFrom } from 'rxjs';
 import { AddSuccessfulGuessResult } from '../interfaces/add-successful-guess-result';
 import { GameDailyStats } from '../interfaces/game-daily-stats';
-import { YesterdaysGameId } from '../interfaces/yesterdays-game-id';
+import { LastDayStats } from '../interfaces/last-day-stats';
 import { formatDate } from '@angular/common';
 
 @Injectable({
@@ -45,10 +45,10 @@ export class SteamdleService {
 
 	}
 
-	public getLastDaysGameId(): Promise<YesterdaysGameId[]> {
+	public getLastDaysGameStats(): Promise<LastDayStats[]> {
 
-		let url: string = this.defaultUrl + '/getLastDaysGameId';
-		return lastValueFrom(this.http.get<YesterdaysGameId[]>(url));
+		let url: string = this.defaultUrl + '/getLastDaysGameStats';
+		return lastValueFrom(this.http.get<LastDayStats[]>(url));
 
 	}
 

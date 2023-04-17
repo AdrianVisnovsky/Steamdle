@@ -67,13 +67,19 @@ class SteamdleController extends Controller
         return $result;
     }
 
-    public function getLastDaysGameId()
+    public function getLastDaysGameStats()
     {
 
         $day = new DateTime("now", new DateTimeZone('Europe/Bratislava'));
         $yesterdayDT = $day->sub(new DateInterval('P1D'));
 
-        $result = DB::select("SELECT AppId FROM `daily_challenge` WHERE `Day` = '" . $yesterdayDT->format('Y-m-d') . "';");
+        $sqlString =
+"SELECT AppId, Guessed,
+    (SELECT COUNT(*) FROM `daily_challenge` WHERE `Day` < '" . $yesterdayDT->format('Y-m-d') . "') As GameOrder
+    FROM `daily_challenge`
+    WHERE `Day` = '" . $yesterdayDT->format('Y-m-d') . "';";
+
+        $result = DB::select($sqlString);
         return $result;
 
     }

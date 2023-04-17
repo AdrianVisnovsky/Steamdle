@@ -79,7 +79,15 @@ export class DailyChallengeComponent implements OnInit {
 	}
 
 	public getYesterdaysGameName(): string {
-		return this.myapp.steamGames.filter(options => options.id === this.myapp.gameService.lastDayGameId).at(0)!.name;
+		return this.myapp.steamGames.filter(options => options.id === this.myapp.gameService.lastDayStats.AppId).at(0)!.name;
+	}
+
+	public getYesterdaysGameOrder(): number {
+		return this.myapp.gameService.lastDayStats.GameOrder;
+	}
+
+	public getYesterdaysGameGuessed(): number {
+		return this.myapp.gameService.lastDayStats.Guessed;
 	}
 
 }

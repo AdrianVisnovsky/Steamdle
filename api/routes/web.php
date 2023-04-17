@@ -20,5 +20,5 @@ Route::get('/getServerDate', [SteamdleController::class, 'getServerDate']);
 Route::get('/getSecondsToNewGame', [SteamdleController::class, 'getSecondsToNewGame']);
 Route::get('/addSuccessfulGuess/{day}', [SteamdleController::class, 'addSuccessfulGuess']);
 Route::get('/getNumberOfSuccesfullGuesses/{day}', [SteamdleController::class, 'getNumberOfSuccesfullGuesses']);
-Route::get('/getLastDaysGameId', [SteamdleController::class, 'getLastDaysGameId']);
+Route::get('/getLastDaysGameStats', [SteamdleController::class, 'getLastDaysGameStats']);
 //});
