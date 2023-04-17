@@ -124,8 +124,6 @@ export class GameServiceService {
 		// check guessed game
 		if(gameToAddId === currGame.AppId) {
 
-			console.log("game guessed");
-
 			currGame.GameState = GameState.Won;
 			let playerOrder: AddSuccessfulGuessResult = (await this.steamdleService.addSuccessfulGuess(this.day)).at(0)!;
 			currGame.Order = playerOrder.Guessed;
