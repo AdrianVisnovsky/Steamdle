@@ -15,7 +15,7 @@ export class GameServiceService {
 	public day: Date = <Date>{};
 	public gameData: GameData = <GameData>{};
 	public gameDailyStats: GameDailyStats = <GameDailyStats>{};
-	public lastDayStats: LastDayStats = <LastDayStats>{};
+	public lastDayStats: LastDayStats | undefined;
 
 	public readonly maxNumberOfGuesses: number = 8;
 
