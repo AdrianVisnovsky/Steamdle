@@ -75,7 +75,7 @@ class SteamdleController extends Controller
 
         $sqlString =
 "SELECT AppId, Guessed,
-    (SELECT COUNT(*) FROM `daily_challenge` WHERE `Day` < '" . $yesterdayDT->format('Y-m-d') . "') As GameOrder
+    (SELECT COUNT(*) FROM `daily_challenge` WHERE `Day` <= '" . $yesterdayDT->format('Y-m-d') . "') As GameOrder
     FROM `daily_challenge`
     WHERE `Day` = '" . $yesterdayDT->format('Y-m-d') . "';";
 

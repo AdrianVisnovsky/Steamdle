@@ -22,7 +22,7 @@
             </div>
         </div>
     
-        <div class="square">
+        <div class="square flex-wrap">
             <div [ngClass]="{'border-green-800 shadow-green-800 bg-green-700': ownersHint === 2, 'border-yellow-700 shadow-yellow-700 bg-yellow-600': ownersHint === 3 || ownersHint === 4}" class="ml-1 mr-1 p-4 border-4 flex justify-center h-full rounded-2xl shadow-[inset_0_0_10px_8px] w-full">
                 <div class="grow self-center text-center text-2xl">
                     {{ game.owners | number}}
@@ -32,7 +32,7 @@
     
         <div class="square">
             <div [ngClass]="{'border-red-600 shadow-red-600 bg-red-500': genresHint === 0, 'border-yellow-700 shadow-yellow-700 bg-yellow-600': genresHint === 1, 'border-green-800 shadow-green-800 bg-green-700': genresHint === 2}" class="ml-1 mr-1 p-4 border-4 flex justify-center h-full rounded-2xl border-yellow-700 shadow-yellow-700 bg-yellow-600 shadow-[inset_0_0_10px_8px] w-full">
-                <div class="group relative inline-block text-lg " [innerHTML]="PrintGameGenres(game.genres)">
+                <div class="group relative inline-block text-base" [innerHTML]="PrintGameGenres(game.genres)">
                 </div>
             </div>
         </div>
