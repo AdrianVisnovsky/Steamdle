@@ -8,14 +8,14 @@
                 <div>
                     <p class="text-base font-bold text-navy-700 mb-0">{{ game.name }}<span class="align-middle text-sm leading-4 font-medium text-gray-600"> ({{ game.released }})</span></p>
                 </div>
-                <div class="flex flex-row-reverse -mt-6">
-                    <span *ngIf="IsGameOnLinux()" class="z-10 -mr-3 h-8 w-8 rounded-full border-2 border-white">
+                <div class="flex flex-row-reverse -mt-6 mr-1">
+                    <span *ngIf="IsGameOnLinux()" class="z-10 -mr-4 h-10 w-10 rounded-full border-2 border-white">
                         <img class="h-full w-full rounded-full object-cover" src="../assets/images/linux.png" alt="Linux logo">
                     </span>
-                    <span *ngIf="IsGameOnMacOs()" class="z-10 -mr-3 h-8 w-8 rounded-full border-2 bg-white border-white">
+                    <span *ngIf="IsGameOnMacOs()" class="z-10 -mr-4 h-10 w-10 rounded-full border-2 bg-white border-white">
                         <img class="h-full w-full rounded-full object-cover" src="../assets/images/mac-os.png" alt="Mac Os logo">
                     </span>
-                    <span *ngIf="IsGameOnWindows()" class="z-10 -mr-3 h-8 w-8 rounded-full border-2 border-white">
+                    <span *ngIf="IsGameOnWindows()" class="z-10 -mr-4 h-10 w-10 rounded-full border-2 border-white">
                         <img class="h-full w-full rounded-full object-cover" src="../assets/images/windows.png" alt="Windows logo">
                     </span>
                 </div>

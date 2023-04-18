@@ -26,7 +26,7 @@
 
         </div>
 
-        <app-game-result [gameState]="myapp.gameService.GetCurrentGame().GameState" [gameToGuess]="gameToGuess"></app-game-result>
+        <app-game-result class="grid justify-items-stretch" [gameState]="myapp.gameService.GetCurrentGame().GameState" [gameToGuess]="gameToGuess"></app-game-result>
         
         <div class="text-center p-4">
             <div *ngIf="myapp.gameService.gameDailyStats.Guessed > 0">
