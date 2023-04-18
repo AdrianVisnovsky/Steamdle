@@ -7,38 +7,38 @@
         </div>
     
         <div class="square">
-            <div [ngClass]="{'border-green-500 shadow-green-500': releasedHint === 2, 'border-yellow-400 shadow-yellow-400': releasedHint === 3 || releasedHint === 4}" class="ml-1 mr-1 p-4 border-4 flex justify-center h-full rounded-2xl border-yellow-400 shadow-yellow-400 shadow-[inset_0_0_10px_8px] w-full">
-                <div class="grow self-center text-center text-lg">
+            <div [ngClass]="{'border-green-800 shadow-green-800 bg-green-700': releasedHint === 2, 'border-yellow-700 shadow-yellow-700 bg-yellow-600': releasedHint === 3 || releasedHint === 4}" class="ml-1 mr-1 p-4 border-4 flex justify-center h-full rounded-2xl border-yellow-700 shadow-yellow-700 bg-yellow-600 shadow-[inset_0_0_10px_8px] w-full">
+                <div class="grow self-center text-center text-2xl">
                     {{ game.released }}
                 </div>
             </div>
         </div>
     
         <div class="square">
-            <div [ngClass]="{'border-green-500 shadow-green-500': scoreHint === 2, 'border-yellow-400 shadow-yellow-400': scoreHint === 3 || scoreHint === 4}" class="ml-1 mr-1 p-4 border-4 flex justify-center h-full rounded-2xl border-yellow-400 shadow-yellow-400 shadow-[inset_0_0_10px_8px] w-full">
-                <div class="grow self-center text-center text-lg">
+            <div [ngClass]="{'border-green-800 shadow-green-800 bg-green-700': scoreHint === 2, 'border-yellow-700 shadow-yellow-700 bg-yellow-600': scoreHint === 3 || scoreHint === 4}" class="ml-1 mr-1 p-4 border-4 flex justify-center h-full rounded-2xl border-yellow-700 shadow-yellow-700 bg-yellow-600 shadow-[inset_0_0_10px_8px] w-full">
+                <div class="grow self-center text-center text-2xl">
                     {{ game.score }}
                 </div>
             </div>
         </div>
     
         <div class="square">
-            <div [ngClass]="{'border-green-500 shadow-green-500': ownersHint === 2, 'border-yellow-400 shadow-yellow-400': ownersHint === 3 || ownersHint === 4}" class="ml-1 mr-1 p-4 border-4 flex justify-center h-full rounded-2xl shadow-[inset_0_0_10px_8px] w-full">
-                <div class="grow self-center text-center text-lg">
+            <div [ngClass]="{'border-green-800 shadow-green-800 bg-green-700': ownersHint === 2, 'border-yellow-700 shadow-yellow-700 bg-yellow-600': ownersHint === 3 || ownersHint === 4}" class="ml-1 mr-1 p-4 border-4 flex justify-center h-full rounded-2xl shadow-[inset_0_0_10px_8px] w-full">
+                <div class="grow self-center text-center text-2xl">
                     {{ game.owners | number}}
                 </div>
             </div>
         </div>
     
         <div class="square">
-            <div [ngClass]="{'border-red-500 shadow-red-500': genresHint === 0, 'border-yellow-400 shadow-yellow-400': genresHint === 1, 'border-green-500 shadow-green-500': genresHint === 2}" class="ml-1 mr-1 p-4 border-4 flex justify-center h-full rounded-2xl border-yellow-400 shadow-yellow-400 shadow-[inset_0_0_10px_8px] w-full">
+            <div [ngClass]="{'border-red-600 shadow-red-600 bg-red-500': genresHint === 0, 'border-yellow-700 shadow-yellow-700 bg-yellow-600': genresHint === 1, 'border-green-800 shadow-green-800 bg-green-700': genresHint === 2}" class="ml-1 mr-1 p-4 border-4 flex justify-center h-full rounded-2xl border-yellow-700 shadow-yellow-700 bg-yellow-600 shadow-[inset_0_0_10px_8px] w-full">
                 <div class="group relative inline-block text-lg " [innerHTML]="PrintGameGenres(game.genres)">
                 </div>
             </div>
         </div>
     
         <div class="square">
-            <div [ngClass]="{'border-red-500 shadow-red-500': platformsHint === 0, 'border-yellow-400 shadow-yellow-400': platformsHint === 1, 'border-green-500 shadow-green-500': platformsHint === 2}" class="p-4 border-4 flex justify-center h-full rounded-2xl shadow-[inset_0_0_10px_8px] w-full">
+            <div [ngClass]="{'border-red-600 shadow-red-600 bg-red-500': platformsHint === 0, 'border-yellow-700 shadow-yellow-700 bg-yellow-600': platformsHint === 1, 'border-green-800 shadow-green-800 bg-green-700': platformsHint === 2}" class="p-4 border-4 flex justify-center h-full rounded-2xl shadow-[inset_0_0_10px_8px] w-full">
                 <div class="flex flex-row-reverse self-center">
                     <span *ngIf="IsGameOnLinux()" class="z-10 -mr-4 h-10 w-10 rounded-full border-2 border-white">
                         <img class="h-full w-full rounded-full object-cover" src="../assets/images/linux.png" alt="Linux logo">
