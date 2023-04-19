@@ -1,7 +1,11 @@
-<app-navigation></app-navigation>
+<div class="min-h-screen grid" style="grid-template-rows: auto 1fr auto;">
 
-<main>
-    <router-outlet></router-outlet>
-</main>
+    <app-navigation></app-navigation>
 
-<app-footer></app-footer>
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+    
+    <app-footer class="place-items-end"></app-footer>
+
+</div>
