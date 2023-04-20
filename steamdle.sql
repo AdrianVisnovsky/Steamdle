@@ -25,7 +25,7 @@ DELIMITER $$
 --
 -- Procedures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `addSuccessfulGuess` (IN `in_day` DATE)   BEGIN
+CREATE DEFINER=`a312833_steamle`@`localhost` PROCEDURE `addSuccessfulGuess` (IN `in_day` DATE)   BEGIN
 
 	IF (SELECT COUNT(*) FROM `daily_challenge` WHERE Day = in_day) > 0 THEN
 
@@ -41,7 +41,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `addSuccessfulGuess` (IN `in_day` DA
 
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getDailyChallengeGame` (IN `gameDay` DATE)  DETERMINISTIC BEGIN
+CREATE DEFINER=`a312833_steamle`@`localhost` PROCEDURE `getDailyChallengeGame` (IN `gameDay` DATE)  DETERMINISTIC BEGIN
 
 	IF (SELECT COUNT(*) FROM `daily_challenge` WHERE Day = gameDay) = 0 THEN
 
@@ -83,19 +83,6 @@ CREATE TABLE `daily_challenge` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `daily_challenge`
---
-
-INSERT INTO `daily_challenge` (`ID`, `Day`, `AppId`, `PlayerCount`, `Guessed`, `created_at`, `updated_at`) VALUES
-(1, '2023-04-02', 440, 71, 5, NULL, NULL),
-(2, '2023-04-03', 377160, 40, 1, NULL, NULL),
-(4, '2023-04-04', 20540, 1, 1, NULL, NULL),
-(5, '2023-04-07', 304390, 73, 1, NULL, NULL),
-(6, '2023-04-08', 380600, 43, 1, NULL, NULL),
-(8, '2023-04-09', 838350, 47, 8, NULL, NULL),
-(9, '2023-04-10', 204300, 1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 

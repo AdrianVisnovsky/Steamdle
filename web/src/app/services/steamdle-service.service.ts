@@ -13,19 +13,20 @@ import { formatDate } from '@angular/common';
 export class SteamdleService {
 
 	private defaultUrl: string = "http://127.0.0.1:8000";
+	private apiUrl: string = "https://api.steamdle.com";
 
 	constructor(private http: HttpClient, @Inject(LOCALE_ID) private locale: string) { }
 
 	public getDailyChallenge(): Promise<DailyChallenge[]> {
 
-		let url: string = this.defaultUrl + '/getDailyChallengeGame';
+		let url: string = this.apiUrl + '/getDailyChallengeGame';
 		return lastValueFrom(this.http.get<DailyChallenge[]>(url));
 
 	}
 
 	public getServerDate(): Promise<any> {
 
-		let url: string = this.defaultUrl + '/getServerDate';
+		let url: string = this.apiUrl + '/getServerDate';
 		return lastValueFrom(this.http.get(url, {responseType: 'text'}));
 
 		//return this.http.get<Date>(this.defaultUrl + '/getServerDate', {responseType: 'text'});
@@ -33,28 +34,28 @@ export class SteamdleService {
 
 	public addSuccessfulGuess(day: Date): Promise<AddSuccessfulGuessResult[]> {
 
-		let url: string = this.defaultUrl + '/addSuccessfulGuess/' + formatDate(day, 'yyyy-MM-dd', this.locale);
+		let url: string = this.apiUrl + '/addSuccessfulGuess/' + formatDate(day, 'yyyy-MM-dd', this.locale);
 		return lastValueFrom(this.http.get<AddSuccessfulGuessResult[]>(url));
 
 	}
 
 	public getNumberOfSuccesfullGuesses(day: Date): Promise<GameDailyStats[]> {
 
-		let url: string = this.defaultUrl + '/getNumberOfSuccesfullGuesses/' + formatDate(day, 'yyyy-MM-dd', this.locale);
+		let url: string = this.apiUrl + '/getNumberOfSuccesfullGuesses/' + formatDate(day, 'yyyy-MM-dd', this.locale);
 		return lastValueFrom(this.http.get<GameDailyStats[]>(url));
 
 	}
 
 	public getLastDaysGameStats(): Promise<LastDayStats[]> {
 
-		let url: string = this.defaultUrl + '/getLastDaysGameStats';
+		let url: string = this.apiUrl + '/getLastDaysGameStats';
 		return lastValueFrom(this.http.get<LastDayStats[]>(url));
 
 	}
 
 	public getSecondsToNewGame(): Promise<number> {
 
-		let url: string = this.defaultUrl + '/getSecondsToNewGame';
+		let url: string = this.apiUrl + '/getSecondsToNewGame';
 		return lastValueFrom(this.http.get<number>(url));
 
 	}
