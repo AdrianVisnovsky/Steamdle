@@ -28,6 +28,7 @@ export class DailyChallengeComponent implements OnInit {
 		await this.myapp.gameService.dataLoaded;
 		this.gameToGuess = this.myapp.steamGames.filter((game) => game.id === this.myapp.gameService.GetCurrentGame().AppId).at(0)!;
 
+		this.announcementVisible = this.myapp.gameService.getAnnouncementVisible();
 		this.setFilteredGames();
 
 	}
@@ -88,6 +89,14 @@ export class DailyChallengeComponent implements OnInit {
 
 	public getYesterdaysGameGuessed(): number {
 		return this.myapp.gameService.lastDayStats!.Guessed;
+	}
+
+	public announcementVisible: boolean = false;
+
+	public closeAnnouncement(): void
+	{
+		this.announcementVisible = false;
+		this.myapp.gameService.setAnnouncementVisible();
 	}
 
 }

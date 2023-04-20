@@ -22,6 +22,7 @@ export class GameServiceService {
 	public dataLoaded: Promise<boolean>;
 
 	public localStorageData_v1: string = 'steamdle-gamedata-v1';
+	public localStorageAnnouncementBeta: string = 'steamdle-announcementBeta';
 
 	constructor(public steamdleService: SteamdleService) {
 		this.dataLoaded = this.LoadData();
@@ -30,6 +31,17 @@ export class GameServiceService {
 	public resetStorage()
 	{
 		localStorage.removeItem(this.localStorageData_v1);
+		localStorage.removeItem(this.localStorageAnnouncementBeta);
+	}
+
+	public getAnnouncementVisible(): boolean
+	{
+		return localStorage.getItem(this.localStorageAnnouncementBeta) === null;
+	}
+
+	public setAnnouncementVisible(): void
+	{
+		localStorage.setItem(this.localStorageAnnouncementBeta, "false");
 	}
 
 	/**
@@ -38,6 +50,8 @@ export class GameServiceService {
 	 */
 	public async LoadData(): Promise<boolean>
 	{
+
+		//this.resetStorage();
 
 		this.day = await this.steamdleService.getServerDate();
 
@@ -135,7 +149,7 @@ export class GameServiceService {
 			this.gameDailyStats = (await this.steamdleService.getNumberOfSuccesfullGuesses(this.day)).at(0)!;
 		}
 
-		this.printDebugLog();
+		//this.printDebugLog();
 		this.saveGameDataToLocalStorage()
 
 	}

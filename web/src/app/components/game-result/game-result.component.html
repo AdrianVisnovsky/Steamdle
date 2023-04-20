@@ -10,13 +10,13 @@
     <div *ngIf="gameState == gState.Won" class="m-6">
 
       <div class="text-center">
-        <p>
-          Number of tries: {{ dailyChall.myapp.gameService.GetCurrentGame().GuessedGameIds.length }}<br>
+        <p class="text-base font-medium text-gray-400">
+          Number of tries: #{{ dailyChall.myapp.gameService.GetCurrentGame().GuessedGameIds.length }}<br>
         </p>
       </div>
       <div class="text-center">
-        <p>
-          You're the {{ dailyChall.myapp.gameService.GetCurrentGame().Order }} to find the game today
+        <p class="text-base font-medium text-gray-400">
+          You're the #{{ dailyChall.myapp.gameService.GetCurrentGame().Order }} to find the game today
         </p>
       </div>
 
@@ -24,8 +24,9 @@
 
     <div class="text-center">
       <div *ngIf="counter > 0">
-        <p>
-          Time to next game: {{ counter | formatTime }}
+        <p class="text-base font-medium text-gray-400">
+          Time to next game:<br>
+          <label class="text-2xl">{{ counter | formatTime }}</label>
         </p>
       </div>
       <div *ngIf="counter <= 0">

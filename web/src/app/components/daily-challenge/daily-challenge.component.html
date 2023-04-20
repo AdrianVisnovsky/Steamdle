@@ -1,4 +1,11 @@
-<div *ngIf="myapp.gameService.dataLoaded | async" class="flex justify-center">
+<div *ngIf="myapp.gameService.dataLoaded | async" class="flex flex-col items-center">
+
+    <div *ngIf="announcementVisible" class="p-4 m-4 flex items-center rounded-[15px] h-16 max-w-screen-xl bg-amber-500 shadow-lg shadow-amber-400">
+        <label class="pr-4 text-base text-">🎉🎉 Steamdle beta released! Check out the game and if you have suggestion, found any bug feel free to <a class="underline hover:text-sky-600" href="mailto:steamdle@steamdle.com">contact us!</a></label>
+        <button (click)="closeAnnouncement()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded">
+            X
+        </button>
+    </div>
 
     <!-- Gameplay -->
     <div class="p-4 m-4 rounded-[15px] max-w-screen-xl" style="background-color: #171c30; min-width: 45vw;">
@@ -30,10 +37,10 @@
         
         <div class="text-center p-4">
             <div *ngIf="myapp.gameService.gameDailyStats.Guessed > 0">
-                <label class="text-sm font-medium text-gray-400">{{ myapp.gameService.gameDailyStats.Guessed }} of {{ myapp.gameService.gameDailyStats.PlayerCount }} people already found out!</label>
+                <label class="text-base font-medium text-gray-400">{{ myapp.gameService.gameDailyStats.Guessed }} of {{ myapp.gameService.gameDailyStats.PlayerCount }} players already found out!</label>
             </div>
             <div *ngIf="myapp.gameService.gameDailyStats.Guessed <= 0">
-                <label class="text-sm font-medium text-gray-400">Be the first one to find the daily game!</label>
+                <label class="text-base font-medium text-gray-400">Be the first one to find the daily game!</label>
             </div>
         </div>
 
@@ -42,7 +49,7 @@
         <div class="text-center border-t border-gray-400">
             <br>
             <div *ngIf="myapp.gameService.lastDayStats !== undefined">
-                <label class="text-sm font-medium text-gray-400">Yesterday's game #{{ getYesterdaysGameOrder() }} was {{ getYesterdaysGameName() }}, guessed by {{ getYesterdaysGameGuessed() }} people.</label>
+                <label class="text-sm font-medium text-gray-400">Yesterday's game #{{ getYesterdaysGameOrder() }} was {{ getYesterdaysGameName() }}, guessed by {{ getYesterdaysGameGuessed() }} players.</label>
             </div>
         </div>
 
