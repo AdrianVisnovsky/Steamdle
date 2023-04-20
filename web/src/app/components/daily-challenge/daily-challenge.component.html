@@ -1,7 +1,7 @@
 <div *ngIf="myapp.gameService.dataLoaded | async" class="flex flex-col items-center">
 
     <div *ngIf="announcementVisible" class="p-4 m-4 flex items-center rounded-[15px] h-16 max-w-screen-xl bg-amber-500 shadow-lg shadow-amber-400">
-        <label class="pr-4 text-base text-">🎉🎉 Steamdle beta released! Check out the game and if you have suggestion, found any bug feel free to <a class="underline hover:text-sky-600" href="mailto:steamdle@steamdle.com">contact us!</a></label>
+        <label class="pr-4 text-base text-">🎉🎉 Steamdle beta released! Check out the game and if you have a suggestion, found any bug feel free to <a class="underline hover:text-sky-600" href="mailto:steamdle@steamdle.com">contact us!</a></label>
         <button (click)="closeAnnouncement()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded">
             X
         </button>
@@ -37,7 +37,7 @@
         
         <div class="text-center p-4">
             <div *ngIf="myapp.gameService.gameDailyStats.Guessed > 0">
-                <label class="text-base font-medium text-gray-400">{{ myapp.gameService.gameDailyStats.Guessed }} of {{ myapp.gameService.gameDailyStats.PlayerCount }} players already found out!</label>
+                <label class="text-base font-medium text-gray-400"><span class="text-xl text-amber-500">#{{ myapp.gameService.gameDailyStats.Guessed }}</span> of <span class="text-xl text-amber-500">#{{ myapp.gameService.gameDailyStats.PlayerCount }}</span> players already found out!</label>
             </div>
             <div *ngIf="myapp.gameService.gameDailyStats.Guessed <= 0">
                 <label class="text-base font-medium text-gray-400">Be the first one to find the daily game!</label>
