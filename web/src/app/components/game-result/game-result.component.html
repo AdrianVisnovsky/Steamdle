@@ -11,12 +11,12 @@
 
       <div class="text-center">
         <p class="text-base font-medium text-gray-400">
-          Number of tries: #{{ dailyChall.myapp.gameService.GetCurrentGame().GuessedGameIds.length }}<br>
+          Number of tries: <span class="text-amber-500 text-xl">#{{ dailyChall.myapp.gameService.GetCurrentGame().GuessedGameIds.length }}</span><br>
         </p>
       </div>
       <div class="text-center">
         <p class="text-base font-medium text-gray-400">
-          You're the #{{ dailyChall.myapp.gameService.GetCurrentGame().Order }} to find the game today
+          You're the <span class="text-amber-500 text-xl">#{{ dailyChall.myapp.gameService.GetCurrentGame().Order }}</span> to find the game today
         </p>
       </div>
 
@@ -26,11 +26,11 @@
       <div *ngIf="counter > 0">
         <p class="text-base font-medium text-gray-400">
           Time to next game:<br>
-          <label class="text-2xl">{{ counter | formatTime }}</label>
+          <label class="text-2xl text-amber-500">{{ counter | formatTime }}</label>
         </p>
       </div>
-      <div *ngIf="counter <= 0">
-        New game available! Refresh page to play new daily challenge.
+      <div class="text-lg font-medium text-amber-500" *ngIf="counter <= 0">
+        New game available! Refresh page to play new daily challenge!
       </div>      
     </div>
 </div>

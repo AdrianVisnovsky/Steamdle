@@ -49,7 +49,7 @@
         <div class="text-center border-t border-gray-400">
             <br>
             <div *ngIf="myapp.gameService.lastDayStats !== undefined">
-                <label class="text-sm font-medium text-gray-400">Yesterday's game #{{ getYesterdaysGameOrder() }} was {{ getYesterdaysGameName() }}, guessed by {{ getYesterdaysGameGuessed() }} players.</label>
+                <label class="text-sm font-medium text-gray-400">Yesterday's game <span class="text-xl text-amber-500">#{{ getYesterdaysGameOrder() }}</span> was <span class="text-xl text-amber-500">{{ getYesterdaysGameName() }}</span>, guessed by <span class="text-xl text-amber-500">{{ getYesterdaysGameGuessed() }}</span> players.</label>
             </div>
         </div>
 
