@@ -13,8 +13,8 @@
                 </div>
                 <div [ngSwitch]="releasedHint" class="self-center">
                     <img *ngSwitchCase="2"/>
-                    <img *ngSwitchCase="3" src="../../assets/images/icons8-down-96.png" width="42"/>
-                    <img *ngSwitchCase="4" src="../../assets/images/icons8-up-96.png" width="42"/>
+                    <label *ngSwitchCase="3" class="pl-1 text-3xl">⬇️</label>
+                    <label *ngSwitchCase="4" class="pl-1 text-3xl">⬆️</label>
                 </div>
             </div>
         </div>
@@ -26,8 +26,8 @@
                 </div>
                 <div [ngSwitch]="scoreHint" class="self-center">
                     <img *ngSwitchCase="2"/>
-                    <img *ngSwitchCase="3" src="../../assets/images/icons8-down-96.png" width="42"/>
-                    <img *ngSwitchCase="4" src="../../assets/images/icons8-up-96.png" width="42"/>
+                    <label *ngSwitchCase="3" class="pl-1 text-3xl">⬇️</label>
+                    <label *ngSwitchCase="4" class="pl-1 text-3xl">⬆️</label>
                 </div>
             </div>
         </div>
@@ -39,8 +39,8 @@
                 </div>
                 <div [ngSwitch]="ownersHint" class="self-center">
                     <img *ngSwitchCase="2"/>
-                    <img *ngSwitchCase="3" src="../../assets/images/icons8-down-96.png" width="42"/>
-                    <img *ngSwitchCase="4" src="../../assets/images/icons8-up-96.png" width="42"/>
+                    <label *ngSwitchCase="3" class="pl-1 text-3xl">⬇️</label>
+                    <label *ngSwitchCase="4" class="pl-1 text-3xl">⬆️</label>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
     
         <div class="square">
             <div [ngClass]="{'border-red-600 shadow-red-600 bg-red-500': platformsHint === 0, 'border-yellow-700 shadow-yellow-700 bg-yellow-600': platformsHint === 1, 'border-green-800 shadow-green-800 bg-green-700': platformsHint === 2}" class="ml-1 mr-1 p-2 border-4 flex justify-center h-full rounded-2xl shadow-[inset_0_0_10px_8px] w-full">
-                <div class="flex flex-row-reverse self-center">
+                <div class="flex flex-row-reverse self-center -ml-4">
                     <span *ngIf="IsGameOnLinux()" class="z-10 -mr-4 h-10 w-10 rounded-full border-2 border-white">
                         <img class="h-full w-full rounded-full object-cover" src="../assets/images/linux.png" alt="Linux logo">
                     </span>
