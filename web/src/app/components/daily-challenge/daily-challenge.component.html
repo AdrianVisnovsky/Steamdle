@@ -1,6 +1,6 @@
 <div *ngIf="myapp.gameService.dataLoaded | async" class="flex flex-col items-center">
 
-    <div *ngIf="announcementVisible" class="p-4 m-4 flex items-center rounded-[15px] h-16 max-w-screen-xl bg-amber-500 shadow-lg shadow-amber-400">
+    <div *ngIf="announcementVisible" class="p-4 m-4 flex items-center rounded-[15px] max-w-screen-xl bg-amber-500 shadow-lg shadow-amber-400">
         <label class="pr-4 text-base text-">🎉🎉 Steamdle beta released! Check out the game and if you have a suggestion, found any bug feel free to <a class="underline hover:text-sky-600" href="mailto:steamdle@steamdle.com">contact us!</a></label>
         <button (click)="closeAnnouncement()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded">
             X
