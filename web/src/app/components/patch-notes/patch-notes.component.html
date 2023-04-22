@@ -17,12 +17,17 @@
 
         <h1>Patch notes</h1>
         
-        <div class="p-4 m-2 rounded-[15px] text-gray-300 bg-gray-800">
-            <h2>1.0 - Beta</h2>
-            <p>
-                This version includes initial release of the game. Players are able to guess daily challenge game. Game data is stored for upcomming content updates.<br>
-                We welcome your feedback and suggestions.
-            </p>
+        <div *ngFor="let patchNote of patchNotes" class="p-4 m-2 rounded-[15px] text-gray-300 bg-gray-800">
+            <h2 style="margin: 0 !important;">{{ patchNote.day | date }}</h2>
+            <p class="m-4">{{ patchNote.version }}</p>
+            <p [innerHTML]="patchNote.description"></p>
+            <h3 *ngIf="patchNotes.keys.length > 0">CHANGELOG:</h3>
+            <ul *ngFor="let key of patchNote.keys">
+                <li class="m-3">
+                    <span [ngClass]="{'bg-green-600': key.label === 'new', 'bg-blue-500': key.label === 'improvement', 'bg-red-500': key.label === 'bugfix'}" class="rounded-[15px] py-1 px-3 mr-2">*{{ key.label }}*</span>
+                    {{ key.text }}
+                </li>
+            </ul>
         </div>
 
     </div>

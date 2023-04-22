@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class NavigationComponent {
 
+  public mobileMenuExpanded: boolean = false;
+
+  public toggleMobileMenu(): void {
+    this.mobileMenuExpanded = !this.mobileMenuExpanded;
+  }
+
 }

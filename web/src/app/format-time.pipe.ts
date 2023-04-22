@@ -1,3 +1,4 @@
+import { Time } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
@@ -14,9 +15,9 @@ export class FormatTimePipe implements PipeTransform {
     return (
       (h) +
       ":" +
-      ("00" + m).slice(2) +
+      ("00" + m).slice(-2) +
       ":" +
-      ("00" + s).slice(2)
+      ("00" + s).slice(-2)
     );
 
   }
