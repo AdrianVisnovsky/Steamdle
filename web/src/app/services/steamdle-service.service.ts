@@ -6,6 +6,7 @@ import { AddSuccessfulGuessResult } from '../interfaces/add-successful-guess-res
 import { GameDailyStats } from '../interfaces/game-daily-stats';
 import { LastDayStats } from '../interfaces/last-day-stats';
 import { formatDate } from '@angular/common';
+import { GameStatistics } from '../interfaces/game-statistics';
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +58,13 @@ export class SteamdleService {
 
 		let url: string = this.apiUrl + '/getSecondsToNewGame';
 		return lastValueFrom(this.http.get<number>(url));
+
+	}
+
+	public getGameStatistics(): Promise<GameStatistics[]> {
+
+		let url: string = this.apiUrl + '/getGameStatistics';
+		return lastValueFrom(this.http.get<GameStatistics[]>(url));
 
 	}
 

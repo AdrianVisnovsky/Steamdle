@@ -1,7 +1,7 @@
 <div *ngIf="myapp.gameService.dataLoaded | async" class="flex flex-col items-center">
 
     <div *ngIf="announcementVisible" class="p-4 m-4 flex items-center rounded-[15px] max-w-screen-xl bg-amber-500 shadow-lg shadow-amber-400">
-        <label class="pr-4 text-base text-">🎉🎉 Steamdle beta released! Check out the game and if you have a suggestion, found any bug feel free to <a class="underline hover:text-sky-600" href="mailto:steamdle@steamdle.com">contact us!</a></label>
+        <label class="pr-4 text-base text-">🎉🎉 New version of Steamdle released! <span class="text-sm font-medium text-gray-600">({{ getGameVersion() }})</span> For more information check <a [routerLink]="['/PatchNotes']" routerLinkActive="router-link-active"  class="underline hover:text-sky-700">patch notes</a></label>
         <button (click)="closeAnnouncement()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded">
             X
         </button>

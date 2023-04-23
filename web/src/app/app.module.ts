@@ -33,6 +33,7 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
 import { FormatTimePipe } from './format-time.pipe';
 import { TermsOfUseComponent } from './components/terms-of-use/terms-of-use.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 
 @NgModule({
@@ -72,7 +73,10 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
     MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

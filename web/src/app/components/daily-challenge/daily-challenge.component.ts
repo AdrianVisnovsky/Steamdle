@@ -6,6 +6,7 @@ import { FormControl } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { GameState } from 'src/app/enums/game-state';
 import { DailyChallenge } from 'src/app/interfaces/daily-challenge';
+import { AppServiceService } from 'src/app/services/app-service.service';
 
 @Component({
 	selector: 'app-daily-challenge',
@@ -97,6 +98,10 @@ export class DailyChallengeComponent implements OnInit {
 	{
 		this.announcementVisible = false;
 		this.myapp.gameService.setAnnouncementVisible();
+	}
+
+	public getGameVersion(): string {
+		return AppServiceService.gameVersion;
 	}
 
 }

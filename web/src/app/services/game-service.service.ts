@@ -6,6 +6,7 @@ import { GameState } from '../enums/game-state';
 import { AddSuccessfulGuessResult } from '../interfaces/add-successful-guess-result';
 import { GameDailyStats } from '../interfaces/game-daily-stats';
 import { LastDayStats } from '../interfaces/last-day-stats';
+import { AppServiceService } from './app-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -36,12 +37,17 @@ export class GameServiceService {
 
 	public getAnnouncementVisible(): boolean
 	{
-		return localStorage.getItem(this.localStorageAnnouncementBeta) === null;
+
+		let lastAnnoucementVersion: string | null = localStorage.getItem(this.localStorageAnnouncementBeta);
+		if(lastAnnoucementVersion === null)
+			return true;
+
+		return lastAnnoucementVersion !== AppServiceService.gameVersion;
 	}
 
 	public setAnnouncementVisible(): void
 	{
-		localStorage.setItem(this.localStorageAnnouncementBeta, "false");
+		localStorage.setItem(this.localStorageAnnouncementBeta, AppServiceService.gameVersion);
 	}
 
 	/**

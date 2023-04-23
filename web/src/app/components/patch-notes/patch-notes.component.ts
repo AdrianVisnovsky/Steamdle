@@ -11,13 +11,13 @@ export class PatchNotesComponent {
   public patchNotes: PatchNote[] = [
 
     {
-      day: new Date(2023, 4, 23),
+      day: new Date(2023, 3, 23),
       version: 'v1.0-beta.3',
       description: '',
       keys: [
         {
           label: 'new',
-          text: 'Added player statistics. Player is now able to see history of played games, result of daily challenge and reset his statistics.'
+          text: 'Added player statistics. Player is now able to see history of daily challenge games, total number of players and how many of them guessed the game. There is also an option to reset player statistics.'
         },
         {
           label: 'improvement',
@@ -43,7 +43,7 @@ export class PatchNotesComponent {
     },
 
     {
-      day: new Date(2023, 4, 22),
+      day: new Date(2023, 3, 22),
       version: 'v1.0-beta.2',
       description: 'This version includes some UI improvements, bugfixes and improved link sharing.',
       keys: [
@@ -75,7 +75,7 @@ export class PatchNotesComponent {
     },
 
     {
-      day: new Date(2023, 4, 20),
+      day: new Date(2023, 3, 20),
       version: 'v1.0-beta.1',
       description: 'This version includes the initial release of the game. Players are able to guess the daily challenge. Game data is stored for upcoming content updates.<br>We welcome your feedback and suggestions.',
       keys: []
