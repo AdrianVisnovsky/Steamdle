@@ -105,17 +105,16 @@ export class GuessedGameRowComponent {
 			return genres.join(', <br>');
 
 		let innerHtml: string = genres.slice(0, 2).join(', <br>') + ' <br> + ' + (genres.length - 2).toString() + ' more...';
-		innerHtml +=
-			`<span class="absolute hidden group-hover:flex -left-14 -top-2 -translate-y-full w-48 px-2 py-1 bg-gray-700 rounded-lg text-center text-white text-sm after:content-[\'\']
-			after:absolute after:left-1/2 after:top-[100%] after:-translate-x-1/2 after:border-8 after:border-x-transparent after:border-b-transparent after:border-t-gray-700">
-			` + this.GetGenresTooltip(genres) + `
-			</span>`;
 
 		return innerHtml;
 	}
 
-	public GetGenresTooltip(genres: string[]): string {
-		return genres.join(', ');
+	public GetGameGenresToolTip(genres: string[]): string {
+
+		if(genres.length > 3)
+			return genres.join(', ');
+
+		return '';
 	}
 
 	public IsGameOnWindows(): boolean {

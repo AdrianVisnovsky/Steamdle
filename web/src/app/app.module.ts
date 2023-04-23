@@ -1,3 +1,4 @@
+import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -30,6 +31,8 @@ import { AvailableGamesComponent } from './components/available-games/available-
 import { PatchNotesComponent } from './components/patch-notes/patch-notes.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { FormatTimePipe } from './format-time.pipe';
+import { TermsOfUseComponent } from './components/terms-of-use/terms-of-use.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 
 @NgModule({
@@ -52,7 +55,9 @@ import { FormatTimePipe } from './format-time.pipe';
     AvailableGamesComponent,
     PatchNotesComponent,
     PrivacyPolicyComponent,
-    FormatTimePipe
+    FormatTimePipe,
+    TermsOfUseComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +71,8 @@ import { FormatTimePipe } from './format-time.pipe';
     MatDatepickerModule,
     MatCheckboxModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

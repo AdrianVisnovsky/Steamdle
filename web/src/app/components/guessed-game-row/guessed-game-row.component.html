@@ -1,13 +1,13 @@
 <div *ngIf="game !== undefined">
 
-    <div class="flex flex-wrap text-center text-base mt-5 mb-5">
+    <div class="grid grid-cols-6 text-center text-base mt-5 mb-5">
 
         <div class="square">
-            <img src="{{ game.img }}" class="rounded-2xl" loading="lazy"/>
+            <img src="{{ game.img }}" class="rounded-[15px]" loading="lazy"/>
         </div>
     
         <div class="square">
-            <div [ngClass]="{'border-green-800 shadow-green-800 bg-green-700': releasedHint === 2, 'border-yellow-700 shadow-yellow-700 bg-yellow-600': releasedHint === 3 || releasedHint === 4}" class="ml-1 mr-1 p-2 border-4 flex justify-center h-full rounded-2xl border-yellow-700 shadow-yellow-700 bg-yellow-600 shadow-[inset_0_0_10px_8px] w-full">
+            <div [ngClass]="{'border-green-500 shadow-green-800 bg-green-700': releasedHint === 2, 'border-yellow-700 shadow-yellow-700 bg-yellow-600': releasedHint === 3 || releasedHint === 4}" class="ml-1 mr-1 p-2 border-4 flex justify-center h-full rounded-[15px] w-full">
                 <div class="self-center text-center text-2xl">
                     {{ game.released }}
                 </div>
@@ -20,7 +20,8 @@
         </div>
     
         <div class="square">
-            <div [ngClass]="{'border-green-800 shadow-green-800 bg-green-700': scoreHint === 2, 'border-yellow-700 shadow-yellow-700 bg-yellow-600': scoreHint === 3 || scoreHint === 4}" class="ml-1 mr-1 p-2 border-4 flex justify-center h-full rounded-2xl border-yellow-700 shadow-yellow-700 bg-yellow-600 shadow-[inset_0_0_10px_8px] w-full">
+            <div [ngClass]="{'border-green-500 shadow-green-800 bg-green-700': scoreHint === 2, 'border-yellow-700 shadow-yellow-700 bg-yellow-600': scoreHint === 3 || scoreHint === 4}"
+                    class="ml-1 mr-1 p-2 border-4 flex justify-center h-full rounded-[15px] w-full">
                 <div class="self-center text-center text-2xl">
                     {{ game.score }}
                 </div>
@@ -32,8 +33,9 @@
             </div>
         </div>
     
-        <div class="square flex-wrap">
-            <div [ngClass]="{'border-green-800 shadow-green-800 bg-green-700': ownersHint === 2, 'border-yellow-700 shadow-yellow-700 bg-yellow-600': ownersHint === 3 || ownersHint === 4}" class="ml-1 mr-1 p-2 border-4 flex justify-center h-full rounded-2xl shadow-[inset_0_0_10px_8px] w-full">
+        <div class="square">
+            <div [ngClass]="{'border-green-500 shadow-green-800 bg-green-700': ownersHint === 2, 'border-yellow-700 shadow-yellow-700 bg-yellow-600': ownersHint === 3 || ownersHint === 4}"
+                    class="ml-1 mr-1 p-2 border-4 flex justify-center h-full rounded-[15px] w-full">
                 <div class="self-center text-center text-2xl">
                     {{ game.owners | number}}
                 </div>
@@ -46,14 +48,21 @@
         </div>
     
         <div class="square">
-            <div [ngClass]="{'border-red-600 shadow-red-600 bg-red-500': genresHint === 0, 'border-yellow-700 shadow-yellow-700 bg-yellow-600': genresHint === 1, 'border-green-800 shadow-green-800 bg-green-700': genresHint === 2}" class="ml-1 mr-1 p-2 border-4 flex justify-center h-full rounded-2xl border-yellow-700 shadow-yellow-700 bg-yellow-600 shadow-[inset_0_0_10px_8px] w-full">
-                <div class="relative inline-block text-base" [innerHTML]="PrintGameGenres(game.genres)">
-                </div>
+            <div [ngClass]="{'border-red-600 shadow-red-600 bg-red-500': genresHint === 0, 'border-yellow-700 shadow-yellow-700 bg-yellow-600': genresHint === 1, 'border-green-500 shadow-green-800 bg-green-700': genresHint === 2}"
+                    class="ml-1 mr-1 m-auto p-2 border-4 flex justify-center items-center rounded-[15px] h-full w-full"
+                    [innerHTML]="PrintGameGenres(game.genres)"
+                    #tooltip="matTooltip"
+                    matTooltip="{{ GetGameGenresToolTip(game.genres) }}">
+                <!--<p style="margin: 0;"
+                    #tooltip="matTooltip"
+                    matTooltip="{{ GetGameGenresToolTip(game.genres) }}"
+                    [innerHTML]="">
+                </p>-->
             </div>
         </div>
     
         <div class="square">
-            <div [ngClass]="{'border-red-600 shadow-red-600 bg-red-500': platformsHint === 0, 'border-yellow-700 shadow-yellow-700 bg-yellow-600': platformsHint === 1, 'border-green-800 shadow-green-800 bg-green-700': platformsHint === 2}" class="ml-1 mr-1 p-2 border-4 flex justify-center h-full rounded-2xl shadow-[inset_0_0_10px_8px] w-full">
+            <div [ngClass]="{'border-red-600 shadow-red-600 bg-red-500': platformsHint === 0, 'border-yellow-700 shadow-yellow-700 bg-yellow-600': platformsHint === 1, 'border-green-500 shadow-green-800 bg-green-700': platformsHint === 2}" class="ml-1 mr-1 p-2 border-4 flex justify-center h-full rounded-[15px] w-full">
                 <div class="flex flex-row-reverse self-center -ml-4">
                     <span *ngIf="IsGameOnLinux()" class="z-10 -mr-4 h-10 w-10 rounded-full border-2 border-white">
                         <img class="h-full w-full rounded-full object-cover" src="../assets/images/linux.png" alt="Linux logo">
