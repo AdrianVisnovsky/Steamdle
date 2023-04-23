@@ -37,7 +37,7 @@ export class PatchNotesComponent {
         },
         {
           label: 'bugfix',
-          text: 'Fixed a bug where the tooltip for game genres wouldn\'t be displayed on hower.'
+          text: 'Fixed a bug where the tooltip for game genres wouldn\'t be displayed on hover.'
         }
       ]
     },
