@@ -13,11 +13,11 @@ export class PatchNotesComponent {
     {
       day: new Date(2023, 3, 23),
       version: 'v1.0-beta.3',
-      description: '',
+      description: 'In this release we added a new subpage to display player statistics, improved daily challenge design and made some bugfixes.',
       keys: [
         {
           label: 'new',
-          text: 'Added player statistics. Player is now able to see history of daily challenge games, total number of players and how many of them guessed the game. There is also an option to reset player statistics.'
+          text: 'Added player statistics. Player is now able to see history of daily challenge games, total number of players and how many of them guessed the game.'
         },
         {
           label: 'improvement',
