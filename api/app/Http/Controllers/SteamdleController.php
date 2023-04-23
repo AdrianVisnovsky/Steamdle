@@ -84,4 +84,19 @@ class SteamdleController extends Controller
 
     }
 
+    public function getGameStatistics()
+    {
+
+        $sqlString =
+"SELECT AppId, Day, PlayerCount, Guessed
+    FROM `daily_challenge`
+    WHERE Day <= CURRENT_DATE()
+    ORDER BY ID DESC
+    LIMIT 7;";
+
+        $result = DB::select($sqlString);
+        return $result;
+
+    }
+
 }
