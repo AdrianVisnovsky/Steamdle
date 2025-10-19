@@ -18,14 +18,14 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `steamdle`
+-- Database: `d384930_stdl`
 --
 
 DELIMITER $$
 --
 -- Procedures
 --
-CREATE DEFINER=`a312833_steamle`@`localhost` PROCEDURE `addSuccessfulGuess` (IN `in_day` DATE)   BEGIN
+CREATE PROCEDURE `addSuccessfulGuess` (IN `in_day` DATE)   BEGIN
 
 	IF (SELECT COUNT(*) FROM `daily_challenge` WHERE Day = in_day) > 0 THEN
 
@@ -41,7 +41,7 @@ CREATE DEFINER=`a312833_steamle`@`localhost` PROCEDURE `addSuccessfulGuess` (IN 
 
 END$$
 
-CREATE DEFINER=`a312833_steamle`@`localhost` PROCEDURE `getDailyChallengeGame` (IN `gameDay` DATE)  DETERMINISTIC BEGIN
+CREATE PROCEDURE `getDailyChallengeGame` (IN `gameDay` DATE)  DETERMINISTIC BEGIN
 
 	IF (SELECT COUNT(*) FROM `daily_challenge` WHERE Day = gameDay) = 0 THEN
 

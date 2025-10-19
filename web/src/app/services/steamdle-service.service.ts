@@ -14,7 +14,7 @@ import { GameStatistics } from '../interfaces/game-statistics';
 export class SteamdleService {
 
 	private defaultUrl: string = "http://127.0.0.1:8000";
-	private apiUrl: string = "https://api.steamdle.com";
+	private apiUrl: string = "https://api.steamdle.eu";
 
 	constructor(private http: HttpClient, @Inject(LOCALE_ID) private locale: string) { }
 

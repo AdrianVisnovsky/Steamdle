@@ -22,6 +22,12 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
 
+# Specific rule for steamdle.eu - single page app routing
+RewriteCond %{HTTP_HOST} ^www\.steamdle\.eu$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.html [L]
+
 # cele domeny (aliasy)
 RewriteCond %{REQUEST_URI} !^domains/
 RewriteCond %{REQUEST_URI} !^/domains/
@@ -43,10 +49,3 @@ RewriteRule ^domains/[^/]+/(.+[^/])$ /$1/ [R]
 # subdomeny - spravne presmerovani pri chybejicim /
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^subdom/[^/]+/(.+[^/])$ /$1/ [R]
-
-# If the host is "steamdle.com"
-RewriteCond %{HTTP_HOST} ^www.steamdle.com$ [NC]
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.html [L]
-
