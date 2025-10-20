@@ -1,77 +1,79 @@
 <div class="flex flex-col lg:flex-row items-start justify-center mb-4">
 
-    <div class="lg:sticky lg:items-start lg:top-0 lg:flex-grow-0 lg:self-auto flex-grow self-stretch">
+  <div class="lg:sticky lg:items-start lg:top-0 lg:flex-grow-0 lg:self-auto flex-grow self-stretch">
 
-        <div class="p-4 m-4 rounded-[15px] bg-gray-800">
+    <div class="p-4 m-4 rounded-[15px] bg-gray-800">
 
-            <h1 class="p-4 m-4" style="margin: 0 !important;">Filters</h1>
+      <h1 class="p-4 m-4" style="margin: 0 !important;">Filters</h1>
 
-            <div class="p-4 m-4 bg-gray-700 rounded-[15px]">
-                <mat-form-field class="w-full lg:w-[375px]">
-                    <mat-label>Game name</mat-label>
-                    <input matInput placeholder="Name of the game" [formControl]="avalService.gameNameFormControl">
-                </mat-form-field>
-            </div>
-    
-            <div class="p-4 m-4 bg-gray-700 rounded-[15px]">
-    
-                <h3 class="font-bold">Game score ({{ avalService.GetGameScoreRange() }})</h3>
-    
-                <mat-slider style="width: 96%;" [min]="avalService.myapp.minScore" [max]="avalService.myapp.maxScore" discrete>
-                    <input matSliderStartThumb [value]="avalService.filterScoreMin" (valueChange)="avalService.scoreMinChanged($event)">
-                    <input matSliderEndThumb [value]="avalService.filterScoreMax" (valueChange)="avalService.scoreMaxChanged($event)">
-                </mat-slider>
-    
-            </div>
-    
-            <div class="p-4 m-4 bg-gray-700 rounded-[15px]">
-    
-                <h3>Released year ({{ avalService.GetReleaseYear() }})</h3>
-    
-                <mat-slider style="width: 96%" [min]="avalService.myapp.minReleasedYear" [max]="avalService.myapp.maxReleasedYear" discrete>
-                    <input matSliderStartThumb [value]="avalService.filterReleasedYearMin" (valueChange)="avalService.releasedYearMinChanged($event)">
-                    <input matSliderEndThumb [value]="avalService.filterReleasedYearMax" (valueChange)="avalService.releasedYearMaxChanged($event)">
-                </mat-slider>
-    
-            </div>
-    
-            <div class="p-4 m-4 bg-gray-700 rounded-[15px]">
-    
-                <h3>Platforms ({{ avalService.GetPlatforms() }})</h3>
-    
-                <div class="p-1 m-1 bg-gray-600 rounded-[15px]">
-                    <mat-checkbox [checked]="avalService.platformAny" (change)="avalService.platformAnyChanged($event.checked)">Any</mat-checkbox>
-                </div>
+      <div class="p-4 m-4 bg-gray-700 rounded-[15px]">
+        <mat-form-field class="w-full lg:w-[375px]">
+          <mat-label>Game name</mat-label>
+          <input matInput placeholder="Name of the game" [formControl]="avalService.gameNameFormControl">
+        </mat-form-field>
+      </div>
 
-                <div class="p-1 m-1 bg-gray-600 rounded-[15px]">
-                    <mat-checkbox [checked]="avalService.platformWindows" (change)="avalService.platformWindowsChanged($event.checked)">Windows</mat-checkbox>
-                </div>
+      <div class="p-4 m-4 bg-gray-700 rounded-[15px]">
 
-                <div class="p-1 m-1 bg-gray-600 rounded-[15px]">
-                    <mat-checkbox [checked]="avalService.platformMacOs" (change)="avalService.platformMacOsChanged($event.checked)">Mac Os</mat-checkbox>
-                </div>
+        <h3 class="font-bold">Game score ({{ avalService.GetGameScoreRange() }})</h3>
 
-                <div class="p-1 m-1 bg-gray-600 rounded-[15px]">
-                    <mat-checkbox [checked]="avalService.platformLinux" (change)="avalService.platformLinuxChanged($event.checked)">Linux</mat-checkbox>
-                </div>
+        <mat-slider style="width: 96%;" [min]="avalService.myapp.minScore" [max]="avalService.myapp.maxScore" discrete>
+          <input matSliderStartThumb [value]="avalService.filterScoreMin" (valueChange)="avalService.scoreMinChanged($event)">
+          <input matSliderEndThumb [value]="avalService.filterScoreMax" (valueChange)="avalService.scoreMaxChanged($event)">
+        </mat-slider>
 
-            </div>
-    
+      </div>
+
+      <div class="p-4 m-4 bg-gray-700 rounded-[15px]">
+
+        <h3>Released year ({{ avalService.GetReleaseYear() }})</h3>
+
+        <mat-slider style="width: 96%" [min]="avalService.myapp.minReleasedYear" [max]="avalService.myapp.maxReleasedYear" discrete>
+          <input matSliderStartThumb [value]="avalService.filterReleasedYearMin" (valueChange)="avalService.releasedYearMinChanged($event)">
+          <input matSliderEndThumb [value]="avalService.filterReleasedYearMax" (valueChange)="avalService.releasedYearMaxChanged($event)">
+        </mat-slider>
+
+      </div>
+
+      <div class="p-4 m-4 bg-gray-700 rounded-[15px]">
+
+        <h3>Platforms ({{ avalService.GetPlatforms() }})</h3>
+
+        <div class="p-1 m-1 bg-gray-600 rounded-[15px]">
+          <mat-checkbox [checked]="avalService.platformAny" (change)="avalService.platformAnyChanged($event.checked)">Any</mat-checkbox>
         </div>
+
+        <div class="p-1 m-1 bg-gray-600 rounded-[15px]">
+          <mat-checkbox [checked]="avalService.platformWindows" (change)="avalService.platformWindowsChanged($event.checked)">Windows</mat-checkbox>
+        </div>
+
+        <div class="p-1 m-1 bg-gray-600 rounded-[15px]">
+          <mat-checkbox [checked]="avalService.platformMacOs" (change)="avalService.platformMacOsChanged($event.checked)">Mac Os</mat-checkbox>
+        </div>
+
+        <div class="p-1 m-1 bg-gray-600 rounded-[15px]">
+          <mat-checkbox [checked]="avalService.platformLinux" (change)="avalService.platformLinuxChanged($event.checked)">Linux</mat-checkbox>
+        </div>
+
+      </div>
 
     </div>
-    
-    <div class="flex flex-col">
 
-        <div class="p-6 m-4 rounded-[15px] bg-gray-800 sticky items-start top-4 z-50">
-            <h1 style="margin: 0 !important;">Available games</h1>
-            <label class="text-xs leading-4 font-medium text-gray-400">Displayed {{ avalService.filteredGames.length }} of 750 games</label>
-        </div>
+  </div>
 
-        <div class="flex flex-wrap items-stretch gap-8">
-            <app-game-card class="flex-grow self-stretch" *ngFor="let availableGame of avalService.filteredGames" [game]="availableGame"></app-game-card>
-        </div>
+  <div class="flex flex-col">
 
+    <div class="p-6 m-4 rounded-[15px] bg-gray-800 sticky items-start top-4 z-50">
+      <h1 style="margin: 0 !important;">Available games</h1>
+      <label class="text-xs leading-4 font-medium text-gray-400">Displayed {{ avalService.filteredGames.length }} of 750 games</label>
     </div>
+
+    <div class="flex flex-wrap items-stretch gap-8">
+      @for (availableGame of avalService.filteredGames; track availableGame) {
+        <app-game-card class="flex-grow self-stretch" [game]="availableGame"></app-game-card>
+      }
+    </div>
+
+  </div>
 
 </div>

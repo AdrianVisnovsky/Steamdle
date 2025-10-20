@@ -1,45 +1,40 @@
-<div *ngIf="myDailyChallengeComponent.myapp.gameService.gameData !== undefined" class="overflow-x-auto">
-
-    <div *ngIf="myDailyChallengeComponent.isGameInProgress() && myDailyChallengeComponent.myapp.gameService.GetCurrentGame().GuessedGameIds.length > 0 ">
+@if (myDailyChallengeComponent.myapp.gameService.gameData !== undefined) {
+  <div class="overflow-x-auto">
+    @if (myDailyChallengeComponent.isGameInProgress() && myDailyChallengeComponent.myapp.gameService.GetCurrentGame().GuessedGameIds.length > 0 ) {
+      <div>
         <h1>Guessed games ({{ myDailyChallengeComponent.myapp.gameService.GetCurrentGame().GuessedGameIds.length }} / {{ myDailyChallengeComponent.myapp.gameService.maxNumberOfGuesses }})</h1>
-    </div>
-
-    <div *ngIf="myDailyChallengeComponent.myapp.gameService.gameData !== undefined">
-
-        <div *ngIf="myDailyChallengeComponent.myapp.gameService.GetCurrentGame().GuessedGameIds.length > 0" class="min-w-[1170px] max-w-[1300px]">
-
+      </div>
+    }
+    @if (myDailyChallengeComponent.myapp.gameService.gameData !== undefined) {
+      <div>
+        @if (myDailyChallengeComponent.myapp.gameService.GetCurrentGame().GuessedGameIds.length > 0) {
+          <div class="min-w-[1170px] max-w-[1300px]">
             <div class="grid grid-cols-6 text-center text-base">
-
-                <div class="square">
-                    <strong class="uppercase">Game icon</strong>
-                </div>
-        
-                <div class="square">
-                    <strong class="uppercase">Released</strong>
-                </div>
-        
-                <div class="square">
-                    <strong class="uppercase">Score</strong>
-                </div>
-        
-                <div class="square">
-                    <strong class="uppercase">Owners</strong>
-                </div>
-        
-                <div class="square">
-                    <strong class="uppercase">Genres</strong>
-                </div>
-        
-                <div class="square">
-                    <strong class="uppercase">Platforms</strong>
-                </div>
-
+              <div class="square">
+                <strong class="uppercase">Game icon</strong>
+              </div>
+              <div class="square">
+                <strong class="uppercase">Released</strong>
+              </div>
+              <div class="square">
+                <strong class="uppercase">Score</strong>
+              </div>
+              <div class="square">
+                <strong class="uppercase">Owners</strong>
+              </div>
+              <div class="square">
+                <strong class="uppercase">Genres</strong>
+              </div>
+              <div class="square">
+                <strong class="uppercase">Platforms</strong>
+              </div>
             </div>
-        
-            <app-guessed-game-row *ngFor="let guessedGameId of myDailyChallengeComponent.myapp.gameService.GetCurrentGame().GuessedGameIds" [gameId]="guessedGameId"></app-guessed-game-row>
-
-        </div>
-
-    </div>
-
-</div>
+            @for (guessedGameId of myDailyChallengeComponent.myapp.gameService.GetCurrentGame().GuessedGameIds; track guessedGameId) {
+              <app-guessed-game-row [gameId]="guessedGameId"></app-guessed-game-row>
+            }
+          </div>
+        }
+      </div>
+    }
+  </div>
+}

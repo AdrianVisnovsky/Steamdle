@@ -1,36 +1,44 @@
-<div *ngIf="!dailyChall.isGameInProgress()" class="{{ gameState == gState.Won ? 'border-green-600 shadow-green-600' : 'border-red-500 shadow-red-500' }} mb-12 mt-4 p-8 max-w-[550px] justify-self-center rounded-[15px] border-2 self-center bg-gray-900 shadow-[inset_0_0_12px_12px]">
-
-    <div [ngSwitch]="gameState">
-        <h1 *ngSwitchCase="gState.Won" class="text-center text-green-600 uppercase">Congratulations, you guessed the game!</h1>
-        <h1 *ngSwitchCase="gState.Lost" class="text-center text-red-500">Sorry, the correct game was</h1>
+@if (!dailyChall.isGameInProgress()) {
+  <div class="{{ gameState == gState.Won ? 'border-green-600 shadow-green-600' : 'border-red-500 shadow-red-500' }} mb-12 mt-4 p-8 max-w-[550px] justify-self-center rounded-[15px] border-2 self-center bg-gray-900 shadow-[inset_0_0_12px_12px]">
+    <div>
+      @switch (gameState) {
+        @case (gState.Won) {
+          <h1 class="text-center text-green-600 uppercase">Congratulations, you guessed the game!</h1>
+        }
+        @case (gState.Lost) {
+          <h1 class="text-center text-red-500">Sorry, the correct game was</h1>
+        }
+      }
     </div>
-    
     <app-game-card [game]="gameToGuess"></app-game-card>
-
-    <div *ngIf="gameState == gState.Won" class="m-6">
-
-      <div class="text-center">
-        <p class="text-base font-medium text-gray-400">
-          Number of tries: <span class="text-amber-500 text-xl">#{{ dailyChall.myapp.gameService.GetCurrentGame().GuessedGameIds.length }}</span><br>
-        </p>
+    @if (gameState == gState.Won) {
+      <div class="m-6">
+        <div class="text-center">
+          <p class="text-base font-medium text-gray-400">
+            Number of tries: <span class="text-amber-500 text-xl">#{{ dailyChall.myapp.gameService.GetCurrentGame().GuessedGameIds.length }}</span><br>
+          </p>
+        </div>
+        <div class="text-center">
+          <p class="text-base font-medium text-gray-400">
+            You're the <span class="text-amber-500 text-xl">#{{ dailyChall.myapp.gameService.GetCurrentGame().Order }}</span> to find the game today
+          </p>
+        </div>
       </div>
-      <div class="text-center">
-        <p class="text-base font-medium text-gray-400">
-          You're the <span class="text-amber-500 text-xl">#{{ dailyChall.myapp.gameService.GetCurrentGame().Order }}</span> to find the game today
-        </p>
-      </div>
-
-    </div>
-
+    }
     <div class="text-center">
-      <div class="pt-4" *ngIf="counter > 0">
-        <p class="text-base font-medium text-gray-400">
-          Time to next game:<br>
-          <label class="text-2xl text-amber-500">{{ counter | formatTime }}</label>
-        </p>
-      </div>
-      <div class="text-lg font-medium text-amber-500" *ngIf="counter <= 0">
-        New game available! Refresh page to play new daily challenge!
-      </div>      
+      @if (counter > 0) {
+        <div class="pt-4">
+          <p class="text-base font-medium text-gray-400">
+            Time to next game:<br>
+            <label class="text-2xl text-amber-500">{{ counter | formatTime }}</label>
+          </p>
+        </div>
+      }
+      @if (counter <= 0) {
+        <div class="text-lg font-medium text-amber-500">
+          New game available! Refresh page to play new daily challenge!
+        </div>
+      }
     </div>
-</div>
+  </div>
+}

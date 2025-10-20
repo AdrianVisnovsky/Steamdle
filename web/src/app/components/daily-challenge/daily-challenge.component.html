@@ -1,64 +1,63 @@
-<div *ngIf="myapp.gameService.dataLoaded | async" class="flex flex-col items-center">
-
-    <div *ngIf="announcementVisible" class="p-4 m-4 flex items-center rounded-[15px] max-w-screen-xl bg-amber-500 shadow-lg shadow-amber-400">
+@if (myapp.gameService.dataLoaded | async) {
+  <div class="flex flex-col items-center">
+    @if (announcementVisible) {
+      <div class="p-4 m-4 flex items-center rounded-[15px] max-w-screen-xl bg-amber-500 shadow-lg shadow-amber-400">
         <label class="pr-4 text-base text-">🎉🎉 New version of Steamdle released! <span class="text-sm font-medium text-gray-600">({{ getGameVersion() }})</span> For more information check <a [routerLink]="['/PatchNotes']" routerLinkActive="router-link-active"  class="underline hover:text-sky-700">patch notes</a></label>
         <button (click)="closeAnnouncement()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded">
-            X
+          X
         </button>
-    </div>
-
+      </div>
+    }
     <!-- Gameplay -->
     <div class="p-4 m-4 rounded-[15px] max-w-[95vw]" style="background-color: #171c30;">
-
-        <div *ngIf="isGameInProgress()">
-
-            <h1>Guess the game</h1>
-
-            <mat-form-field style="width: 100%;">
-
-                <input type="text"
-                        placeholder="Enter game"
-                        [formControl]="gameFormControl"
-                        matInput
-                        [matAutocomplete]="auto" />
-                <mat-autocomplete #auto="matAutocomplete" >
-                    <mat-option *ngFor="let game of filteredOptions | async"
-                        [value]="game.name"
-                        (onSelectionChange)="gameSelected(game.id)">
-                        {{ game.name }}
-                    </mat-option>
-                </mat-autocomplete>
-        
+      @if (isGameInProgress()) {
+        <div>
+          <h1>Guess the game</h1>
+          <mat-form-field style="width: 100%;">
+            <input type="text"
+              placeholder="Enter game"
+              [formControl]="gameFormControl"
+              matInput
+              [matAutocomplete]="auto" />
+              <mat-autocomplete #auto="matAutocomplete" >
+                @for (game of filteredOptions | async; track game) {
+                  <mat-option
+                    [value]="game.name"
+                    (onSelectionChange)="gameSelected(game.id)">
+                    {{ game.name }}
+                  </mat-option>
+                }
+              </mat-autocomplete>
             </mat-form-field>
-
-        </div>
-
+          </div>
+        }
         <app-game-result class="grid justify-items-stretch" [gameState]="myapp.gameService.GetCurrentGame().GameState" [gameToGuess]="gameToGuess"></app-game-result>
-        
         <div class="text-center p-4">
-            <div *ngIf="myapp.gameService.gameDailyStats.Guessed > 0">
-                <label class="text-base font-medium text-gray-400"><span class="text-xl text-amber-500">#{{ myapp.gameService.gameDailyStats.Guessed }}</span> of <span class="text-xl text-amber-500">#{{ myapp.gameService.gameDailyStats.PlayerCount }}</span> players already found out!</label>
+          @if (myapp.gameService.gameDailyStats.Guessed > 0) {
+            <div>
+              <label class="text-base font-medium text-gray-400"><span class="text-xl text-amber-500">#{{ myapp.gameService.gameDailyStats.Guessed }}</span> of <span class="text-xl text-amber-500">#{{ myapp.gameService.gameDailyStats.PlayerCount }}</span> players already found out!</label>
             </div>
-            <div *ngIf="myapp.gameService.gameDailyStats.Guessed <= 0">
-                <label class="text-base font-medium text-gray-400">Be the first one to find the daily game!</label>
+          }
+          @if (myapp.gameService.gameDailyStats.Guessed <= 0) {
+            <div>
+              <label class="text-base font-medium text-gray-400">Be the first one to find the daily game!</label>
             </div>
+          }
         </div>
-
         <app-guessed-games></app-guessed-games>
-
         <div class="text-center border-t border-gray-400">
-            <br>
-            <div *ngIf="myapp.gameService.lastDayStats !== undefined">
+          <br>
+            @if (myapp.gameService.lastDayStats !== undefined) {
+              <div>
                 <label class="text-sm font-medium text-gray-400">Yesterday's game <span class="text-xl text-amber-500">#{{ getYesterdaysGameOrder() }}</span> was <span class="text-xl text-amber-500">{{ getYesterdaysGameName() }}</span>, guessed by <span class="text-xl text-amber-500">{{ getYesterdaysGameGuessed() }}</span> players.</label>
-            </div>
+              </div>
+            }
+          </div>
         </div>
-
-    </div>
-    
-    <!-- Debug -->
-    <!--<div class="p-4 m-4 rounded-md" style="background-color: #171c30; overflow: scroll;">
+        <!-- Debug -->
+        <!--<div class="p-4 m-4 rounded-md" style="background-color: #171c30; overflow: scroll;">
         <h1>Game to guess</h1>
         <pre [innerHTML]="gameToGuess | jsonpretty: [true, 3]"></pre>
-    </div>-->
-
-</div>
+      </div>-->
+    </div>
+  }
