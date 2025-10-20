@@ -1,9 +1,9 @@
 .mat-mdc-checkbox.mat-accent {
-    --mdc-checkbox-selected-focus-icon-color: #673ab7;
-    --mdc-checkbox-selected-hover-icon-color: #673ab7;
-    --mdc-checkbox-selected-icon-color: #673ab7;
-    --mdc-checkbox-selected-pressed-icon-color: #673ab7;
-    --mdc-checkbox-selected-checkmark-color: white;
+    --mat-checkbox-selected-focus-icon-color: #673ab7;
+    --mat-checkbox-selected-hover-icon-color: #673ab7;
+    --mat-checkbox-selected-icon-color: #673ab7;
+    --mat-checkbox-selected-pressed-icon-color: #673ab7;
+    --mat-checkbox-selected-checkmark-color: white;
     color: white !important;
 }
 

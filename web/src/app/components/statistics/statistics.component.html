@@ -4,8 +4,10 @@
 
         <h1>Player statistics</h1>
         
-        <div echarts [options]="chartOption" [loading]="isLoading" class="w-full h-[450px]"></div>
-        <div class="text-center">Total players vs number of players that guessed the daily challenge</div>
+        @if (chartOption) {
+            <div echarts [options]="chartOption" [loading]="isLoading" class="w-full h-[450px]"></div>
+            <div class="text-center">Total players vs number of players that guessed the daily challenge</div>
+        }
 
     </div>
 

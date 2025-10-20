@@ -85,9 +85,6 @@ export class StatisticsComponent {
       ]
     };
 
-    console.log(this.totalPlayers);
-    console.log(this.totalSuccesfulGuesses);
-
     this.isLoading = false;
 
   }
