@@ -9,7 +9,7 @@ import { DailyChallengeComponent } from './components/daily-challenge/daily-chal
 import { FooterComponent } from './components/footer/footer.component';
 import { HowToPlayComponent } from './components/how-to-play/how-to-play.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -34,47 +34,40 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
 import { NgxEchartsModule } from 'ngx-echarts';
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    NavigationComponent,
-    DailyChallengeComponent,
-    FooterComponent,
-    HowToPlayComponent,
-    NotFoundComponent,
-    JsonprettyPipe,
-    MultilineArrayPipe,
-    GameCardComponent,
-    GameResultComponent,
-    GuessedGameRowComponent,
-    GuessedGamesComponent,
-    AboutComponent,
-    HomeComponent,
-    SinglelinearrayPipe,
-    AvailableGamesComponent,
-    PatchNotesComponent,
-    FormatTimePipe,
-    StatisticsComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    NoopAnimationsModule,
-    MatFormFieldModule,
-    MatAutocompleteModule,
-    MatInputModule,
-    MatSliderModule,
-    MatDatepickerModule,
-    MatCheckboxModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTooltipModule,
-    NgxEchartsModule.forRoot({
-      echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
-    }),
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        NavigationComponent,
+        DailyChallengeComponent,
+        FooterComponent,
+        HowToPlayComponent,
+        NotFoundComponent,
+        JsonprettyPipe,
+        MultilineArrayPipe,
+        GameCardComponent,
+        GameResultComponent,
+        GuessedGameRowComponent,
+        GuessedGamesComponent,
+        AboutComponent,
+        HomeComponent,
+        SinglelinearrayPipe,
+        AvailableGamesComponent,
+        PatchNotesComponent,
+        FormatTimePipe,
+        StatisticsComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        NoopAnimationsModule,
+        MatFormFieldModule,
+        MatAutocompleteModule,
+        MatInputModule,
+        MatSliderModule,
+        MatDatepickerModule,
+        MatCheckboxModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTooltipModule,
+        NgxEchartsModule.forRoot({
+            echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
+        })], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
