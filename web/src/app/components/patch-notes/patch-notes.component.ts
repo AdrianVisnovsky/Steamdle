@@ -12,6 +12,34 @@ export class PatchNotesComponent {
   public patchNotes: PatchNote[] = [
 
     {
+      day: new Date(2025, 9, 20),
+      version: 'v1.0-beta.4',
+      description: 'Hi everyone! After a 2-year hiatus, I\'m excited to announce that the game is back online. I decided to re-publish it after receiving a request on Reddit. This is a re-deployment rather than a major update, so there aren\'t any new features—just some important behind-the-scenes improvements:',
+      keys: [
+        {
+          label: 'improvement',
+          text: 'Removed Terms of Use – Not needed here. Your privacy matters, and the game is open source.'
+        },
+        {
+          label: 'improvement',
+          text: 'Removed Privacy Policy – Same reason as above—privacy-first approach with full transparency.'
+        },
+        {
+          label: 'improvement',
+          text: 'Removed Google Analytics – No tracking, period. Your privacy is respected.'
+        },
+        {
+          label: 'improvement',
+          text: 'Updated Angular Framework – The website now runs on a newer version for better performance.'
+        },
+        {
+          label: 'improvement',
+          text: 'Backend Rewrite – Built a faster, more efficient backend that sets the game up for future development.'
+        },
+      ]
+    },
+
+    {
       day: new Date(2023, 3, 23),
       version: 'v1.0-beta.3',
       description: 'In this release we added a new subpage to display player statistics, improved daily challenge design and made some bugfixes.',

@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AppServiceService {
 
-  public static gameVersion: string = 'v1.0-beta.3';
+  public static gameVersion: string = 'v1.0-beta.4';
 
   constructor() { }
 
