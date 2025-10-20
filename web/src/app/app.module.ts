@@ -1,4 +1,4 @@
-import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -29,9 +29,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SinglelinearrayPipe } from './singlelinearray.pipe';
 import { AvailableGamesComponent } from './components/available-games/available-games.component';
 import { PatchNotesComponent } from './components/patch-notes/patch-notes.component';
-import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { FormatTimePipe } from './format-time.pipe';
-import { TermsOfUseComponent } from './components/terms-of-use/terms-of-use.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 
@@ -55,9 +53,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
     SinglelinearrayPipe,
     AvailableGamesComponent,
     PatchNotesComponent,
-    PrivacyPolicyComponent,
     FormatTimePipe,
-    TermsOfUseComponent,
     StatisticsComponent
   ],
   imports: [
