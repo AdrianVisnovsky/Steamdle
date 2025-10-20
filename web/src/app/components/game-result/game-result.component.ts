@@ -5,9 +5,10 @@ import { DailyChallengeComponent } from '../daily-challenge/daily-challenge.comp
 import { Subscription, timer } from 'rxjs';
 
 @Component({
-  selector: 'app-game-result',
-  templateUrl: './game-result.component.html',
-  styleUrls: ['./game-result.component.css']
+    selector: 'app-game-result',
+    templateUrl: './game-result.component.html',
+    styleUrls: ['./game-result.component.css'],
+    standalone: false
 })
 export class GameResultComponent {
 

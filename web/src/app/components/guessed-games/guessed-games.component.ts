@@ -2,9 +2,10 @@ import { DailyChallengeComponent } from './../daily-challenge/daily-challenge.co
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-guessed-games',
-  templateUrl: './guessed-games.component.html',
-  styleUrls: ['./guessed-games.component.css']
+    selector: 'app-guessed-games',
+    templateUrl: './guessed-games.component.html',
+    styleUrls: ['./guessed-games.component.css'],
+    standalone: false
 })
 export class GuessedGamesComponent {
 

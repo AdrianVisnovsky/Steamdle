@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'singlelinearray'
+    name: 'singlelinearray',
+    standalone: false
 })
 export class SinglelinearrayPipe implements PipeTransform {
 

@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
     name: 'multilnearray',
-    pure: true
+    pure: true,
+    standalone: false
 })
 export class MultilineArrayPipe implements PipeTransform {
 

@@ -9,9 +9,10 @@ import { DailyChallenge } from 'src/app/interfaces/daily-challenge';
 import { AppServiceService } from 'src/app/services/app-service.service';
 
 @Component({
-	selector: 'app-daily-challenge',
-	templateUrl: './daily-challenge.component.html',
-	styleUrls: ['./daily-challenge.component.css']
+    selector: 'app-daily-challenge',
+    templateUrl: './daily-challenge.component.html',
+    styleUrls: ['./daily-challenge.component.css'],
+    standalone: false
 })
 export class DailyChallengeComponent implements OnInit {
 

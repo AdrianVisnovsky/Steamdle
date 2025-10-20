@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { PatchNote } from 'src/app/interfaces/patch-note';
 
 @Component({
-  selector: 'app-patch-notes',
-  templateUrl: './patch-notes.component.html',
-  styleUrls: ['./patch-notes.component.css']
+    selector: 'app-patch-notes',
+    templateUrl: './patch-notes.component.html',
+    styleUrls: ['./patch-notes.component.css'],
+    standalone: false
 })
 export class PatchNotesComponent {
 

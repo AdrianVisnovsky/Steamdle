@@ -5,9 +5,10 @@ import { GameStatistics } from 'src/app/interfaces/game-statistics';
 import { GameServiceService } from 'src/app/services/game-service.service';
 
 @Component({
-  selector: 'app-statistics',
-  templateUrl: './statistics.component.html',
-  styleUrls: ['./statistics.component.css']
+    selector: 'app-statistics',
+    templateUrl: './statistics.component.html',
+    styleUrls: ['./statistics.component.css'],
+    standalone: false
 })
 export class StatisticsComponent {
 

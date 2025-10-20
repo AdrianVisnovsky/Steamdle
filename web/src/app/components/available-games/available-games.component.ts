@@ -3,9 +3,10 @@ import { AppComponent } from 'src/app/app.component';
 import { AvailableGamesService } from 'src/app/services/available-games.service';
 
 @Component({
-	selector: 'app-available-games',
-	templateUrl: './available-games.component.html',
-	styleUrls: ['./available-games.component.css']
+    selector: 'app-available-games',
+    templateUrl: './available-games.component.html',
+    styleUrls: ['./available-games.component.css'],
+    standalone: false
 })
 export class AvailableGamesComponent {
 

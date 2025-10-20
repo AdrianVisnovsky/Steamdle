@@ -11,9 +11,10 @@ export enum EHintType {
 }
 
 @Component({
-  selector: 'app-guessed-game-row',
-  templateUrl: './guessed-game-row.component.html',
-  styleUrls: ['./guessed-game-row.component.css']
+    selector: 'app-guessed-game-row',
+    templateUrl: './guessed-game-row.component.html',
+    styleUrls: ['./guessed-game-row.component.css'],
+    standalone: false
 })
 export class GuessedGameRowComponent {
 
