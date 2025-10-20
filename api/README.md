@@ -1,66 +1,110 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Flight PHP Skeleton App
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Use this skeleton application to quickly setup and start working on a new Flight PHP application. This application uses the latest version of Flight PHP v3.
 
-## About Laravel
+This skeleton is designed to be AI-friendly out of the box, with predefined instructions files for popular AI coding assistants such as GitHub Copilot, Cursor, and Windsurf. This helps streamline development and ensures your project is ready for modern, AI-assisted workflows.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This skeleton application was built for Composer. You also could download a zip of this repo, downloading a zip of the [flightphp/core](https://github.com/flightphp/core) repo, and manually autoload the files by running `require('flight/autoload.php')` in your `app/config/# FlightPHP Skeleton Project Instructions
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This document provides guidelines and best practices for structuring and developing a project using the FlightPHP framework.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Installation
 
-## Learning Laravel
+Run this command from the directory in which you want to install your new Flight PHP application. (this will require PHP 7.4 or newer)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```bash
+composer create-project flightphp/skeleton cool-project-name
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Replace `cool-project-name` with the desired directory name for your new application.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+After you create the project, make sure you go to the `app/config/config.php` and `app/config/services.php` and uncomment the lines related to the database you want to use before you get started.
 
-## Laravel Sponsors
+> _Tip: This skeleton includes configuration files for AI coding assistants (Copilot, Cursor, Windsurf) to help you get the most out of AI-driven development tools from the start._
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Robust Setup of the Application
 
-### Premium Partners
+This skeleton will come with 2 versions of a starter application. The robust version is a fully structured application meant for projects that you anticipate will be a bigger size. This is setup with object oriented programming in mind so that it is easier to unit test and scale your project with multiple developers (or make it easier on yourself).
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+The robust version adds an `app/` directory where everything has a basic structure. This is how this skeleton is configured by default.meant
 
-## Contributing
+### Simple Setup of the Application
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+This is basically a single file application. The only exception to this is the config file which is still in the `app/config/` directory. This is a good starting point for smaller projects or projects that you don't anticipate will grow much.
 
-## Code of Conduct
+To use the simple version, you'll need to move the `index-simple.php` file to the `public/` directory and rename it to `index.php`. You can delete any other controllers, views, or config files (except the `config.php` file of course).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+With the simple setup, there is two very import security steps to be aware of. 
+- **DO NOT SAVE SENSITIVE CREDENTIALS TO THE `index.php` FILE**. 
+- **DO NOT COMMIT ANY TYPE OF SENSITIVE CREDENTIALS TO YOUR REPOSITORY**.
 
-## Security Vulnerabilities
+This is what the config file is for. If you need to save sensitive credentials, save them to the config file and then reference them in the `index.php` file.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Running the Application
 
-## License
+### No Dependency Setup
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+To run the application in development, you can run these commands 
+
+```bash
+cd cool-project-name
+composer start
+```
+
+After that, open `http://localhost:8000` in your browser.
+
+__Note: If you run into an error similar to this `Failed to listen on localhost:8000 (reason: Address already in use)` then you'll need to change the port that the application is running on. You can do this by editing the `composer.json` file and changing the port in the `scripts.start` key.__
+
+### Docker Setup
+
+You can [install Docker](https://docs.docker.com/engine/install/) and use `docker-compose` to run the app with `docker`, so you can run these commands:
+```bash
+cd cool-project-name
+docker-compose up -d
+# or if a newer version of docker
+docker compose up -d
+```
+After that, open `http://localhost:8000` in your browser.
+
+### Vagrant Setup
+You can [install Vagrant](https://vagrantup.com/download) and a provider like [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and use simple run the following command to bring up an environment with PHP/MariaDB already setup based on [n0nag0n/firefly](https://github.com/n0nag0n/firefly)
+
+```bash
+cd cool-project-name
+vagrant up
+```
+
+After that, open `http://localhost:8000` in your browser.
+
+## Project Structure
+
+This skeleton is organized for clarity and maintainability, and is also structured to be easily navigable by AI coding assistants. The following layout is recommended:
+
+```
+project-root/
+│
+├── app/                # Application-specific code
+│   ├── controllers/    # Route controllers (e.g., HomeController.php)
+│   ├── middlewares/    # Custom middleware classes/functions
+│   ├── models/         # Data models (if needed)
+│   ├── utils/          # Utility/helper functions
+│   ├── views/          # View templates (if using)
+│   └── commands/       # Custom CLI commands for Runway
+│
+├── public/             # Web root (index.php, assets, etc.)
+│
+├── config/             # Configuration files (database, app settings, routes)
+│
+├── vendor/             # Composer dependencies
+│
+├── tests/              # Unit and integration tests
+│
+├── composer.json       # Composer config
+│
+└── README.md           # Project overview
+```
+
+> _Predefined instructions for AI tools are included in this skeleton, making it easier for AI assistants to understand and help you with this structure._
+
+## Do it!
+That's it! Go build something flipping sweet!
